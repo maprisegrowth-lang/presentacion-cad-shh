@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crisis Hiperglicémicas Agudas · CAD & SHH</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/black.min.css" id="theme">
+
+  <style>
+    :root {
+      --bg-deep: #060807;
+      --bg-panel: #0e1311;
+      --bg-card: #111814;
+      --bg-card-hover: #162119;
+      --border-soft: rgba(74, 222, 128, 0.10);
+      --border-mid: rgba(74, 222, 128, 0.24);
+      --primary: #4ade80;
+      --primary-bright: #a7f3d0;
+      --primary-mid: #22c55e;
+      --primary-deep: #166534;
+      --text: #ffffff;
+      --text-mute: #dbe5df;
+      --text-dim: #a8b8ae;
+      --cad: #f59e6b;
+      --cad-bg: rgba(245, 158, 107, 0.07);
+      --cad-border: rgba(245, 158, 107, 0.28);
+      --shh: #7dd3fc;
+      --shh-bg: rgba(125, 211, 252, 0.07);
+      --shh-border: rgba(125, 211, 252, 0.28);
+      --danger: #f87171;
+    }
+
+    html, body { background: var(--bg-deep); }
+
+    .reveal {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      color: var(--text);
+      font-size: 23px;
+      letter-spacing: 0.005em;
+    }
+
+    .reveal .slides { text-align: left; }
+    .reveal .slides section { padding: 32px 48px; height: 100%; box-sizing: border-box; }
+
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--text);
+      text-transform: none;
+      letter-spacing: -0.015em;
+      font-weight: 600;
+      line-height: 1.12;
+      margin: 0 0 0.35em;
+    }
+
+    .reveal h1 { font-size: 2.4em; font-weight: 700; }
+    .reveal h2 { font-size: 1.75em; font-weight: 600; }
+    .reveal h3 { font-size: 1.2em; font-weight: 500; color: var(--primary-bright); }
+    .reveal h4 { font-size: 1em; font-weight: 600; color: var(--primary-bright); text-transform: uppercase; letter-spacing: 0.14em; }
+
+    .reveal p, .reveal li { font-weight: 400; line-height: 1.5; }
+    .reveal em { color: var(--primary-bright); font-style: normal; font-weight: 500; }
+    .reveal strong { color: var(--text); font-weight: 600; }
+
+    /* === TOP LABELS === */
+    .top-bar {
+      position: absolute;
+      top: 24px;
+      left: 48px;
+      right: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68em;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mute);
+      font-weight: 500;
+    }
+
+    .top-bar .left .dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      margin-right: 10px;
+      vertical-align: middle;
+      box-shadow: 0 0 12px var(--primary);
+    }
+
+    .top-bar.cad .left .dot { background: var(--cad); box-shadow: 0 0 12px var(--cad); }
+    .top-bar.shh .left .dot { background: var(--shh); box-shadow: 0 0 12px var(--shh); }
+
+    .top-bar .right { color: var(--primary); }
+
+    /* === EYEBROW & TITLE === */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68em;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--primary-bright);
+      padding: 7px 13px;
+      border: 1px solid var(--primary);
+      border-radius: 999px;
+      margin-bottom: 14px;
+      background: rgba(74, 222, 128, 0.08);
+    }
+
+    .eyebrow.cad { color: #fbd7b8; border-color: var(--cad); background: rgba(245, 158, 107, 0.1); }
+    .eyebrow.shh { color: #cfeafd; border-color: var(--shh); background: rgba(125, 211, 252, 0.1); }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+      margin: 10px 0 18px;
+      border: none;
+    }
+    .divider.cad { background: linear-gradient(90deg, var(--cad), transparent); }
+    .divider.shh { background: linear-gradient(90deg, var(--shh), transparent); }
+
+    .content-slide h2 {
+      font-size: 1.75em;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .content-slide h2 .hl { color: var(--primary-bright); font-weight: 600; }
+
+    .slide-body { margin-top: 48px; }
+
+    /* === TITLE SLIDE === */
+    .title-wrap {
+      display: flex; flex-direction: column; justify-content: center;
+      height: 100%; padding: 48px 60px;
+    }
+    .title-wrap .meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72em; color: var(--text-mute);
+      letter-spacing: 0.28em; text-transform: uppercase;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .title-wrap .meta .bullet { color: var(--primary); margin: 0 12px; }
+    .title-wrap h1 {
+      font-size: 3.2em; font-weight: 200;
+      line-height: 1.0; letter-spacing: -0.028em;
+      margin-bottom: 0;
+    }
+    .title-wrap h1 .green-word {
+      font-weight: 700;
+      background: linear-gradient(120deg, var(--primary-bright) 0%, var(--primary) 55%, var(--primary-deep) 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .title-wrap .subtitle {
+      font-size: 1.1em; font-weight: 400;
+      color: var(--text); max-width: 780px;
+      margin-top: 26px; line-height: 1.55;
+    }
+    .title-wrap .footer-meta {
+      position: absolute; bottom: 36px; left: 60px; right: 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68em; color: var(--text-mute);
+      letter-spacing: 0.22em; text-transform: uppercase;
+      font-weight: 500;
+    }
+    .title-wrap .footer-meta .right { color: var(--primary); }
+
+    /* === SECTION DIVIDER === */
+    .section-divider {
+      display: flex; flex-direction: column; justify-content: center;
+      height: 100%; padding: 48px 60px; position: relative;
+    }
+    .section-divider .big-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 10em; font-weight: 100;
+      line-height: 0.9; letter-spacing: -0.05em;
+      background: linear-gradient(180deg, var(--primary-bright) 0%, var(--primary) 45%, transparent 95%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin-bottom: 4px;
+    }
+    .section-divider.cad .big-num {
+      background: linear-gradient(180deg, #fbd7b8 0%, var(--cad) 45%, transparent 95%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .section-divider.shh .big-num {
+      background: linear-gradient(180deg, #cfeafd 0%, var(--shh) 45%, transparent 95%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .section-divider h1 {
+      font-size: 3.2em; font-weight: 200;
+      letter-spacing: -0.025em; margin-bottom: 14px;
+    }
+    .section-divider h1 strong { font-weight: 700; color: var(--primary-bright); }
+    .section-divider.cad h1 strong { color: var(--cad); }
+    .section-divider.shh h1 strong { color: var(--shh); }
+    .section-divider .sub {
+      font-size: 1em; color: var(--text);
+      max-width: 620px; line-height: 1.5;
+      font-weight: 400;
+    }
+    .section-divider .side-mark {
+      position: absolute; right: 60px; top: 50%;
+      transform: translateY(-50%); text-align: right;
+    }
+    .section-divider .side-mark .code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68em; color: var(--text-mute);
+      letter-spacing: 0.2em;
+      font-weight: 500;
+    }
+    .section-divider .side-mark .vbar {
+      width: 2px; height: 120px; margin: 16px auto 0;
+      background: linear-gradient(180deg, transparent, var(--primary), transparent);
+    }
+    .section-divider.cad .side-mark .vbar { background: linear-gradient(180deg, transparent, var(--cad), transparent); }
+    .section-divider.shh .side-mark .vbar { background: linear-gradient(180deg, transparent, var(--shh), transparent); }
+
+    /* === GRID & CARDS === */
+    .grid { display: grid; gap: 12px; }
+    .grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      padding: 14px 16px;
+      position: relative;
+    }
+    .card .card-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62em; color: var(--primary-bright);
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .card.accent-cad .card-label { color: var(--cad); }
+    .card.accent-shh .card-label { color: var(--shh); }
+    .card h4 {
+      color: var(--text); font-size: 0.88em;
+      font-weight: 500; margin-bottom: 4px;
+      text-transform: none; letter-spacing: 0;
+    }
+    .card p, .card li {
+      font-size: 0.8em; color: var(--text); line-height: 1.5; margin: 0;
+      font-weight: 400;
+    }
+    .card ul { padding-left: 16px; margin: 4px 0 0; }
+    .card li { margin-bottom: 3px; }
+    .card.accent-cad { border-left: 3px solid var(--cad); }
+    .card.accent-shh { border-left: 3px solid var(--shh); }
+    .card.accent-green { border-left: 3px solid var(--primary); }
+
+    /* === LISTS === */
+    .slide-list { list-style: none; padding: 0; margin: 14px 0 0; }
+    .slide-list li {
+      position: relative; padding: 8px 0 8px 30px;
+      font-size: 0.88em; line-height: 1.5;
+      border-bottom: 1px solid var(--border-soft);
+      color: var(--text);
+    }
+    .slide-list li:last-child { border-bottom: none; }
+    .slide-list li::before {
+      content: ''; position: absolute; left: 0; top: 16px;
+      width: 18px; height: 1px; background: var(--primary);
+    }
+    .slide-list li .bold { color: var(--text); font-weight: 500; }
+    .slide-list li .muted {
+      color: var(--text-mute); font-size: 0.88em;
+      display: block; margin-top: 4px;
+      font-weight: 400;
+    }
+    .slide-list.numbered { counter-reset: item; }
+    .slide-list.numbered li { padding-left: 46px; }
+    .slide-list.numbered li::before {
+      counter-increment: item;
+      content: counter(item, decimal-leading-zero);
+      width: auto; height: auto; background: transparent;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78em; color: var(--primary);
+      top: 10px; letter-spacing: 0.08em;
+    }
+    .slide-list.tight li { padding: 6px 0 6px 30px; font-size: 0.82em; }
+    .slide-list.tight li::before { top: 13px; }
+
+    /* === COMPARISON TABLE === */
+    .compare {
+      display: grid;
+      grid-template-columns: 0.9fr 1.2fr 1.2fr;
+      margin-top: 14px;
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .compare > div {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-soft);
+      font-size: 0.78em;
+      line-height: 1.45;
+      color: var(--text);
+      font-weight: 400;
+    }
+    .compare .header {
+      background: var(--bg-panel);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7em;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--primary-bright);
+      padding: 11px 14px;
+      font-weight: 600;
+    }
+    .compare .header.cad { color: var(--cad); }
+    .compare .header.shh { color: var(--shh); }
+    .compare .label {
+      background: var(--bg-panel);
+      color: var(--primary-bright);
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72em;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .compare .cell-cad { background: var(--cad-bg); color: var(--text); }
+    .compare .cell-shh { background: var(--shh-bg); color: var(--text); }
+    .compare > div:nth-last-child(-n+3) { border-bottom: none; }
+
+    /* === FLOW DIAGRAM === */
+    .flow {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 8px;
+      margin-top: 14px;
+    }
+    .flow-row {
+      display: flex; gap: 12px;
+      width: 100%; justify-content: center;
+    }
+    .flow-box {
+      flex: 1; padding: 12px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px;
+      font-size: 0.82em;
+      line-height: 1.45;
+      position: relative;
+      color: var(--text);
+      font-weight: 400;
+    }
+    .flow-box.root {
+      background: linear-gradient(135deg, rgba(74, 222, 128, 0.12), rgba(74, 222, 128, 0.02));
+      border-color: var(--primary);
+      max-width: 480px;
+      font-weight: 500;
+      text-align: center;
+    }
+    .flow-box .label-sm {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72em;
+      color: var(--primary-bright);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .flow-box.cad { border-color: var(--cad-border); }
+    .flow-box.cad .label-sm { color: var(--cad); }
+    .flow-box.shh { border-color: var(--shh-border); }
+    .flow-box.shh .label-sm { color: var(--shh); }
+
+    .flow-arrow {
+      width: 1px; height: 22px;
+      background: linear-gradient(180deg, var(--primary), transparent);
+      position: relative;
+    }
+    .flow-arrow::after {
+      content: ''; position: absolute;
+      bottom: -1px; left: -3px;
+      width: 0; height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 6px solid var(--primary);
+    }
+    .flow-arrow.cad { background: linear-gradient(180deg, var(--cad), transparent); }
+    .flow-arrow.cad::after { border-top-color: var(--cad); }
+    .flow-arrow.shh { background: linear-gradient(180deg, var(--shh), transparent); }
+    .flow-arrow.shh::after { border-top-color: var(--shh); }
+
+    /* === LAB VALUES === */
+    .lab-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 9px; margin-top: 14px;
+    }
+    .lab-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: 8px; padding: 11px 13px;
+    }
+    .lab-item .lab-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62em; color: var(--primary-bright);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .lab-item .lab-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.98em; font-weight: 500;
+      color: var(--primary-bright); line-height: 1.15;
+      margin-bottom: 4px;
+    }
+    .lab-item .lab-note {
+      font-size: 0.72em; color: var(--text); line-height: 1.45;
+      font-weight: 400;
+    }
+    .lab-item.cad .lab-value { color: var(--cad); }
+    .lab-item.shh .lab-value { color: var(--shh); }
+
+    /* === CRITERIA BOX === */
+    .criteria-box {
+      background: linear-gradient(135deg, rgba(74, 222, 128, 0.05), rgba(74, 222, 128, 0.01));
+      border: 1px solid var(--border-mid);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 14px;
+    }
+    .criteria-box.cad {
+      background: linear-gradient(135deg, rgba(245, 158, 107, 0.05), transparent);
+      border-color: var(--cad-border);
+    }
+    .criteria-box.shh {
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.05), transparent);
+      border-color: var(--shh-border);
+    }
+    .criteria-box .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66em; color: var(--primary-bright);
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .criteria-box.cad .label { color: var(--cad); }
+    .criteria-box.shh .label { color: var(--shh); }
+    .criteria-box ol {
+      list-style: none; counter-reset: criteria;
+      padding: 0; margin: 0;
+    }
+    .criteria-box ol li {
+      counter-increment: criteria;
+      padding: 7px 0 7px 36px;
+      position: relative;
+      font-size: 0.88em; line-height: 1.5;
+      border-bottom: 1px dashed var(--border-soft);
+      color: var(--text);
+    }
+    .criteria-box ol li:last-child { border-bottom: none; }
+    .criteria-box ol li::before {
+      content: counter(criteria);
+      position: absolute; left: 0; top: 7px;
+      width: 22px; height: 22px;
+      background: var(--primary);
+      color: var(--bg-deep);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 22px;
+      font-weight: 700;
+      font-size: 0.75em;
+      font-family: 'Outfit', sans-serif;
+    }
+    .criteria-box.cad ol li::before { background: var(--cad); }
+    .criteria-box.shh ol li::before { background: var(--shh); }
+
+    .formula-box {
+      margin-top: 12px; padding: 11px 14px;
+      background: var(--bg-card);
+      border-left: 3px solid var(--primary);
+      border-radius: 8px;
+    }
+    .formula-box.shh { border-left-color: var(--shh); }
+    .formula-box .fl-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66em; color: var(--primary-bright);
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    .formula-box.shh .fl-label { color: var(--shh); }
+    .formula-box .fl-eq {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95em; color: var(--primary-bright);
+      letter-spacing: 0.01em;
+      font-weight: 600;
+    }
+    .formula-box .fl-note {
+      font-size: 0.78em; color: var(--text);
+      margin-top: 6px; line-height: 1.45;
+      font-weight: 400;
+    }
+
+    /* === SEVERITY === */
+    .severity {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 10px; margin-top: 12px;
+    }
+    .sev-box {
+      background: var(--bg-card);
+      border-radius: 8px; padding: 11px 14px;
+      border-top: 3px solid;
+    }
+    .sev-box.mild { border-top-color: #facc15; background: linear-gradient(180deg, rgba(250, 204, 21, 0.06), var(--bg-card) 60%); }
+    .sev-box.mod { border-top-color: #fb923c; background: linear-gradient(180deg, rgba(251, 146, 60, 0.06), var(--bg-card) 60%); }
+    .sev-box.sev { border-top-color: var(--danger); background: linear-gradient(180deg, rgba(248, 113, 113, 0.06), var(--bg-card) 60%); }
+    .sev-box .sev-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66em;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+    .sev-box.mild .sev-label { color: #facc15; }
+    .sev-box.mod .sev-label { color: #fb923c; }
+    .sev-box.sev .sev-label { color: var(--danger); }
+    .sev-box .sev-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82em; color: var(--text); line-height: 1.55;
+      font-weight: 500;
+    }
+
+    /* === TAKEAWAY === */
+    .takeaway {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px; align-items: start;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .takeaway:last-child { border-bottom: none; }
+    .takeaway .num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5em; font-weight: 200;
+      color: var(--primary); line-height: 1;
+    }
+    .takeaway .ct p { margin: 0; font-size: 0.88em; color: var(--text); line-height: 1.5; font-weight: 400; }
+    .takeaway .ct .title-t {
+      font-size: 1em; color: var(--primary-bright);
+      font-weight: 600; margin-bottom: 4px;
+    }
+
+    /* === CLOSE === */
+    .close-slide {
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      height: 100%; text-align: center;
+    }
+    .close-slide h1 { font-size: 2.8em; font-weight: 200; margin-top: 12px; }
+    .close-slide h1 strong { font-weight: 700; color: var(--primary-bright); }
+    .close-slide .line-deco {
+      width: 64px; height: 2px; background: var(--primary); margin: 24px auto;
+    }
+    .close-slide .author { color: var(--text); font-size: 1em; margin: 0; font-weight: 500; }
+    .close-slide .author.mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68em; letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-mute); margin-top: 10px;
+      font-weight: 500;
+    }
+
+    /* === PROGRESS === */
+    .reveal .progress { color: var(--primary); height: 2px; }
+    .reveal .controls { color: var(--primary); }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 1 · TITLE -->
+      <section>
+        <div class="title-wrap">
+          <div class="meta">Semiología clínica<span class="bullet">·</span>Medicina Interna<span class="bullet">·</span>2026</div>
+          <h1>Crisis<br><span class="green-word">Hiperglicémicas</span><br>Agudas</h1>
+          <p class="subtitle">Cetoacidosis Diabética y Síndrome Hiperglicémico Hiperosmolar. Dos urgencias, un mismo eje: la ausencia de insulina efectiva.</p>
+          <div class="footer-meta">
+            <span>Matías Stehberg</span>
+            <span class="right">→ Flechas para navegar</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2 · AGENDA -->
+      <section class="content-slide">
+        <div class="top-bar"><span class="left"><span class="dot"></span>Vista general</span><span>02</span></div>
+        <div class="slide-body">
+          <span class="eyebrow">Contenidos</span>
+          <h2>El mapa de la <span class="hl">presentación</span></h2>
+          <hr class="divider">
+          <ol class="slide-list numbered">
+            <li><span class="bold">Cetoacidosis Diabética (CAD)</span><span class="muted">Etiología · Fisiopatología · Factores desencadenantes · Clínica · Diagnóstico · Laboratorio</span></li>
+            <li><span class="bold">Síndrome Hiperglicémico Hiperosmolar (SHH)</span><span class="muted">Misma estructura · Énfasis en las diferencias clínicas y bioquímicas</span></li>
+            <li><span class="bold">Comparación directa CAD vs SHH</span><span class="muted">Diferencias que marcan la conducta terapéutica</span></li>
+            <li><span class="bold">Puntos clave</span><span class="muted">Lo que no puede fallar en semiología</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- SLIDE 3 · CONTEXT -->
+      <section class="content-slide">
+        <div class="top-bar"><span class="left"><span class="dot"></span>Contexto clínico</span><span>03</span></div>
+        <div class="slide-body">
+          <span class="eyebrow">¿Por qué importa?</span>
+          <h2>Urgencias <span class="hl">vitales</span> con mortalidad evitable</h2>
+          <hr class="divider">
+          <div class="grid cols-3">
+            <div class="card accent-green">
+              <div class="card-label">CAD · Mortalidad</div>
+              <h4>&lt; 1 %</h4>
+              <p>En centros con manejo protocolizado. Asciende en extremos de edad y comorbilidades.</p>
+            </div>
+            <div class="card accent-green">
+              <div class="card-label">SHH · Mortalidad</div>
+              <h4>5 – 20 %</h4>
+              <p>Mucho mayor que la CAD. Afecta principalmente a adultos mayores con deterioro sistémico previo.</p>
+            </div>
+            <div class="card accent-green">
+              <div class="card-label">Presentación</div>
+              <h4>Mixtas frecuentes</h4>
+              <p>Hasta un tercio presenta rasgos combinados: hiperosmolaridad + cetosis. No son excluyentes.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4 · CAD DIVIDER -->
+      <section>
+        <div class="section-divider cad">
+          <div class="big-num">01</div>
+          <h1>Cetoacidosis<br><strong>Diabética</strong></h1>
+          <p class="sub">Tríada bioquímica: hiperglicemia + acidosis metabólica con anion gap aumentado + cetonemia. Expresión del déficit absoluto de insulina.</p>
+          <div class="side-mark">
+            <div class="code">CAD · DKA</div>
+            <div class="vbar"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 · CAD ETIOLOGY -->
+      <section class="content-slide">
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 01 / 06</span><span>05</span></div>
+        <div class="slide-body">
+          <span class="eyebrow cad">Etiología</span>
+          <h2>Un déficit <span class="hl">absoluto</span> de insulina</h2>
+          <hr class="divider cad">
+          <div class="grid cols-2">
+            <div class="card accent-cad">
+              <div class="card-label">Perfil típico</div>
+              <h4>DM tipo 1</h4>
+              <p>Especialmente en el <strong>debut</strong> o ante <strong>omisión</strong> de insulina. También en DM2 bajo estrés metabólico severo.</p>
+            </div>
+            <div class="card accent-cad">
+              <div class="card-label">Eje hormonal</div>
+              <h4>Contrarregulación amplificada</h4>
+              <p>↑ <em>glucagón</em>, <em>catecolaminas</em>, <em>cortisol</em> y <em>GH</em>, que potencian el catabolismo.</p>
+            </div>
+            <div class="card accent-cad">
+              <div class="card-label">Edad</div>
+              <h4>Jóvenes y adultos</h4>
+              <p>Más frecuente antes de los 45 años, aunque puede presentarse a cualquier edad con insulinopenia marcada.</p>
+            </div>
+            <div class="card accent-cad">
+              <div class="card-label">CAD euglicémica</div>
+              <h4>Fenotipo emergente</h4>
+              <p>Asociada a <em>iSGLT2</em>, embarazo, ayuno prolongado o alcoholismo. Glicemia &lt; 250 mg/dL con cetoacidosis franca.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6 · CAD PATHOPHYSIOLOGY -->
+      <section class="content-slide">
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 02 / 06</span><span>06</span></div>
+        <div class="slide-body">
+          <span class="eyebrow cad">Fisiología & fisiopatología</span>
+          <h2>La cascada <span class="hl">metabólica</span></h2>
+          <hr class="divider cad">
+          <div class="flow">
+            <div class="flow-box root" style="border-color: var(--cad); background: linear-gradient(135deg, rgba(245, 158, 107, 0.12), rgba(245, 158, 107, 0.02));">
+              <span class="label-sm" style="color: var(--cad);">Origen</span>
+              Déficit absoluto de insulina + ↑ hormonas contrarreguladoras
+            </div>
+            <div class="flow-arrow cad"></div>
+            <div class="flow-row">
+              <div class="flow-box cad">
+                <span class="label-sm">Vía hepática</span>
+                ↑ Gluconeogénesis y glucogenólisis · ↓ captación periférica
+              </div>
+              <div class="flow-box cad">
+                <span class="label-sm">Vía adiposa</span>
+                Lipólisis intensa → ácidos grasos libres al hígado
+              </div>
+            </div>
+            <div class="flow-arrow cad"></div>
+            <div class="flow-row">
+              <div class="flow-box cad">
+                <span class="label-sm">Consecuencia 1</span>
+                <strong>Hiperglicemia</strong> → diuresis osmótica → deshidratación + pérdida de electrolitos
+              </div>
+              <div class="flow-box cad">
+                <span class="label-sm">Consecuencia 2</span>
+                <strong>Cetogénesis</strong> (β-OH-butirato, acetoacetato) → acidosis metabólica con AG ↑
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 · CAD TRIGGERS -->
+      <section class="content-slide">
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 03 / 06</span><span>07</span></div>
+        <div class="slide-body">
+          <span class="eyebrow cad">Factores desencadenantes</span>
+          <h2>El "gatillo" detrás de cada <span class="hl">descompensación</span></h2>
+          <hr class="divider cad">
+          <ul class="slide-list tight">
+            <li><span class="bold">Infecciones (30 – 50 %)</span> — La causa más frecuente. ITU, neumonía, infecciones de piel y partes blandas, sepsis.<span class="muted">Buscar foco activamente incluso sin fiebre: la deshidratación puede enmascararla.</span></li>
+            <li><span class="bold">Omisión o subdosificación de insulina</span> — Incumplimiento terapéutico, fallas en bombas, problemas de acceso al fármaco.</li>
+            <li><span class="bold">Debut de DM tipo 1</span> — Hasta un 25 % de los pacientes con DM1 se presentan por primera vez en CAD.</li>
+            <li><span class="bold">Eventos isquémicos agudos</span> — IAM, ACV, isquemia mesentérica.</li>
+            <li><span class="bold">Fármacos</span> — Corticoides, tiazidas, simpaticomiméticos, antipsicóticos atípicos, <em>iSGLT2</em> (CAD euglicémica).</li>
+            <li><span class="bold">Otros</span> — Pancreatitis, embarazo, cirugía mayor, trauma, alcoholismo, consumo de cocaína.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SLIDE 8 · CAD SIGNS -->
+      <section class="content-slide">
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 04 / 06</span><span>08</span></div>
+        <div class="slide-body">
+          <span class="eyebrow cad">Signos & síntomas</span>
+          <h2>La clínica es <span class="hl">rápida</span> — horas, no días</h2>
+          <hr class="divider cad">
+          <div class="grid cols-2">
+            <div class="card accent-cad">
+              <div class="card-label">Síntomas cardinales</div>
+              <ul>
+                <li>Poliuria, polidipsia y polifagia intensas</li>
+                <li>Pérdida de peso en días</li>
+                <li>Astenia y debilidad progresiva</li>
+                <li>Náuseas, vómitos y <em>dolor abdominal</em> — puede simular abdomen agudo</li>
+              </ul>
+            </div>
+            <div class="card accent-cad">
+              <div class="card-label">Signos clave al examen</div>
+              <ul>
+                <li><em>Respiración de Kussmaul</em> — profunda, rápida, compensadora</li>
+                <li><em>Aliento cetónico</em> — olor a manzanas / acetona</li>
+                <li>Deshidratación moderada (mucosas secas, turgor ↓, taquicardia)</li>
+                <li>Hipotensión en casos severos</li>
+              </ul>
+            </div>
+            <div class="card accent-cad">
+              <div class="card-label">Estado mental</div>
+              <ul>
+                <li>Habitualmente <strong>conservado</strong> o con leve compromiso</li>
+                <li>Coma solo en fases muy avanzadas o con hiperosmolaridad sobrepuesta</li>
+                <li>La alteración profunda obliga a buscar otra causa</li>
+              </ul>
+            </div>
+            <div class="card accent-cad">
+              <div class="card-label">Instalación</div>
+              <ul>
+                <li>Rápida: <strong>horas a 1 – 2 días</strong></li>
+                <li>Contraste con la instalación insidiosa del SHH</li>
+                <li>La velocidad refleja la magnitud de la acidosis</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 9 · CAD DIAGNOSIS -->
+      <section class="content-slide">
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 05 / 06</span><span>09</span></div>
+        <div class="slide-body">
+          <span class="eyebrow cad">Diagnóstico</span>
+          <h2>La tríada <span class="hl">bioquímica</span></h2>
+          <hr class="divider cad">
+          <div class="criteria-box cad">
+            <div class="label">Criterios diagnósticos · ADA</div>
+            <ol>
+              <li><strong>Hiperglicemia</strong> — glicemia plasmática &gt; 250 mg/dL (o normal si CAD euglicémica)</li>
+              <li><strong>Acidosis metabólica</strong> — pH arterial &lt; 7,30 y bicarbonato sérico &lt; 18 mEq/L</li>
+              <li><strong>Cetonemia / cetonuria positiva</strong> — β-hidroxibutirato &gt; 3 mmol/L</li>
+            </ol>
+          </div>
+          <h4 style="margin-top: 14px;">Clasificación por severidad</h4>
+          <div class="severity">
+            <div class="sev-box mild">
+              <div class="sev-label">Leve</div>
+              <div class="sev-val">pH 7,25 – 7,30<br>HCO₃ 15 – 18<br>Alerta</div>
+            </div>
+            <div class="sev-box mod">
+              <div class="sev-label">Moderada</div>
+              <div class="sev-val">pH 7,00 – 7,24<br>HCO₃ 10 – 15<br>Alerta / somnoliento</div>
+            </div>
+            <div class="sev-box sev">
+              <div class="sev-label">Severa</div>
+              <div class="sev-val">pH &lt; 7,00<br>HCO₃ &lt; 10<br>Estupor / coma</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 10 · CAD LABS -->
+      <section class="content-slide">
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 06 / 06</span><span>10</span></div>
+        <div class="slide-body">
+          <span class="eyebrow cad">Laboratorio</span>
+          <h2>El perfil <span class="hl">analítico</span></h2>
+          <hr class="divider cad">
+          <div class="lab-grid">
+            <div class="lab-item cad">
+              <div class="lab-name">Glicemia</div>
+              <div class="lab-value">&gt; 250 mg/dL</div>
+              <div class="lab-note">Habitualmente 300 – 800 mg/dL</div>
+            </div>
+            <div class="lab-item cad">
+              <div class="lab-name">pH arterial</div>
+              <div class="lab-value">&lt; 7,30</div>
+              <div class="lab-note">Acidosis metabólica</div>
+            </div>
+            <div class="lab-item cad">
+              <div class="lab-name">Bicarbonato</div>
+              <div class="lab-value">&lt; 18 mEq/L</div>
+              <div class="lab-note">Marcador de severidad</div>
+            </div>
+            <div class="lab-item cad">
+              <div class="lab-name">Anion Gap</div>
+              <div class="lab-value">&gt; 10 – 12</div>
+              <div class="lab-note">[Na − (Cl + HCO₃)]</div>
+            </div>
+            <div class="lab-item cad">
+              <div class="lab-name">Cetonemia</div>
+              <div class="lab-value">β-OH &gt; 3 mmol/L</div>
+              <div class="lab-note">Cetonuria +++ en orina</div>
+            </div>
+            <div class="lab-item">
+              <div class="lab-name">Osmolaridad</div>
+              <div class="lab-value">&lt; 320 mOsm/kg</div>
+              <div class="lab-note">Generalmente normal o levemente ↑</div>
+            </div>
+            <div class="lab-item">
+              <div class="lab-name">Sodio</div>
+              <div class="lab-value">Pseudohipo-Na</div>
+              <div class="lab-note">Corregir: Na + 1,6 × [(glc − 100)/100]</div>
+            </div>
+            <div class="lab-item">
+              <div class="lab-name">Potasio</div>
+              <div class="lab-value">Normal / ↑</div>
+              <div class="lab-note">Déficit corporal total</div>
+            </div>
+            <div class="lab-item">
+              <div class="lab-name">Otros</div>
+              <div class="lab-value">BUN ↑ · Leucocitosis</div>
+              <div class="lab-note">Amilasa / lipasa pueden elevarse</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 11 · SHH DIVIDER -->
+      <section>
+        <div class="section-divider shh">
+          <div class="big-num">02</div>
+          <h1>Síndrome<br><strong>Hiperglicémico<br>Hiperosmolar</strong></h1>
+          <p class="sub">Hiperglicemia extrema + hiperosmolaridad severa + ausencia de cetoacidosis significativa. El paciente se deshidrata, no se acidifica.</p>
+          <div class="side-mark">
+            <div class="code">SHH · HHS</div>
+            <div class="vbar"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 12 · SHH ETIOLOGY -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 01 / 06</span><span>12</span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Etiología</span>
+          <h2>Un déficit <span class="hl">relativo</span> de insulina</h2>
+          <hr class="divider shh">
+          <div class="grid cols-2">
+            <div class="card accent-shh">
+              <div class="card-label">Perfil típico</div>
+              <h4>DM tipo 2</h4>
+              <p>Adulto mayor, frecuentemente <strong>institucionalizado</strong>, con comorbilidades y acceso limitado al agua libre.</p>
+            </div>
+            <div class="card accent-shh">
+              <div class="card-label">Clave fisiopatológica</div>
+              <h4>Insulina residual frena la cetogénesis</h4>
+              <p>Pero insuficiente para controlar la hiperglicemia. Por eso <em>no hay acidosis</em>.</p>
+            </div>
+            <div class="card accent-shh">
+              <div class="card-label">Edad</div>
+              <h4>&gt; 60 años</h4>
+              <p>Más frecuente en la tercera edad, especialmente con deterioro cognitivo o inmovilidad.</p>
+            </div>
+            <div class="card accent-shh">
+              <div class="card-label">Instalación</div>
+              <h4>Insidiosa · días a semanas</h4>
+              <p>Permite que la osmolaridad alcance valores extremos antes del diagnóstico.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 13 · SHH PATHOPHYSIOLOGY -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 02 / 06</span><span>13</span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Fisiología & fisiopatología</span>
+          <h2>La cascada de la <span class="hl">deshidratación</span> extrema</h2>
+          <hr class="divider shh">
+          <div class="flow">
+            <div class="flow-box root" style="border-color: var(--shh); background: linear-gradient(135deg, rgba(125, 211, 252, 0.12), rgba(125, 211, 252, 0.02));">
+              <span class="label-sm" style="color: var(--shh);">Origen</span>
+              Déficit relativo de insulina — suficiente para frenar lipólisis, no la glicemia
+            </div>
+            <div class="flow-arrow shh"></div>
+            <div class="flow-row">
+              <div class="flow-box shh">
+                <span class="label-sm">Efecto metabólico</span>
+                Hiperglicemia extrema (&gt; 600 mg/dL) mantenida por días
+              </div>
+              <div class="flow-box shh">
+                <span class="label-sm">Ausencia clave</span>
+                Cetogénesis <em>mínima o ausente</em> → sin acidosis significativa
+              </div>
+            </div>
+            <div class="flow-arrow shh"></div>
+            <div class="flow-row">
+              <div class="flow-box shh">
+                <span class="label-sm">Consecuencia 1</span>
+                Diuresis osmótica <strong>masiva</strong> → pérdida de agua libre → <em>hiperosmolaridad &gt; 320</em>
+              </div>
+              <div class="flow-box shh">
+                <span class="label-sm">Consecuencia 2</span>
+                Deshidratación celular <strong>neuronal</strong> → compromiso de conciencia progresivo
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 14 · SHH TRIGGERS -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 03 / 06</span><span>14</span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Factores desencadenantes</span>
+          <h2>Cuando el <span class="hl">contexto</span> define el cuadro</h2>
+          <hr class="divider shh">
+          <ul class="slide-list tight">
+            <li><span class="bold">Infecciones</span> — Neumonía e ITU son las más frecuentes, seguidas de sepsis y úlceras infectadas.<span class="muted">En adultos mayores la infección puede cursar sin fiebre ni leucocitosis relevante.</span></li>
+            <li><span class="bold">Eventos cardiovasculares agudos</span> — IAM y ACV pueden debutar como SHH en DM2 no controlada.</li>
+            <li><span class="bold">Falta de acceso al agua</span> — Institucionalización, demencia, inmovilidad, incapacidad para expresar sed.</li>
+            <li><span class="bold">Medicamentos</span> — Diuréticos tiazídicos, corticoides, betabloqueadores, fenitoína, antipsicóticos atípicos.</li>
+            <li><span class="bold">Procedimientos y dispositivos</span> — Nutrición parenteral, diálisis peritoneal, cirugía mayor reciente.</li>
+            <li><span class="bold">Endocrinopatías concomitantes</span> — Cushing, acromegalia, hipertiroidismo pueden elevar la glicemia basal.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SLIDE 15 · SHH SIGNS -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 04 / 06</span><span>15</span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Signos & síntomas</span>
+          <h2>Predomina lo <span class="hl">neurológico</span></h2>
+          <hr class="divider shh">
+          <div class="grid cols-2">
+            <div class="card accent-shh">
+              <div class="card-label">Síntomas cardinales</div>
+              <ul>
+                <li>Poliuria y polidipsia <em>marcadas</em></li>
+                <li>Pérdida de peso importante en semanas</li>
+                <li>Astenia progresiva y debilidad generalizada</li>
+                <li>Dolor abdominal y vómitos <strong>poco frecuentes</strong> (diferencia con CAD)</li>
+              </ul>
+            </div>
+            <div class="card accent-shh">
+              <div class="card-label">Signos al examen</div>
+              <ul>
+                <li>Deshidratación <em>severa</em> — signo del pliegue +++, mucosas muy secas</li>
+                <li>Taquicardia, hipotensión, shock hipovolémico</li>
+                <li><strong>Sin</strong> respiración de Kussmaul</li>
+                <li><strong>Sin</strong> aliento cetónico</li>
+              </ul>
+            </div>
+            <div class="card accent-shh">
+              <div class="card-label">Compromiso neurológico</div>
+              <ul>
+                <li>Letargia, estupor y coma (<em>hallazgo dominante</em>)</li>
+                <li>Convulsiones focales o generalizadas</li>
+                <li>Hemiparesia reversible tras corrección</li>
+                <li>Signos focales que pueden simular un ACV</li>
+              </ul>
+            </div>
+            <div class="card accent-shh">
+              <div class="card-label">Instalación</div>
+              <ul>
+                <li>Insidiosa: <strong>días a semanas</strong></li>
+                <li>La evolución lenta permite adaptación sintomática</li>
+                <li>Diagnóstico frecuentemente tardío</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 16 · SHH DIAGNOSIS -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 05 / 06</span><span>16</span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Diagnóstico</span>
+          <h2>Criterios <span class="hl">bioquímicos</span></h2>
+          <hr class="divider shh">
+          <div class="criteria-box shh">
+            <div class="label">Criterios diagnósticos · ADA</div>
+            <ol>
+              <li><strong>Hiperglicemia severa</strong> — &gt; 600 mg/dL (habitualmente &gt; 1000 mg/dL)</li>
+              <li><strong>Osmolaridad plasmática efectiva elevada</strong> — &gt; 320 mOsm/kg</li>
+              <li><strong>pH arterial &gt; 7,30</strong> y bicarbonato &gt; 18 mEq/L</li>
+              <li><strong>Cetonemia ausente o leve</strong> — anion gap normal o mínimamente aumentado</li>
+              <li><strong>Compromiso de conciencia</strong> — desde letargia hasta coma</li>
+            </ol>
+          </div>
+          <div class="formula-box shh">
+            <div class="fl-label">Fórmula de osmolaridad efectiva</div>
+            <div class="fl-eq">Osm = 2 × [Na⁺] + (glucosa / 18)</div>
+            <div class="fl-note">Se excluye el BUN: atraviesa libremente la membrana celular y no genera gradiente osmótico.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 17 · SHH LABS -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 06 / 06</span><span>17</span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Laboratorio</span>
+          <h2>El perfil <span class="hl">analítico</span></h2>
+          <hr class="divider shh">
+          <div class="lab-grid">
+            <div class="lab-item shh">
+              <div class="lab-name">Glicemia</div>
+              <div class="lab-value">&gt; 600 mg/dL</div>
+              <div class="lab-note">Frecuentemente &gt; 1000 mg/dL</div>
+            </div>
+            <div class="lab-item shh">
+              <div class="lab-name">Osmolaridad</div>
+              <div class="lab-value">&gt; 320 mOsm/kg</div>
+              <div class="lab-note">Puede alcanzar 380 – 400</div>
+            </div>
+            <div class="lab-item shh">
+              <div class="lab-name">pH arterial</div>
+              <div class="lab-value">&gt; 7,30</div>
+              <div class="lab-note">Sin acidosis significativa</div>
+            </div>
+            <div class="lab-item shh">
+              <div class="lab-name">Bicarbonato</div>
+              <div class="lab-value">&gt; 18 mEq/L</div>
+              <div class="lab-note">Habitualmente conservado</div>
+            </div>
+            <div class="lab-item shh">
+              <div class="lab-name">Cetonemia</div>
+              <div class="lab-value">Ausente / mínima</div>
+              <div class="lab-note">Anion gap normal o leve</div>
+            </div>
+            <div class="lab-item">
+              <div class="lab-name">Sodio</div>
+              <div class="lab-value">Hipernatremia</div>
+              <div class="lab-note">Aún más tras corregir por glicemia</div>
+            </div>
+            <div class="lab-item">
+              <div class="lab-name">Potasio</div>
+              <div class="lab-value">Variable</div>
+              <div class="lab-note">Déficit corporal total presente</div>
+            </div>
+            <div class="lab-item">
+              <div class="lab-name">Función renal</div>
+              <div class="lab-value">BUN / Cr ↑↑↑</div>
+              <div class="lab-note">Falla prerrenal por hipovolemia</div>
+            </div>
+            <div class="lab-item">
+              <div class="lab-name">Hemograma</div>
+              <div class="lab-value">Leucocitosis</div>
+              <div class="lab-note">Por estrés; no descarta infección</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 18 · COMPARISON -->
+      <section class="content-slide">
+        <div class="top-bar"><span class="left"><span class="dot"></span>Comparación directa</span><span>18</span></div>
+        <div class="slide-body">
+          <span class="eyebrow">CAD vs SHH</span>
+          <h2>Las diferencias que <span class="hl">importan</span></h2>
+          <hr class="divider">
+          <div class="compare">
+            <div class="header">Parámetro</div>
+            <div class="header cad">CAD · Cetoacidosis</div>
+            <div class="header shh">SHH · Hiperosmolar</div>
+
+            <div class="label">Edad típica</div>
+            <div class="cell-cad">Jóvenes y adultos · DM1</div>
+            <div class="cell-shh">Adultos mayores · DM2</div>
+
+            <div class="label">Instalación</div>
+            <div class="cell-cad">Horas · rápida</div>
+            <div class="cell-shh">Días a semanas · insidiosa</div>
+
+            <div class="label">Glicemia</div>
+            <div class="cell-cad">&gt; 250 mg/dL (300 – 800)</div>
+            <div class="cell-shh">&gt; 600 mg/dL (a menudo &gt; 1000)</div>
+
+            <div class="label">pH arterial</div>
+            <div class="cell-cad">&lt; 7,30 (acidosis)</div>
+            <div class="cell-shh">&gt; 7,30 (conservado)</div>
+
+            <div class="label">Bicarbonato</div>
+            <div class="cell-cad">&lt; 18 mEq/L</div>
+            <div class="cell-shh">&gt; 18 mEq/L</div>
+
+            <div class="label">Osmolaridad</div>
+            <div class="cell-cad">Variable · &lt; 320</div>
+            <div class="cell-shh">&gt; 320 mOsm/kg</div>
+
+            <div class="label">Cetonemia</div>
+            <div class="cell-cad">Positiva intensa</div>
+            <div class="cell-shh">Ausente / mínima</div>
+
+            <div class="label">Clínica dominante</div>
+            <div class="cell-cad">Kussmaul, aliento cetónico, dolor abdominal</div>
+            <div class="cell-shh">Compromiso de conciencia, deshidratación severa</div>
+
+            <div class="label">Mortalidad</div>
+            <div class="cell-cad">&lt; 1 %</div>
+            <div class="cell-shh">5 – 20 %</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 19 · TAKEAWAYS -->
+      <section class="content-slide">
+        <div class="top-bar"><span class="left"><span class="dot"></span>Puntos clave</span><span>19</span></div>
+        <div class="slide-body">
+          <span class="eyebrow">Take-home</span>
+          <h2>Lo que <span class="hl">no puede fallar</span></h2>
+          <hr class="divider">
+          <div class="takeaway">
+            <div class="num">01</div>
+            <div class="ct">
+              <div class="title-t">Déficit absoluto vs déficit relativo</div>
+              <p>La CAD surge del déficit absoluto (activa la cetogénesis); el SHH, del déficit relativo (frena la cetogénesis, no la hiperglicemia).</p>
+            </div>
+          </div>
+          <div class="takeaway">
+            <div class="num">02</div>
+            <div class="ct">
+              <div class="title-t">Kussmaul y aliento cetónico sólo en CAD</div>
+              <p>Son manifestaciones directas de la acidosis y la cetonemia. Su ausencia con hiperglicemia extrema orienta al SHH.</p>
+            </div>
+          </div>
+          <div class="takeaway">
+            <div class="num">03</div>
+            <div class="ct">
+              <div class="title-t">El SHH es un cuadro neurológico</div>
+              <p>La hiperosmolaridad deshidrata la neurona. Todo diabético con compromiso de conciencia obliga a medir glicemia y osmolaridad.</p>
+            </div>
+          </div>
+          <div class="takeaway">
+            <div class="num">04</div>
+            <div class="ct">
+              <div class="title-t">Buscar siempre el desencadenante</div>
+              <p>Infección hasta demostrar lo contrario. Sin resolver la causa, el tratamiento sintomático fracasa.</p>
+            </div>
+          </div>
+          <div class="takeaway">
+            <div class="num">05</div>
+            <div class="ct">
+              <div class="title-t">Los cuadros se superponen</div>
+              <p>Hasta un tercio presenta rasgos mixtos. Distinguir no es académico: modifica la velocidad de reposición y el uso de insulina.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 20 · CLOSE -->
+      <section>
+        <div class="close-slide">
+          <span class="eyebrow">Fin de la presentación</span>
+          <h1>Gracias.<br><strong>Preguntas</strong>.</h1>
+          <div class="line-deco"></div>
+          <p class="author">Matías Stehberg</p>
+          <p class="author mono">Semiología clínica · 2026</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      transition: 'fade',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      controls: true,
+      progress: true,
+      slideNumber: false,
+      center: false,
+      width: 1280,
+      height: 720,
+      margin: 0.03,
+      minScale: 0.2,
+      maxScale: 2.0
+    });
+  </script>
+</body>
+</html>
