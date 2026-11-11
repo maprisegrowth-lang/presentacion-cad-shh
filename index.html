@@ -611,7 +611,7 @@
     .src i { font-style: italic; color: var(--text-mute); }
     sup.r { font-size: 0.55em; color: var(--primary); font-family: 'JetBrains Mono', monospace; font-weight: 600; margin-left: 1px; }
 
-    .title-wrap .footer-meta { bottom: 64px; }
+    .title-wrap .footer-meta { bottom: 84px; }
 
     /* Tabla de dosis */
     .dose {
@@ -688,6 +688,7 @@
     .compare.compact .label { font-size: 0.64em; }
     .section-divider.shh .big-num { font-size: 7.5em; }
     .section-divider.shh h1 { font-size: 2.9em; }
+    .reveal ul.slide-list, .reveal ol.slide-list { list-style: none; margin-left: 0; }
     .bars { margin-top: 10px; display: grid; gap: 5px; }
     .bar-row { display: grid; grid-template-columns: 44px 1fr 56px; align-items: center; gap: 10px; font-size: 0.62em; }
     .bar-row .yr { font-family: 'JetBrains Mono', monospace; color: var(--text-mute); }
@@ -698,758 +699,419 @@
     .formula-row .formula-box { margin-top: 0; }
     .formula-row .fl-eq { font-size: 0.72em; }
     .formula-row .fl-note { font-size: 0.66em; }
+  
+    .bar-row .fill.shh { background: linear-gradient(90deg, var(--shh), #cfeafd); }
+    .bar-row .val.shh { color: #cfeafd; }
+    .agenda2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px; }
+    .agenda2 ol { margin: 0; padding-left: 0; list-style: none; counter-reset: ag; }
+    .agenda2 li { counter-increment: ag; font-size: 0.64em; padding: 2px 0 2px 34px; position: relative; border-bottom: 1px solid var(--border-soft); }
+    .agenda2 li::before { content: counter(ag, decimal-leading-zero); position: absolute; left: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; }
+    .agenda2 .cad li::before { color: var(--cad); }
+    .agenda2 .shh li::before { color: var(--shh); }
+    .agenda2 h4 { font-size: 0.72em; margin-bottom: 6px; }
   </style>
 </head>
 <body>
   <div class="reveal">
     <div class="slides">
 
-      <!-- 1 · TITLE -->
+      <!-- TITLE -->
       <section>
         <div class="title-wrap">
           <div class="meta">Medicina orientada al problema<span class="bullet">·</span>Medicina Interna<span class="bullet">·</span>2026</div>
           <h1>Crisis<br><span class="green-word">Hiperglicémicas</span><br>Agudas</h1>
-          <p class="subtitle">Cetoacidosis Diabética y Estado Hiperglicémico Hiperosmolar: del diagnóstico al manejo hora a hora, con dosis, tiempos y metas según el consenso internacional 2024.</p>
+          <p class="subtitle">Cetoacidosis Diabética y Estado Hiperglicémico Hiperosmolar: cada crisis por separado, de la epidemiología a la prevención, con datos chilenos y el consenso internacional 2024.</p>
           <div class="footer-meta">
             <span>Matías Stehberg · Héctor Rojas</span>
             <span class="right">→ Flechas para navegar</span>
           </div>
         </div>
-        <div class="src"><b>Fuentes</b>Datos chilenos: DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos) [5] y defunciones [6]. Manejo: Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005 [2] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023 [3]. Bibliografía completa en la diapositiva final.</div>
+        <div class="src"><b>Fuentes</b>Datos chilenos: DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos) [5] y DEIS-MINSAL, Defunciones por causa 2021–2023 (oficiales) y 2024–2026 (preliminares) [6]. Clínica y manejo: Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005 [2] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023 [3]. Bibliografía completa en la diapositiva final.</div>
       </section>
 
-      <!-- 2 · AGENDA -->
+      <!-- AGENDA -->
       <section class="content-slide">
-        <div class="top-bar"><span class="left"><span class="dot"></span>Vista general</span><span>02</span></div>
+        <div class="top-bar"><span class="left"><span class="dot"></span>Vista general</span><span class="num"></span></div>
         <div class="slide-body">
           <span class="eyebrow">Contenidos</span>
-          <h2>El mapa de la <span class="hl">presentación</span></h2>
+          <h2>Dos crisis, <span class="hl">doce puntos cada una</span></h2>
           <hr class="divider">
-          <ol class="slide-list numbered">
-            <li><span class="bold">Cetoacidosis Diabética (CAD)</span><span class="muted">Etiología · Fisiopatología · Desencadenantes · Clínica · Criterios 2024 · Laboratorio · CAD euglicémica</span></li>
-            <li><span class="bold">Estado Hiperglicémico Hiperosmolar (EHH / SHH)</span><span class="muted">Misma estructura · Énfasis en las diferencias clínicas y bioquímicas</span></li>
-            <li><span class="bold">Comparación directa CAD vs SHH</span><span class="muted">Incluye déficits estimados de agua y electrolitos</span></li>
-            <li><span class="bold">Manejo</span><span class="muted">Fluidos · Insulina IV y SC · Potasio · Bicarbonato · Fosfato · Resolución · Transición · SHH · Complicaciones</span></li>
-            <li><span class="bold">Puntos clave y bibliografía</span></li>
-          </ol>
-        </div>
-        <div class="src"><b>Fuente</b>Estructura según secciones del consenso ADA/EASD/JBDS/AACE/DTS: Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1].</div>
-      </section>
-
-      <!-- 3 · CONTEXT · CHILE -->
-      <section class="content-slide">
-        <div class="top-bar"><span class="left"><span class="dot"></span>Contexto clínico · Chile</span><span>03</span></div>
-        <div class="slide-body">
-          <span class="eyebrow">Chile en números</span>
-          <h2>Una urgencia <span class="hl">en aumento</span> en Chile</h2>
-          <hr class="divider">
-          <div class="grid cols-2" style="grid-template-columns: 1.05fr 1fr; gap: 14px;">
-            <div>
-              <div class="lab-grid" style="grid-template-columns: 1fr 1fr; margin-top:0;">
-                <div class="lab-item cad"><div class="lab-name">Egresos por CAD · 2024</div><div class="lab-value">4.746</div><div class="lab-note">E10–E14 con cetoacidosis. 88 % son FONASA</div></div>
-                <div class="lab-item cad"><div class="lab-name">Letalidad hospitalaria CAD</div><div class="lab-value">1,2 %</div><div class="lab-note">E10 (insulinodependiente) 0,4 % vs E11 1,9 %</div></div>
-                <div class="lab-item shh"><div class="lab-name">Coma diabético · 2024</div><div class="lab-value">334 · 5,1 %</div><div class="lab-note">Egresos y letalidad. 71 % tiene ≥ 60 años</div></div>
-                <div class="lab-item"><div class="lab-name">Muertes · 2023 (oficial)</div><div class="lab-value">167</div><div class="lab-note">Por CAD o coma diabético: 4,4 % de las muertes con DM como causa básica</div></div>
-              </div>
+          <div class="agenda2">
+            <div class="card accent-cad cad">
+              <h4 style="color:var(--cad);">01 · Cetoacidosis Diabética</h4>
+              <ol><li>Epidemiología</li><li>Definición y fisiopatología</li><li>Semiología y examen físico</li><li>Antecedentes relevantes</li><li>Diferenciales</li><li>Precipitantes</li><li>Criterios diagnósticos comparativos</li><li>Manejo inicial</li><li>Monitorización y estudio</li><li>Resolución</li><li>Complicaciones</li><li>Prevención</li></ol>
             </div>
-            <div class="card accent-cad tight">
-              <div class="card-label">Egresos por CAD en Chile, 2021 – 2025</div>
-              <div class="bars"><div class="bar-row"><span class="yr">2021</span><div class="trk"><div class="fill" style="width:72.3%"></div></div><span class="val">3.757</span></div><div class="bar-row"><span class="yr">2022</span><div class="trk"><div class="fill" style="width:78.1%"></div></div><span class="val">4.061</span></div><div class="bar-row"><span class="yr">2023</span><div class="trk"><div class="fill" style="width:79.9%"></div></div><span class="val">4.155</span></div><div class="bar-row"><span class="yr">2024</span><div class="trk"><div class="fill" style="width:91.3%"></div></div><span class="val">4.746</span></div><div class="bar-row"><span class="yr">2025</span><div class="trk"><div class="fill" style="width:100.0%"></div></div><span class="val">5.199</span></div></div>
-              <p style="margin-top:8px;"><strong>+38 %</strong> en 5 años. El 47 % de los egresos de 2024 fue en menores de 40 años.</p>
+            <div class="card accent-shh shh">
+              <h4 style="color:var(--shh);">02 · Estado Hiperglicémico Hiperosmolar</h4>
+              <ol><li>Epidemiología</li><li>Definición y fisiopatología</li><li>Semiología y examen físico</li><li>Antecedentes relevantes</li><li>Diferenciales</li><li>Precipitantes</li><li>Criterios diagnósticos comparativos</li><li>Manejo inicial</li><li>Monitorización y estudio</li><li>Resolución</li><li>Complicaciones</li><li>Prevención</li></ol>
             </div>
           </div>
-          <div class="note-bar ok"><strong>Contexto:</strong> ~1,9 millones de adultos chilenos (20 – 79 años) viven con diabetes, con 2,4 millones proyectados a 2050 <sup class="r">7</sup>. <strong>Ojo con el código:</strong> la CIE-10 no tiene un código propio para el SHH; el "coma" (E1x.0) también incluye el coma cetoacidótico y el hipoglicémico. Los egresos incluyen pacientes pediátricos.</div>
         </div>
-        <div class="src"><b>Fuente</b>DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos) [5] · DEIS-MINSAL, Defunciones por causa 2021–2023 (oficiales) y 2024–2026 (preliminares) [6] · IDF Diabetes Atlas, 11ª ed., 2025 [7]. Cálculos propios sobre las bases DEIS (DIAG1 E10–E14, cuarto dígito .0 "con coma" y .1 "con cetoacidosis"). Datos 2025 y defunciones 2024+ en revisión por DEIS.</div>
+        <div class="src"><b>Fuente</b>Estructura del ramo. Contenidos según Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1], Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005 [2] y Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023 [3].</div>
       </section>
 
-      <!-- 4 · CAD DIVIDER -->
+      <!-- ================= CAD ================= -->
       <section>
         <div class="section-divider cad">
           <div class="big-num">01</div>
           <h1>Cetoacidosis<br><strong>Diabética</strong></h1>
           <p class="sub">Tríada "D-K-A": diabetes/hiperglicemia + cetonemia + acidosis metabólica. Expresión del déficit absoluto (o severo) de insulina.</p>
-          <div class="side-mark">
-            <div class="code">CAD · DKA</div>
-            <div class="vbar"></div>
-          </div>
+          <div class="side-mark"><div class="code">CAD · DKA</div><div class="vbar"></div></div>
         </div>
         <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Fig. 2A [1].</div>
       </section>
 
-      <!-- 5 · CAD ETIOLOGY -->
+      <!-- CAD 01 EPIDEMIOLOGÍA -->
       <section class="content-slide">
-        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 01 / 07</span><span>05</span></div>
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 01 / 12 · Epidemiología</span><span class="num"></span></div>
         <div class="slide-body">
-          <span class="eyebrow cad">Etiología</span>
-          <h2>Un déficit <span class="hl">absoluto</span> de insulina</h2>
+          <span class="eyebrow cad">Epidemiología</span>
+          <h2>La CAD en Chile: <span class="hl">en aumento</span></h2>
           <hr class="divider cad">
-          <div class="grid cols-3">
-            <div class="card accent-cad">
-              <div class="card-label">Perfil típico</div>
-              <h4>DM tipo 1</h4>
-              <p>Especialmente en el <strong>debut</strong> o ante <strong>omisión</strong> de insulina. También ocurre en DM2 bajo estrés metabólico severo, cada vez con más frecuencia.</p>
+          <div class="grid cols-2" style="grid-template-columns: 1.05fr 1fr; gap: 14px;">
+            <div class="lab-grid" style="grid-template-columns: 1fr 1fr; margin-top:0;">
+              <div class="lab-item cad"><div class="lab-name">Egresos · 2024</div><div class="lab-value">4.746</div><div class="lab-note">E10–E14 con cetoacidosis. 88 % son FONASA</div></div>
+              <div class="lab-item cad"><div class="lab-name">Letalidad hospitalaria</div><div class="lab-value">1,2 %</div><div class="lab-note">E10 (insulinodependiente) 0,4 % vs E11 1,9 %</div></div>
+              <div class="lab-item cad"><div class="lab-name">Edad · 2024</div><div class="lab-value">47 % &lt; 40 años</div><div class="lab-note">20 % &lt; 20 años; 26 % ≥ 60 años</div></div>
+              <div class="lab-item cad"><div class="lab-name">Muertes · 2023 (oficial)</div><div class="lab-value">116</div><div class="lab-note">Con CAD como causa básica (165 en 2024, preliminar)</div></div>
             </div>
-            <div class="card accent-cad">
-              <div class="card-label">Eje hormonal</div>
-              <h4>Contrarregulación amplificada</h4>
-              <p>↑ <em>glucagón</em>, <em>catecolaminas</em>, <em>cortisol</em> y <em>GH</em>: potencian la producción hepática de glucosa, la lipólisis y la cetogénesis.</p>
-            </div>
-            <div class="card accent-cad">
-              <div class="card-label">Edad</div>
-              <h4>Jóvenes y adultos</h4>
-              <p>En Chile (2024), el <strong>47 %</strong> de los egresos por CAD fue en &lt; 40 años y el 20 % en &lt; 20 años. Sin embargo, el 34 % corresponde a DM "no insulinodependiente" (E11).</p>
+            <div class="card accent-cad tight">
+              <div class="card-label">Egresos por CAD en Chile, 2021 – 2025</div>
+              <div class="bars"><div class="bar-row"><span class="yr">2021</span><div class="trk"><div class="fill " style="width:72.3%"></div></div><span class="val ">3.757</span></div><div class="bar-row"><span class="yr">2022</span><div class="trk"><div class="fill " style="width:78.1%"></div></div><span class="val ">4.061</span></div><div class="bar-row"><span class="yr">2023</span><div class="trk"><div class="fill " style="width:79.9%"></div></div><span class="val ">4.155</span></div><div class="bar-row"><span class="yr">2024</span><div class="trk"><div class="fill " style="width:91.3%"></div></div><span class="val ">4.746</span></div><div class="bar-row"><span class="yr">2025</span><div class="trk"><div class="fill " style="width:100.0%"></div></div><span class="val ">5.199</span></div></div>
+              <p style="margin-top:8px;"><strong>+38 %</strong> en 5 años. Tipo de DM en 2024: E10 42 %, E11 34 %, no especificada 21 %.</p>
             </div>
           </div>
+          <div class="note-bar ok"><strong>Internacional (EE.UU., a falta de datos chilenos):</strong> la CAD es el 38 % de los ingresos por crisis hiperglicémica, con un alza de 55 % en las hospitalizaciones (sobre todo en &lt; 45 años). Hasta un 22 % se reinterna en 30 días, y la mortalidad al año post CAD es ~13 veces la de la población general.</div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Secciones 1–2 [1] · DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos), año 2024 (cálculo propio) [5].</div>
+        <div class="src"><b>Fuente</b>DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos) [5] · DEIS-MINSAL, Defunciones por causa 2021–2023 (oficiales) y 2024–2026 (preliminares) [6]. Cálculos propios (DIAG1 E10–E14, cuarto dígito .1 "con cetoacidosis"); egresos 2025 y defunciones 2024 en adelante son preliminares · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Secciones 1 y 7 [1].</div>
       </section>
 
-      <!-- 6 · CAD PATHOPHYSIOLOGY -->
+      <!-- CAD 02 DEFINICIÓN Y FISIOPATOLOGÍA -->
       <section class="content-slide">
-        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 02 / 07</span><span>06</span></div>
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 02 / 12 · Definición y fisiopatología</span><span class="num"></span></div>
         <div class="slide-body">
-          <span class="eyebrow cad">Fisiopatología</span>
-          <h2>La cascada <span class="hl">metabólica</span></h2>
+          <span class="eyebrow cad">Definición & fisiopatología</span>
+          <h2>Déficit <span class="hl">absoluto</span> de insulina</h2>
           <hr class="divider cad">
-          <div class="flow">
+          <div class="note-bar ok" style="margin-top:0;"><strong>Definición:</strong> emergencia caracterizada por hiperglicemia (o diabetes conocida), cetonemia y acidosis metabólica, por déficit de insulina más un exceso de hormonas contrarreguladoras (glucagón, catecolaminas, cortisol, GH).</div>
+          <div class="flow" style="margin-top:10px;">
             <div class="flow-box root" style="border-color: var(--cad); background: linear-gradient(135deg, rgba(245, 158, 107, 0.12), rgba(245, 158, 107, 0.02));">
               <span class="label-sm" style="color: var(--cad);">Origen</span>
               Déficit absoluto de insulina + ↑ hormonas contrarreguladoras
             </div>
             <div class="flow-arrow cad"></div>
             <div class="flow-row">
-              <div class="flow-box cad">
-                <span class="label-sm">Vía hepática</span>
-                ↑ Gluconeogénesis y glucogenólisis · ↓ captación periférica de glucosa
-              </div>
-              <div class="flow-box cad">
-                <span class="label-sm">Vía adiposa</span>
-                Lipólisis intensa → ácidos grasos libres al hígado → β-oxidación
-              </div>
+              <div class="flow-box cad"><span class="label-sm">Vía hepática</span>↑ Gluconeogénesis y glucogenólisis · ↓ captación periférica de glucosa</div>
+              <div class="flow-box cad"><span class="label-sm">Vía adiposa</span>Lipólisis intensa → ácidos grasos libres al hígado → β-oxidación</div>
             </div>
             <div class="flow-arrow cad"></div>
             <div class="flow-row">
-              <div class="flow-box cad">
-                <span class="label-sm">Consecuencia 1</span>
-                <strong>Hiperglicemia</strong> → diuresis osmótica → deshidratación + pérdida de Na, K, PO₄
-              </div>
-              <div class="flow-box cad">
-                <span class="label-sm">Consecuencia 2</span>
-                <strong>Cetogénesis</strong> (β-hidroxibutirato, acetoacetato) → acidosis metabólica con anion gap ↑
-              </div>
+              <div class="flow-box cad"><span class="label-sm">Consecuencia 1</span><strong>Hiperglicemia</strong> → diuresis osmótica → deshidratación (~100 mL/kg) + pérdida de Na, K, PO₄</div>
+              <div class="flow-box cad"><span class="label-sm">Consecuencia 2</span><strong>Cetogénesis</strong> (β-hidroxibutirato, acetoacetato) → acidosis metabólica con anion gap ↑</div>
             </div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 2 "Fisiopatología" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023 [3].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Secciones 2–3 [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, déficits típicos de la CAD [3].</div>
       </section>
 
-      <!-- 7 · CAD TRIGGERS -->
+      <!-- CAD 03 SEMIOLOGÍA -->
       <section class="content-slide">
-        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 03 / 07</span><span>07</span></div>
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 03 / 12 · Semiología</span><span class="num"></span></div>
         <div class="slide-body">
-          <span class="eyebrow cad">Factores desencadenantes</span>
+          <span class="eyebrow cad">Semiología & examen físico</span>
+          <h2>La clínica es <span class="hl">rápida</span>: horas, no días</h2>
+          <hr class="divider cad">
+          <div class="grid cols-2">
+            <div class="card accent-cad tight"><div class="card-label">Síntomas</div><ul>
+              <li>Poliuria, polidipsia, pérdida de peso, astenia</li>
+              <li>Náuseas, vómitos y <em>dolor abdominal</em> en &gt; 50 %</li>
+              <li>Si el dolor no cede al corregir la acidosis y la deshidratación, buscar una causa abdominal</li></ul></div>
+            <div class="card accent-cad tight"><div class="card-label">Signos clave</div><ul>
+              <li><em>Respiración de Kussmaul</em>: profunda y rápida, compensa la acidosis</li>
+              <li><em>Aliento cetónico</em> (olor frutal o a acetona)</li>
+              <li>Mucosas secas; la taquicardia y la hipotensión indican hipovolemia severa</li></ul></div>
+            <div class="card accent-cad tight"><div class="card-label">Estado mental</div><ul>
+              <li>Va de alerta (leve) a somnolencia (moderada) y estupor o coma (severa)</li>
+              <li>Un coma con osmolaridad normal obliga a buscar otra causa</li></ul></div>
+            <div class="card accent-cad tight"><div class="card-label">Examen dirigido</div><ul>
+              <li>Buscar foco infeccioso, isquemia y otros precipitantes</li>
+              <li>ECG: T picudas (hiperkalemia) e isquemia</li>
+              <li>Algunos pacientes mantienen la PA pese a la deshidratación, por la hipertonicidad</li></ul></div>
+          </div>
+        </div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 3 "Presentación clínica", Fig. 3 y Tabla 2 [1].</div>
+      </section>
+
+      <!-- CAD 04 ANTECEDENTES -->
+      <section class="content-slide">
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 04 / 12 · Antecedentes</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow cad">Antecedentes relevantes del paciente</span>
+          <h2>Lo que hay que <span class="hl">preguntar</span></h2>
+          <hr class="divider cad">
+          <div class="grid cols-3">
+            <div class="card accent-cad tight"><div class="card-label">Diabetes</div><ul>
+              <li>DM1 o DM2, años de evolución, HbA1c</li>
+              <li>Esquema de insulina, dosis omitidas y acceso al fármaco</li>
+              <li>Sin diagnóstico previo: 6 – 21 % de los adultos con DM1 debuta en CAD</li></ul></div>
+            <div class="card accent-cad tight"><div class="card-label">Fármacos & dispositivos</div><ul>
+              <li><strong>iSGLT2</strong> (CAD euglicémica)</li>
+              <li>Corticoides, antipsicóticos</li>
+              <li>Inhibidores de checkpoint: 1 – 2 % desarrolla DM autoinmune, y el 70 % de ellos debuta en CAD</li>
+              <li>Bomba de insulina: errores de uso e infección del sitio</li></ul></div>
+            <div class="card accent-cad tight"><div class="card-label">Contexto</div><ul>
+              <li>CAD previas: 21,6 % tuvo &gt; 1 episodio en 6 años</li>
+              <li>Salud mental: depresión, trastornos alimentarios, consumo de sustancias</li>
+              <li>Embarazo, ayuno prolongado, alcohol</li>
+              <li>Determinantes sociales: bajos ingresos, inseguridad alimentaria</li></ul></div>
+          </div>
+        </div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 1 "Factores de riesgo", Sección 3 y Tabla 4 [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, "CAD recurrente" y bombas de insulina [3].</div>
+      </section>
+
+      <!-- CAD 05 DIFERENCIALES -->
+      <section class="content-slide">
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 05 / 12 · Diferenciales</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow cad">Diagnóstico diferencial</span>
+          <h2>No toda cetosis es <span class="hl">CAD</span></h2>
+          <hr class="divider cad">
+          <div class="dose c3 cad">
+            <div class="h">Diferencial</div><div class="h">Pistas</div><div class="h">Cómo distinguirlo</div>
+            <div class="k">Cetoacidosis alcohólica</div><div>OH crónico + atracón reciente + vómitos y ayuno</div><div>Glicemia normal o baja. Medir β-OHB, no cetonuria (el acetoacetato puede estar suprimido)</div>
+            <div class="k">Cetosis de ayuno</div><div>Ingesta &lt; 500 kcal/día durante días</div><div>Las cetonas pueden pasar de 6 mmol/L, pero el ácido-base y los electrolitos suelen estar casi normales (compensación renal)</div>
+            <div class="k">Cetosis del embarazo / hiperemesis</div><div>Embarazo con vómitos</div><div>Distinta de la CAD del embarazo, que es una emergencia obstétrica</div>
+            <div class="k">CAD euglicémica</div><div>iSGLT2, embarazo, ayuno, alcohol, insulina previa</div><div>Cumple criterios de CAD con glicemia &lt; 200 mg/dL</div>
+            <div class="k">SHH / cuadro mixto</div><div>Adulto mayor, compromiso de conciencia</div><div>Glicemia ≥ 600 y osm efectiva &gt; 300; si además β-OHB ≥ 3 y acidosis → cuadro mixto</div>
+            <div class="k">Abdomen agudo</div><div>Dolor abdominal con acidosis leve</div><div>Si el dolor persiste tras la corrección, estudiarlo como causa o precipitante</div>
+          </div>
+        </div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 3 "Diagnóstico diferencial de cetonas elevadas" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, Sección "Differential diagnosis" y "DKA in pregnancy" [3].</div>
+      </section>
+
+      <!-- CAD 06 PRECIPITANTES -->
+      <section class="content-slide">
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 06 / 12 · Precipitantes</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow cad">Precipitantes o desencadenantes</span>
           <h2>El "gatillo" detrás de cada <span class="hl">descompensación</span></h2>
           <hr class="divider cad">
           <ul class="slide-list tight">
             <li><span class="bold">Infecciones (14 – 58 % según la región)</span> — Es la causa más frecuente en el mundo, sobre todo ITU y neumonía.<span class="muted">Buscar el foco activamente aunque no haya fiebre.</span></li>
-            <li><span class="bold">Omisión o subdosificación de insulina</span> — Hasta 40 % en algunas series. Asociada a barreras de acceso, determinantes sociales y salud mental.</li>
-            <li><span class="bold">Debut de DM tipo 1</span> — Entre el 6 % y el 21 % de los adultos debuta con CAD.</li>
-            <li><span class="bold">Fármacos</span> — <em>iSGLT2</em> (CAD euglicémica), corticoides, antipsicóticos atípicos e inhibidores de checkpoint inmunológico (diabetes autoinmune de novo).</li>
-            <li><span class="bold">Otros</span> — Pancreatitis, IAM, TEP, trauma, consumo de sustancias.</li>
+            <li><span class="bold">Omisión o subdosificación de insulina</span> — Hasta 40 % en algunas series, y hasta 75 % de las CAD recurrentes.</li>
+            <li><span class="bold">Debut de DM1</span> — 6 – 21 % de los adultos con DM1 debuta en CAD.</li>
+            <li><span class="bold">Fármacos</span> — <em>iSGLT2</em>, corticoides, antipsicóticos, inhibidores de checkpoint inmunológico.</li>
+            <li><span class="bold">Otras condiciones agudas</span> — ACV, IAM, TEP, pancreatitis, trauma, alcohol y otras sustancias, COVID-19.</li>
           </ul>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 1 y Tabla 1 "Causas precipitantes por región" [1].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 1 y Tabla 1 "Causas precipitantes por región"; Sección 7, CAD recurrente [1].</div>
       </section>
 
-      <!-- 8 · CAD SIGNS -->
+      <!-- CAD 07 CRITERIOS COMPARATIVOS -->
       <section class="content-slide">
-        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 04 / 07</span><span>08</span></div>
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 07 / 12 · Criterios diagnósticos</span><span class="num"></span></div>
         <div class="slide-body">
-          <span class="eyebrow cad">Signos & síntomas</span>
-          <h2>La clínica es <span class="hl">rápida</span>: horas, no días</h2>
+          <span class="eyebrow cad">Criterios diagnósticos comparativos</span>
+          <h2>D + K + A: <span class="hl">2009 vs 2024</span></h2>
           <hr class="divider cad">
-          <div class="grid cols-2">
-            <div class="card accent-cad tight">
-              <div class="card-label">Síntomas cardinales</div>
-              <ul>
-                <li>Poliuria, polidipsia, pérdida de peso</li>
-                <li>Astenia y debilidad progresiva</li>
-                <li>Náuseas, vómitos y <em>dolor abdominal</em>, que pueden simular un abdomen agudo</li>
-              </ul>
-            </div>
-            <div class="card accent-cad tight">
-              <div class="card-label">Signos clave al examen</div>
-              <ul>
-                <li><em>Respiración de Kussmaul</em>: profunda y rápida, compensa la acidosis</li>
-                <li><em>Aliento cetónico</em> (olor frutal o a acetona)</li>
-                <li>Deshidratación: mucosas secas, taquicardia, hipotensión en casos severos</li>
-              </ul>
-            </div>
-            <div class="card accent-cad tight">
-              <div class="card-label">Estado mental</div>
-              <ul>
-                <li>Va de alerta (leve) a somnolencia (moderada) y estupor o coma (severa)</li>
-                <li>Si el compromiso de conciencia es profundo con osmolaridad normal, buscar otra causa</li>
-              </ul>
-            </div>
-            <div class="card accent-cad tight">
-              <div class="card-label">Instalación</div>
-              <ul>
-                <li>Rápida: <strong>horas</strong></li>
-                <li>Contrasta con el SHH, que "suele desarrollarse en muchos días" y por eso se deshidrata más</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 3 "Presentación clínica" y Tabla 2 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Sección 1 [2].</div>
-      </section>
-
-      <!-- 9 · CAD DIAGNOSIS -->
-      <section class="content-slide">
-        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 05 / 07</span><span>09</span></div>
-        <div class="slide-body">
-          <span class="eyebrow cad">Diagnóstico · criterios 2024</span>
-          <h2>D + K + A: los <span class="hl">tres</span> son obligatorios</h2>
-          <hr class="divider cad">
-          <div class="criteria-box cad" style="padding: 12px 18px;">
-            <div class="label">Criterios diagnósticos · Consenso ADA/EASD/JBDS/AACE/DTS 2024</div>
-            <ol>
-              <li style="font-size:0.76em;"><strong>D · Diabetes/hiperglicemia</strong>: glicemia ≥ 200 mg/dL <em>o</em> diabetes conocida, cualquiera sea la glicemia (en 2009 el umbral era &gt; 250)</li>
-              <li style="font-size:0.76em;"><strong>K · Cetosis</strong>: β-hidroxibutirato ≥ 3,0 mmol/L (de elección) o cetonuria ≥ 2+</li>
-              <li style="font-size:0.76em;"><strong>A · Acidosis metabólica</strong>: pH &lt; 7,3 y/o bicarbonato &lt; 18 mEq/L</li>
-            </ol>
+          <div class="dose c4 cad">
+            <div class="h">Criterio</div><div class="h">Consenso 2009</div><div class="h">Consenso 2024 (vigente)</div><div class="h">Lo que la separa del SHH</div>
+            <div class="k">D · Glicemia</div><div>&gt; 250 mg/dL</div><div><strong>≥ 200 mg/dL o DM conocida</strong>, con cualquier glicemia</div><div>SHH: ≥ 600 mg/dL</div>
+            <div class="k">K · Cetosis</div><div>Cetonas séricas o urinarias "positivas"</div><div><strong>β-OHB ≥ 3,0 mmol/L</strong> o cetonuria ≥ 2+</div><div>SHH: β-OHB &lt; 3,0</div>
+            <div class="k">A · Acidosis</div><div>pH ≤ 7,3 · HCO₃ ≤ 18 · anion gap &gt; 10</div><div><strong>pH &lt; 7,3 y/o HCO₃ &lt; 18</strong>; se eliminó el anion gap</div><div>SHH: pH ≥ 7,3 y HCO₃ ≥ 15</div>
           </div>
           <div class="sev4">
-            <div class="sev-box mild">
-              <div class="sev-label">Leve</div>
-              <div class="sev-val">pH 7,25 – 7,30 · HCO₃ 15 – 18<br>β-OHB 3 – 6 · Alerta<br>→ Sala / observación</div>
-            </div>
-            <div class="sev-box mod">
-              <div class="sev-label">Moderada</div>
-              <div class="sev-val">pH 7,00 – 7,24 · HCO₃ 10 – &lt;15<br>β-OHB 3 – 6 · Alerta/somnoliento<br>→ Intermedio</div>
-            </div>
-            <div class="sev-box sev">
-              <div class="sev-label">Severa</div>
-              <div class="sev-val">pH &lt; 7,00 · HCO₃ &lt; 10<br>β-OHB &gt; 6 · Estupor/coma<br>→ UCI</div>
-            </div>
+            <div class="sev-box mild"><div class="sev-label">Leve</div><div class="sev-val">pH 7,25 – 7,30 · HCO₃ 15 – 18<br>β-OHB 3 – 6 · Alerta → sala</div></div>
+            <div class="sev-box mod"><div class="sev-label">Moderada</div><div class="sev-val">pH 7,00 – 7,24 · HCO₃ 10 – &lt;15<br>β-OHB 3 – 6 · Somnoliento → intermedio</div></div>
+            <div class="sev-box sev"><div class="sev-label">Severa</div><div class="sev-val">pH &lt; 7,00 · HCO₃ &lt; 10<br>β-OHB &gt; 6 · Estupor/coma → UCI</div></div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Fig. 2A y Tabla 2 [1] · Rodríguez Álvarez P et al. <i>Cleve Clin J Med</i> 2025;92(3):152-8 [4].</div>
+        <div class="src"><b>Fuente</b>Rodríguez Álvarez P et al. <i>Cleve Clin J Med</i> 2025;92(3):152-8, Tabla 2 "Cambios en criterios de CAD 2009 vs 2024" [4] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Fig. 2A y Tabla 2 "Severidad" [1].</div>
       </section>
 
-      <!-- 10 · CAD LABS -->
+      <!-- CAD 07b EUGLICÉMICA + FÓRMULAS -->
       <section class="content-slide">
-        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 06 / 07</span><span>10</span></div>
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 07 / 12 · Criterios (cont.)</span><span class="num"></span></div>
         <div class="slide-body">
-          <span class="eyebrow cad">Laboratorio & fórmulas</span>
-          <h2>El perfil <span class="hl">analítico</span></h2>
+          <span class="eyebrow cad">Laboratorio, fórmulas y CAD euglicémica</span>
+          <h2>Los números que hay que <span class="hl">calcular</span></h2>
           <hr class="divider cad">
-          <div class="lab-grid" style="grid-template-columns: repeat(4, 1fr); margin-top: 8px;">
-            <div class="lab-item cad"><div class="lab-name">Glicemia</div><div class="lab-value">≥ 200 mg/dL</div><div class="lab-note">~10 % de los casos son euglicémicos (&lt; 200)</div></div>
-            <div class="lab-item cad"><div class="lab-name">pH venoso</div><div class="lab-value">&lt; 7,30</div><div class="lab-note">El gas venoso basta para diagnosticar y monitorizar</div></div>
-            <div class="lab-item cad"><div class="lab-name">β-hidroxibutirato</div><div class="lab-value">≥ 3,0 mmol/L</div><div class="lab-note">Sensibilidad y especificidad &gt; 90 %</div></div>
-            <div class="lab-item cad"><div class="lab-name">Anion gap</div><div class="lab-value">&gt; 12</div><div class="lab-note">Apoya el diagnóstico pero ya no es criterio de 1ª línea</div></div>
-            <div class="lab-item"><div class="lab-name">Sodio</div><div class="lab-value">Normal / ↓</div><div class="lab-note">Hiponatremia dilucional (translocacional): corregirla</div></div>
-            <div class="lab-item"><div class="lab-name">Potasio</div><div class="lab-value">Normal / ↑</div><div class="lab-note">Con déficit corporal de 3 – 6 mEq/kg</div></div>
-            <div class="lab-item"><div class="lab-name">Fosfato</div><div class="lab-value">Normal / ↑</div><div class="lab-note">Con déficit de hasta 1 mmol/kg</div></div>
-            <div class="lab-item"><div class="lab-name">Otros</div><div class="lab-value">BUN/Cr ↑ · GB ↑</div><div class="lab-note">Lesión renal aguda en ~50 % de los ingresos</div></div>
+          <div class="formula-row" style="margin-top:0;">
+            <div class="formula-box"><div class="fl-label">Anion gap</div><div class="fl-eq">Na − (Cl + HCO₃)</div><div class="fl-note">&gt; 12 = elevado. Ya no es criterio de 1ª línea</div></div>
+            <div class="formula-box"><div class="fl-label">Na corregido</div><div class="fl-eq">Na + 1,6 × (glc − 100)/100</div><div class="fl-note">Hiponatremia dilucional (translocacional)</div></div>
+            <div class="formula-box"><div class="fl-label">Osm efectiva</div><div class="fl-eq">2 × Na + glc/18</div><div class="fl-note">&gt; 300 sugiere un componente hiperosmolar</div></div>
           </div>
-          <div class="formula-row">
-            <div class="formula-box"><div class="fl-label">Anion gap</div><div class="fl-eq">Na − (Cl + HCO₃)</div></div>
-            <div class="formula-box"><div class="fl-label">Na corregido</div><div class="fl-eq">Na + 1,6 × (glc − 100)/100</div><div class="fl-note">La JBDS usa un factor de 2,4</div></div>
-            <div class="formula-box"><div class="fl-label">Osm efectiva</div><div class="fl-eq">2 × Na + glc/18</div><div class="fl-note">Osm total: + BUN/2,8</div></div>
+          <div class="grid cols-2" style="margin-top:12px;">
+            <div class="card accent-cad tight"><div class="card-label">CAD euglicémica</div><ul>
+              <li>Criterios de CAD con <strong>glicemia &lt; 200 mg/dL</strong>: ~10 % de las CAD</li>
+              <li>Con iSGLT2: ~4 % de los DM1 hace una CAD (riesgo 5 a 17 veces mayor); en DM2, 0,6 – 4,9 por 1.000 pacientes-año</li>
+              <li>Suspender el iSGLT2 e iniciar dextrosa 5 – 10 % desde el comienzo</li></ul></div>
+            <div class="card accent-cad tight"><div class="card-label">Laboratorio típico</div><ul>
+              <li>K normal o ↑, con déficit corporal de 3 – 6 mEq/kg</li>
+              <li>Fosfato normal o ↑, con déficit de ~1 mmol/kg</li>
+              <li>Leucocitosis; BUN/Cr ↑ (LRA en ~50 %)</li>
+              <li>β-OHB: sensibilidad y especificidad &gt; 90 %</li></ul></div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Secciones 3–5 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, factor 2,4 y osmolaridad total [2].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Secciones 3–4, Tabla 3 y Tabla 4 "iSGLT2" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, déficits [3].</div>
       </section>
 
-      <!-- 11 · EUGLYCEMIC DKA -->
+      <!-- CAD 08a MANEJO INICIAL: PRIMERA HORA -->
       <section class="content-slide">
-        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 07 / 07</span><span>11</span></div>
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 08 / 12 · Manejo inicial</span><span class="num"></span></div>
         <div class="slide-body">
-          <span class="eyebrow cad">Situación especial</span>
-          <h2>CAD <span class="hl">euglicémica</span> e iSGLT2</h2>
+          <span class="eyebrow cad">Manejo inicial · primera hora</span>
+          <h2>Los primeros <span class="hl">60 minutos</span></h2>
           <hr class="divider cad">
           <div class="grid cols-3">
-            <div class="card accent-cad">
-              <div class="card-label">Definición</div>
-              <h4>Criterios de CAD con glicemia &lt; 200 mg/dL</h4>
-              <p>Corresponde a ~10 % de las CAD. En una serie, la mitad de las CAD asociadas a iSGLT2 tuvo glicemia ≤ 250 mg/dL.</p>
-            </div>
-            <div class="card accent-cad">
-              <div class="card-label">Riesgo</div>
-              <h4>DM1 ≫ DM2</h4>
-              <p>Con iSGLT2, ~4 % de los DM1 hace una CAD (riesgo 5 a 17 veces mayor). En DM2, la incidencia es de 0,6 – 4,9 por 1.000 pacientes-año.</p>
-            </div>
-            <div class="card accent-cad">
-              <div class="card-label">Manejo específico</div>
-              <ul>
-                <li><strong>Suspender el iSGLT2</strong> al ingreso</li>
-                <li>Iniciar <strong>dextrosa 5 – 10 %</strong> desde el comienzo, junto al NaCl 0,9 %, para poder dar insulina</li>
-                <li>No usar iSGLT2 en DM1; en DM2 no reiniciarlo de rutina tras la CAD</li>
-              </ul>
-            </div>
-          </div>
-          <div class="note-bar"><strong>Trampa clínica:</strong> un paciente con iSGLT2, vómitos, dolor abdominal y glicemia "casi normal" puede estar en CAD. Pedir siempre gases y β-OHB.</div>
-        </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 3 y Tabla 4 "Poblaciones especiales: iSGLT2" [1].</div>
-      </section>
-
-      <!-- 12 · SHH DIVIDER -->
-      <section>
-        <div class="section-divider shh">
-          <div class="big-num">02</div>
-          <h1>Estado<br><strong>Hiperglicémico<br>Hiperosmolar</strong></h1>
-          <p class="sub">Hiperglicemia extrema + hiperosmolaridad + deshidratación severa, sin cetoacidosis significativa. El paciente se deshidrata, no se acidifica.</p>
-          <div class="side-mark">
-            <div class="code">SHH · HHS</div>
-            <div class="vbar"></div>
+            <div class="card accent-cad tight"><div class="card-label">Acciones</div><ul>
+              <li>ABCDE, vía venosa de gran calibre, monitor</li>
+              <li>Iniciar NaCl 0,9 %: <strong>1 L en la 1ª hora</strong> (si PAS &lt; 90: 500 mL en 10 – 15 min)</li>
+              <li>Insulina IV a <strong>0,1 U/kg/h</strong>, solo con K ≥ 3,5</li>
+              <li>Continuar la insulina basal SC si ya la usaba</li></ul></div>
+            <div class="card accent-cad tight"><div class="card-label">Dónde se trata</div><ul>
+              <li><strong>Leve:</strong> urgencias, sala u observación</li>
+              <li><strong>Moderada:</strong> intermedio</li>
+              <li><strong>Severa</strong>, compromiso de conciencia o gatillo crítico (IAM, HDA, sepsis): <strong>UCI</strong></li></ul></div>
+            <div class="card accent-cad tight"><div class="card-label">Tratar el gatillo</div><ul>
+              <li>Antibióticos precoces si se sospecha infección</li>
+              <li>Suspender el iSGLT2</li>
+              <li>HBPM profiláctica</li>
+              <li>Embarazo: manejo conjunto con obstetricia</li></ul></div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Fig. 2B [1] · Mustafa OG et al. <i>Diabet Med</i> 2023;40(3):e15005 [2].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 y Tabla 2 "Nivel de atención" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, Box 1–2 "Hora 0 – 60 min", HBPM profiláctica y embarazo [3].</div>
       </section>
 
-      <!-- 13 · SHH ETIOLOGY -->
+      <!-- CAD 08b FLUIDOS -->
       <section class="content-slide">
-        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 01 / 06</span><span>13</span></div>
-        <div class="slide-body">
-          <span class="eyebrow shh">Etiología</span>
-          <h2>Un déficit <span class="hl">relativo</span> de insulina</h2>
-          <hr class="divider shh">
-          <div class="grid cols-2">
-            <div class="card accent-shh">
-              <div class="card-label">Perfil típico</div>
-              <h4>Adulto mayor con DM2</h4>
-              <p>Frágil, a menudo <strong>institucionalizado</strong>, con comorbilidades y acceso limitado al agua libre.</p>
-            </div>
-            <div class="card accent-shh">
-              <div class="card-label">Clave fisiopatológica</div>
-              <h4>La insulina residual frena la cetogénesis</h4>
-              <p>Alcanza a frenar la lipólisis hepática, pero no a controlar la hiperglicemia. Por eso <em>no hay acidosis</em> significativa.</p>
-            </div>
-            <div class="card accent-shh">
-              <div class="card-label">Edad</div>
-              <h4>Adultos mayores</h4>
-              <p>En Chile (2024), el <strong>71 %</strong> de los egresos por coma diabético tenía ≥ 60 años y el 70 % era DM "no insulinodependiente" (E11).</p>
-            </div>
-            <div class="card accent-shh">
-              <div class="card-label">Instalación</div>
-              <h4>Insidiosa: días a semanas</h4>
-              <p>Esto permite que la glicemia y la osmolaridad lleguen a valores extremos antes de consultar.</p>
-            </div>
-          </div>
-        </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Tabla 4 "Adultos mayores frágiles" [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005 [2] · DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos), año 2024 (cálculo propio) [5].</div>
-      </section>
-
-      <!-- 14 · SHH PATHOPHYSIOLOGY -->
-      <section class="content-slide">
-        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 02 / 06</span><span>14</span></div>
-        <div class="slide-body">
-          <span class="eyebrow shh">Fisiopatología</span>
-          <h2>La cascada de la <span class="hl">deshidratación</span> extrema</h2>
-          <hr class="divider shh">
-          <div class="flow">
-            <div class="flow-box root" style="border-color: var(--shh); background: linear-gradient(135deg, rgba(125, 211, 252, 0.12), rgba(125, 211, 252, 0.02));">
-              <span class="label-sm" style="color: var(--shh);">Origen</span>
-              Déficit relativo de insulina: alcanza a frenar la lipólisis, no la glicemia
-            </div>
-            <div class="flow-arrow shh"></div>
-            <div class="flow-row">
-              <div class="flow-box shh">
-                <span class="label-sm">Efecto metabólico</span>
-                Hiperglicemia extrema (≥ 600 mg/dL) sostenida durante días
-              </div>
-              <div class="flow-box shh">
-                <span class="label-sm">Ausencia clave</span>
-                Cetogénesis <em>mínima o ausente</em>, sin acidosis significativa
-              </div>
-            </div>
-            <div class="flow-arrow shh"></div>
-            <div class="flow-row">
-              <div class="flow-box shh">
-                <span class="label-sm">Consecuencia 1</span>
-                Diuresis osmótica <strong>masiva</strong> → pérdida de agua libre de <em>100 – 220 mL/kg</em> → hiperosmolaridad
-              </div>
-              <div class="flow-box shh">
-                <span class="label-sm">Consecuencia 2</span>
-                Deshidratación celular <strong>neuronal</strong> → compromiso de conciencia + estado protrombótico
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 2 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Tabla 1: pérdidas de 100 – 220 mL/kg [2].</div>
-      </section>
-
-      <!-- 15 · SHH TRIGGERS -->
-      <section class="content-slide">
-        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 03 / 06</span><span>15</span></div>
-        <div class="slide-body">
-          <span class="eyebrow shh">Factores desencadenantes</span>
-          <h2>Cuando el <span class="hl">contexto</span> define el cuadro</h2>
-          <hr class="divider shh">
-          <ul class="slide-list tight">
-            <li><span class="bold">Infecciones</span> — La causa más frecuente: neumonía e ITU, seguidas de sepsis y úlceras infectadas.<span class="muted">En el adulto mayor la infección puede cursar sin fiebre.</span></li>
-            <li><span class="bold">Falta de acceso al agua</span> — Institucionalización, demencia, inmovilidad o incapacidad de expresar la sed.</li>
-            <li><span class="bold">Eventos cardiovasculares y pancreatitis</span> — IAM, ACV.</li>
-            <li><span class="bold">Fármacos</span> — Corticoides, tiazidas, simpaticomiméticos, antipsicóticos.</li>
-            <li><span class="bold">Omisión del tratamiento</span> — Hipoglicemiantes o insulina.</li>
-          </ul>
-        </div>
-        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Sección 2 "Factores precipitantes" [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 1 [1].</div>
-      </section>
-
-      <!-- 16 · SHH SIGNS -->
-      <section class="content-slide">
-        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 04 / 06</span><span>16</span></div>
-        <div class="slide-body">
-          <span class="eyebrow shh">Signos & síntomas</span>
-          <h2>Predomina lo <span class="hl">neurológico</span></h2>
-          <hr class="divider shh">
-          <div class="grid cols-2">
-            <div class="card accent-shh tight">
-              <div class="card-label">Síntomas cardinales</div>
-              <ul>
-                <li>Poliuria y polidipsia <em>marcadas</em> durante días o semanas</li>
-                <li>Pérdida de peso y astenia progresiva</li>
-                <li>Dolor abdominal y vómitos <strong>poco frecuentes</strong> (a diferencia de la CAD)</li>
-              </ul>
-            </div>
-            <div class="card accent-shh tight">
-              <div class="card-label">Signos al examen</div>
-              <ul>
-                <li>Deshidratación <em>severa</em>: ojos hundidos, surcos longitudinales en la lengua, debilidad de extremidades</li>
-                <li>Taquicardia, hipotensión, shock</li>
-                <li><strong>Sin</strong> Kussmaul y <strong>sin</strong> aliento cetónico</li>
-              </ul>
-            </div>
-            <div class="card accent-shh tight">
-              <div class="card-label">Compromiso neurológico</div>
-              <ul>
-                <li>Letargia, estupor y coma (<em>hallazgo dominante</em>)</li>
-                <li>El compromiso cognitivo es habitual en el SHH y en la CAD severa</li>
-                <li>Todo diabético con compromiso de conciencia: medir glicemia y osmolaridad</li>
-              </ul>
-            </div>
-            <div class="card accent-shh tight">
-              <div class="card-label">Complicaciones asociadas</div>
-              <ul>
-                <li>Trombosis venosa y arterial (estado protrombótico)</li>
-                <li>Úlceras de pie y de talón por inmovilidad</li>
-                <li>Lesión renal aguda (~50 % de los ingresos)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Sección 2 "Evaluación clínica" [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 3 y Tabla 3 [1].</div>
-      </section>
-
-      <!-- 17 · SHH DIAGNOSIS -->
-      <section class="content-slide">
-        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 05 / 06</span><span>17</span></div>
-        <div class="slide-body">
-          <span class="eyebrow shh">Diagnóstico · criterios 2024</span>
-          <h2>Cuatro criterios <span class="hl">obligatorios</span></h2>
-          <hr class="divider shh">
-          <div class="criteria-box shh">
-            <div class="label">Criterios diagnósticos · Consenso ADA/EASD/JBDS/AACE/DTS 2024</div>
-            <ol>
-              <li><strong>Hiperglicemia</strong>: glicemia plasmática ≥ 600 mg/dL</li>
-              <li><strong>Hiperosmolaridad</strong>: osmolaridad efectiva calculada &gt; 300 mOsm/kg <em>o</em> total &gt; 320 mOsm/kg</li>
-              <li><strong>Sin cetonemia significativa</strong>: β-OHB &lt; 3,0 mmol/L o cetonuria &lt; 2+</li>
-              <li><strong>Sin acidosis</strong>: pH ≥ 7,3 y bicarbonato ≥ 15 mEq/L (en 2009 el umbral era 18)</li>
-            </ol>
-          </div>
-          <div class="note-bar ok"><strong>Si cumple criterios de CAD y de SHH a la vez → cuadro mixto CAD/SHH</strong> (27 % de los ingresos en EE.UU.; en Chile no hay un código CIE-10 que lo distinga). Se trata con insulina a 0,1 U/kg/h, igual que una CAD, cuidando la velocidad de descenso de la osmolaridad.</div>
-        </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Fig. 2B y Sección 4 [1] · Rodríguez Álvarez P et al. <i>Cleve Clin J Med</i> 2025;92(3):152-8, tabla comparativa 2009 vs 2024 [4].</div>
-      </section>
-
-      <!-- 18 · SHH LABS -->
-      <section class="content-slide">
-        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 06 / 06</span><span>18</span></div>
-        <div class="slide-body">
-          <span class="eyebrow shh">Laboratorio</span>
-          <h2>El perfil <span class="hl">analítico</span></h2>
-          <hr class="divider shh">
-          <div class="lab-grid">
-            <div class="lab-item shh"><div class="lab-name">Glicemia</div><div class="lab-value">≥ 600 mg/dL</div><div class="lab-note">Con frecuencia &gt; 1000 mg/dL</div></div>
-            <div class="lab-item shh"><div class="lab-name">Osmolaridad</div><div class="lab-value">Efectiva &gt; 300</div><div class="lab-note">La total suele ser ≥ 320 mOsm/kg</div></div>
-            <div class="lab-item shh"><div class="lab-name">pH / HCO₃</div><div class="lab-value">≥ 7,3 / ≥ 15</div><div class="lab-note">Sin acidosis significativa</div></div>
-            <div class="lab-item shh"><div class="lab-name">β-hidroxibutirato</div><div class="lab-value">&lt; 3,0 mmol/L</div><div class="lab-note">Puede haber cetonemia leve (1 – 3)</div></div>
-            <div class="lab-item"><div class="lab-name">Sodio</div><div class="lab-value">Normal / ↑</div><div class="lab-note">El Na corregido suele estar alto</div></div>
-            <div class="lab-item"><div class="lab-name">Potasio</div><div class="lab-value">Variable</div><div class="lab-note">Déficit corporal de 4 – 6 mEq/kg</div></div>
-            <div class="lab-item"><div class="lab-name">Función renal</div><div class="lab-value">BUN / Cr ↑↑↑</div><div class="lab-note">Falla prerrenal por hipovolemia</div></div>
-            <div class="lab-item"><div class="lab-name">Hemograma</div><div class="lab-value">Leucocitosis</div><div class="lab-note">Por estrés; no descarta infección</div></div>
-            <div class="lab-item"><div class="lab-name">Estudio del gatillo</div><div class="lab-value">ECG · RxTx · cultivos</div><div class="lab-note">Troponina, orina, imagen según la clínica</div></div>
-          </div>
-        </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Tabla 1 "Pérdidas típicas" (K 4 – 6 mmol/kg) [2].</div>
-      </section>
-
-      <!-- 19 · COMPARISON -->
-      <section class="content-slide">
-        <div class="top-bar"><span class="left"><span class="dot"></span>Comparación directa</span><span>19</span></div>
-        <div class="slide-body">
-          <span class="eyebrow">CAD vs SHH</span>
-          <h2>Las diferencias que <span class="hl">importan</span></h2>
-          <hr class="divider">
-          <div class="compare compact" style="margin-top:8px;">
-            <div class="header">Parámetro</div>
-            <div class="header cad">CAD · Cetoacidosis</div>
-            <div class="header shh">SHH · Hiperosmolar</div>
-
-            <div class="label">Perfil · inicio</div>
-            <div class="cell-cad">DM1, jóvenes · horas (&lt; 24 h)</div>
-            <div class="cell-shh">DM2, adultos mayores · días a semanas</div>
-
-            <div class="label">Glicemia</div>
-            <div class="cell-cad">≥ 200 mg/dL (o DM conocida)</div>
-            <div class="cell-shh">≥ 600 mg/dL</div>
-
-            <div class="label">pH / HCO₃</div>
-            <div class="cell-cad">&lt; 7,3 y/o &lt; 18</div>
-            <div class="cell-shh">≥ 7,3 y ≥ 15</div>
-
-            <div class="label">β-OHB</div>
-            <div class="cell-cad">≥ 3,0 mmol/L</div>
-            <div class="cell-shh">&lt; 3,0 mmol/L</div>
-
-            <div class="label">Osmolaridad</div>
-            <div class="cell-cad">Variable</div>
-            <div class="cell-shh">Efectiva &gt; 300 · total &gt; 320</div>
-
-            <div class="label">Déficit de agua</div>
-            <div class="cell-cad">100 mL/kg (~7 L en 70 kg)</div>
-            <div class="cell-shh">100 – 220 mL/kg (7 – 15 L en 70 kg)</div>
-
-            <div class="label">Déficit de K / Na</div>
-            <div class="cell-cad">K 3 – 5 · Na 7 – 10 mEq/kg</div>
-            <div class="cell-shh">K 4 – 6 · Na 5 – 13 mEq/kg</div>
-
-            <div class="label">Insulina inicial</div>
-            <div class="cell-cad">0,1 U/kg/h, desde el inicio (con K ≥ 3,5)</div>
-            <div class="cell-shh">0,05 U/kg/h, cuando la osm deja de caer con fluidos</div>
-
-            <div class="label">Letalidad · Chile 2024</div>
-            <div class="cell-cad">1,2 % (egresos E1x.1)</div>
-            <div class="cell-shh">5,1 % (coma diabético E1x.0)</div>
-          </div>
-        </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, déficits en CAD [3] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Tabla 1, déficits en SHH [2] · DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos), letalidad 2024 (cálculo propio) [5].</div>
-      </section>
-
-      <!-- 20 · MANEJO DIVIDER -->
-      <section>
-        <div class="section-divider">
-          <div class="big-num">03</div>
-          <h1>Manejo<br><strong>hora a hora</strong></h1>
-          <p class="sub">Cuatro pilares: fluidos, insulina, potasio y tratamiento del gatillo. Cada uno con su dosis, su velocidad y su criterio para detenerse.</p>
-          <div class="side-mark">
-            <div class="code">Tto · Rx</div>
-            <div class="vbar"></div>
-          </div>
-        </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 y Fig. 4 "Vías de tratamiento" [1].</div>
-      </section>
-
-      <!-- 21 · PRIMERA HORA -->
-      <section class="content-slide">
-        <div class="top-bar"><span class="left"><span class="dot"></span>Manejo · 01 / 10</span><span>21</span></div>
-        <div class="slide-body">
-          <span class="eyebrow">Evaluación inicial y monitoreo</span>
-          <h2>Lo que se hace en la <span class="hl">primera hora</span></h2>
-          <hr class="divider">
-          <div class="grid cols-3">
-            <div class="card accent-green tight">
-              <div class="card-label">Al ingreso (0 – 60 min)</div>
-              <ul>
-                <li>ABC, dos vías venosas, monitor y diuresis horaria</li>
-                <li>Glicemia, gases venosos, ELP (Na, K, Cl), BUN/Cr, β-OHB, fosfato, osmolaridad, hemograma</li>
-                <li>ECG, hemocultivos, urocultivo, RxTx según la clínica</li>
-                <li><strong>Potasio antes de la primera dosis de insulina</strong></li>
-              </ul>
-            </div>
-            <div class="card accent-green tight">
-              <div class="card-label">Dónde se trata</div>
-              <ul>
-                <li><strong>CAD leve:</strong> urgencias, sala u observación</li>
-                <li><strong>CAD moderada:</strong> intermedio</li>
-                <li><strong>UCI:</strong> CAD severa, SHH, compromiso de conciencia o un gatillo crítico (IAM, HDA, sepsis)</li>
-              </ul>
-            </div>
-            <div class="card accent-green tight">
-              <div class="card-label">Monitoreo durante el tratamiento</div>
-              <ul>
-                <li><strong>Glicemia capilar cada 1 – 2 h</strong></li>
-                <li>ELP, fosfato, Cr, β-OHB y pH venoso <strong>cada 4 h</strong> hasta la resolución</li>
-                <li><strong>K a las 2 h</strong> de iniciada la insulina, luego cada 4 h</li>
-                <li>SHH: osmolaridad cada 4 h (la JBDS sugiere cada 1 h al inicio)</li>
-              </ul>
-            </div>
-          </div>
-          <div class="note-bar ok"><strong>Tratar el gatillo en paralelo:</strong> antibióticos precoces si se sospecha infección. Sin corregir la causa, la crisis recurre.</div>
-        </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 y Tabla 2 "Nivel de atención" [1] · Mustafa OG et al. <i>Diabet Med</i> 2023;40(3):e15005, monitoreo de osmolaridad [2].</div>
-      </section>
-
-      <!-- 22 · CAD FLUIDOS -->
-      <section class="content-slide">
-        <div class="top-bar cad"><span class="left"><span class="dot"></span>Manejo · 02 / 10 · CAD</span><span>22</span></div>
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 08 / 12 · Manejo: fluidos</span><span class="num"></span></div>
         <div class="slide-body">
           <span class="eyebrow cad">Pilar 1 · Fluidos</span>
           <h2>Primero el <span class="hl">volumen</span></h2>
           <hr class="divider cad">
           <div class="dose c4 cad">
             <div class="h">Fase</div><div class="h">Solución</div><div class="h">Velocidad · tiempo</div><div class="h">Hasta que…</div>
-
-            <div class="k">PAS &lt; 90 mmHg</div>
-            <div>NaCl 0,9 %, <strong>500 mL en 10 – 15 min</strong>; repetir si persiste</div>
-            <div>La mayoría requiere 500 – 1000 mL rápidos</div>
-            <div class="stop">PAS &gt; 90; considerar UCI</div>
-
-            <div class="k">Reanimación inicial</div>
-            <div>NaCl 0,9 % <strong>o</strong> cristaloide balanceado (Ringer lactato, Plasma-Lyte 148)</div>
-            <div><strong>500 – 1000 mL/h durante las primeras 2 – 4 h</strong> (consenso 2024)</div>
-            <div class="stop">Se restaure el volumen intravascular (PA, FC, diuresis)</div>
-
-            <div class="k">Esquema JBDS (litro a litro)</div>
-            <div>1 L en la 1ª h → 1 L en 2 h → 1 L en 2 h → 1 L en 4 h → 1 L en 4 h → 1 L en 6 h (con KCl desde el 2º L)</div>
-            <div>~6 L en las primeras ~19 h</div>
-            <div class="stop">Corregir el déficit (~100 mL/kg) en 24 – 48 h</div>
-
-            <div class="k">Glicemia &lt; 250 mg/dL</div>
-            <div>Agregar <strong>dextrosa 5 – 10 %</strong> al NaCl 0,9 %</div>
-            <div>Suele ocurrir a las <strong>4 – 8 h</strong>, antes de que se resuelva la cetoacidosis</div>
-            <div class="stop">Se resuelva la CAD: permite seguir con insulina sin hipoglicemia</div>
-
-            <div class="k">Adulto mayor · IC · ERC en diálisis</div>
-            <div>Mismo cristaloide</div>
-            <div><strong>Bolos de 250 mL</strong> con reevaluación hemodinámica frecuente (la JBDS pide reposición cautelosa también en jóvenes de 18 – 25 años y embarazadas)</div>
-            <div class="warn">Riesgo de sobrecarga de volumen y de VM</div>
+            <div class="k">PAS &lt; 90 mmHg</div><div>NaCl 0,9 %, <strong>500 mL en 10 – 15 min</strong>; repetir si persiste</div><div>La mayoría requiere 500 – 1000 mL rápidos</div><div class="stop">PAS &gt; 90; considerar UCI</div>
+            <div class="k">Reanimación inicial</div><div>NaCl 0,9 % <strong>o</strong> cristaloide balanceado (Ringer lactato, Plasma-Lyte 148)</div><div><strong>500 – 1000 mL/h durante las primeras 2 – 4 h</strong> (consenso 2024)</div><div class="stop">Se restaure el volumen intravascular</div>
+            <div class="k">Esquema JBDS (litro a litro)</div><div>1 L en la 1ª h → 1 L en 2 h → 1 L en 2 h → 1 L en 4 h → 1 L en 4 h → 1 L en 6 h (con KCl desde el 2º L)</div><div>~6 L en las primeras ~19 h</div><div class="stop">Corregir el déficit (~100 mL/kg) en 24 – 48 h</div>
+            <div class="k">Glicemia &lt; 250 mg/dL</div><div>Agregar <strong>dextrosa 5 – 10 %</strong> (JBDS: SG 10 % a 125 mL/h)</div><div>Suele ocurrir a las 4 – 8 h, antes de que se resuelva la cetoacidosis</div><div class="stop">Se resuelva la CAD</div>
+            <div class="k">Adulto mayor · IC · ERC</div><div>Mismo cristaloide</div><div><strong>Bolos de 250 mL</strong> con reevaluación frecuente (la JBDS también pide cautela en jóvenes de 18 – 25 años y embarazadas)</div><div class="warn">Riesgo de sobrecarga de volumen</div>
           </div>
-          <div class="note-bar ok"><strong>Dato:</strong> los fluidos por sí solos bajan la glicemia 50 – 70 mg/dL/h. Los cristaloides balanceados logran una resolución más rápida y menos acidosis hiperclorémica que el NaCl 0,9 %.</div>
+          <div class="note-bar ok"><strong>Dato:</strong> los fluidos por sí solos bajan la glicemia 50 – 70 mg/dL/h. Los cristaloides balanceados logran una resolución más rápida y menos acidosis hiperclorémica.</div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Fluid therapy" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, Box 2–3, esquema de fluidos y bolo con PAS &lt; 90 [3].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Fluid therapy" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, Box 2–3 [3].</div>
       </section>
 
-      <!-- 23 · CAD INSULINA IV -->
+      <!-- CAD 08c INSULINA IV -->
       <section class="content-slide">
-        <div class="top-bar cad"><span class="left"><span class="dot"></span>Manejo · 03 / 10 · CAD</span><span>23</span></div>
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 08 / 12 · Manejo: insulina IV</span><span class="num"></span></div>
         <div class="slide-body">
           <span class="eyebrow cad">Pilar 2 · Insulina IV</span>
           <h2>Insulina <span class="hl">regular</span> en infusión continua</h2>
           <hr class="divider cad">
           <div class="dose c4 cad">
             <div class="h">Paso</div><div class="h">Dosis</div><div class="h">Ejemplo 70 kg</div><div class="h">Hasta que…</div>
-
-            <div class="k">Requisito previo</div>
-            <div><strong>K ≥ 3,5 mEq/L</strong> antes de partir</div>
-            <div>Si K &lt; 3,5: diferir la insulina y reponer K primero</div>
-            <div class="warn">Riesgo de arritmia y de parálisis respiratoria</div>
-
-            <div class="k">Bolo (opcional)</div>
-            <div><strong>0,1 U/kg</strong> IV o IM</div>
-            <div>7 U</div>
-            <div>Útil si se prevé demora en el acceso venoso</div>
-
-            <div class="k">Infusión fija</div>
-            <div><strong>0,1 U/kg/h</strong> IV (o protocolo de velocidad variable a cargo de enfermería)</div>
-            <div>7 U/h</div>
-            <div class="stop">Glicemia &lt; 250 mg/dL</div>
-
-            <div class="k">Si no responde</div>
-            <div>Si el β-OHB no baja ≥ 0,5 mmol/L/h, el HCO₃ no sube ≥ 3 mEq/L/h o la glicemia no baja ≥ 54 mg/dL/h: <strong>subir 1 U/h cada hora</strong></div>
-            <div>7 → 8 → 9 U/h…</div>
-            <div>Hasta lograr las metas de descenso; revisar antes la vía y la bomba</div>
-
-            <div class="k">Glicemia &lt; 250</div>
-            <div>Bajar a <strong>0,05 U/kg/h</strong> + dextrosa 5 – 10 %</div>
-            <div>3,5 U/h</div>
-            <div class="stop">Glicemia ~200 mg/dL <strong>hasta la resolución de la cetoacidosis</strong></div>
-
-            <div class="k">Basal precoz (opcional)</div>
-            <div>Glargina/detemir <strong>0,15 – 0,3 U/kg SC</strong> durante la infusión</div>
-            <div>10 – 21 U SC</div>
-            <div>Acorta la CAD y evita el rebote, sin más hipoglicemia</div>
+            <div class="k">Requisito previo</div><div><strong>K ≥ 3,5 mEq/L</strong></div><div>Si K &lt; 3,5: diferir la insulina y reponer K</div><div class="warn">Riesgo de arritmia y de parálisis respiratoria</div>
+            <div class="k">Bolo (opcional)</div><div><strong>0,1 U/kg</strong> IV o IM</div><div>7 U</div><div>Útil si se demora el acceso venoso</div>
+            <div class="k">Infusión fija</div><div><strong>0,1 U/kg/h</strong> IV</div><div>7 U/h</div><div class="stop">Glicemia &lt; 250 mg/dL</div>
+            <div class="k">Si no responde</div><div>Si el β-OHB no baja ≥ 0,5 mmol/L/h, el HCO₃ no sube ≥ 3 mEq/L/h o la glicemia no baja ≥ 54 mg/dL/h: <strong>subir 1 U/h cada hora</strong></div><div>7 → 8 → 9 U/h…</div><div>Hasta lograr las metas de descenso</div>
+            <div class="k">Glicemia &lt; 250</div><div>Bajar a <strong>0,05 U/kg/h</strong> + dextrosa 5 – 10 %</div><div>3,5 U/h</div><div class="stop">Glicemia ~200 mg/dL hasta la resolución</div>
+            <div class="k">Basal precoz (opcional)</div><div>Glargina/detemir <strong>0,15 – 0,3 U/kg SC</strong> durante la infusión</div><div>10 – 21 U SC</div><div>Acorta la CAD y evita el rebote</div>
           </div>
         </div>
         <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Insulin" y "Potassium" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, Box 3, metas de descenso y ajuste de +1 U/h [3]. Los ejemplos de 70 kg son cálculos propios.</div>
       </section>
 
-      <!-- 24 · CAD INSULINA SC -->
+      <!-- CAD 08d INSULINA SC -->
       <section class="content-slide">
-        <div class="top-bar cad"><span class="left"><span class="dot"></span>Manejo · 04 / 10 · CAD</span><span>24</span></div>
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 08 / 12 · Manejo: insulina SC</span><span class="num"></span></div>
         <div class="slide-body">
           <span class="eyebrow cad">Pilar 2 · Alternativa SC</span>
           <h2>CAD leve o moderada <span class="hl">no complicada</span></h2>
           <hr class="divider cad">
           <div class="dose c4 cad">
             <div class="h">Esquema</div><div class="h">Dosis</div><div class="h">Ejemplo 70 kg</div><div class="h">Hasta que…</div>
-
-            <div class="k">Análogo rápido SC cada 1 h</div>
-            <div><strong>0,1 U/kg SC cada 1 h</strong> (aspart o lispro)</div>
-            <div>7 U SC cada hora</div>
-            <div>Con glicemia &lt; 250: agregar dextrosa 5 – 10 % y seguir hasta la resolución</div>
-
-            <div class="k">Análogo rápido SC cada 2 h</div>
-            <div><strong>0,2 U/kg SC cada 2 h</strong></div>
-            <div>14 U SC cada 2 h</div>
-            <div>Igual: dextrosa con glicemia &lt; 250, hasta la resolución</div>
+            <div class="k">Análogo rápido cada 1 h</div><div><strong>0,1 U/kg SC cada 1 h</strong> (aspart o lispro)</div><div>7 U SC cada hora</div><div>Con glicemia &lt; 250: dextrosa 5 – 10 %; seguir hasta la resolución</div>
+            <div class="k">Análogo rápido cada 2 h</div><div><strong>0,2 U/kg SC cada 2 h</strong></div><div>14 U SC cada 2 h</div><div>Igual que el anterior</div>
           </div>
           <div class="grid cols-2" style="margin-top:12px;">
-            <div class="card accent-cad tight">
-              <div class="card-label">Por qué funciona</div>
-              <p>Ensayos randomizados y una revisión Cochrane (2016) no encontraron diferencias frente a la insulina IV en la CAD leve o moderada. Permite tratar en urgencias o intermedio, sin UCI.</p>
-            </div>
-            <div class="card accent-cad tight">
-              <div class="card-label">Contraindicado en</div>
-              <p><strong>CAD severa o complicada</strong>, shock, compromiso de conciencia y <strong>SHH</strong>. En esos casos se usa siempre insulina IV.</p>
-            </div>
+            <div class="card accent-cad tight"><div class="card-label">Por qué funciona</div><p>Ensayos randomizados y una revisión Cochrane no encontraron diferencias frente a la insulina IV en la CAD leve o moderada. Permite tratar en urgencias o intermedio, sin UCI.</p></div>
+            <div class="card accent-cad tight"><div class="card-label">No usar en</div><p><strong>CAD severa o complicada</strong>, shock o compromiso de conciencia: en esos casos se usa siempre insulina IV.</p></div>
           </div>
         </div>
         <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4, insulina SC cada 1 – 2 h [1] · Rodríguez Álvarez P et al. <i>Cleve Clin J Med</i> 2025;92(3):152-8, Tabla "Tratamiento 2009 vs 2024", dosis SC [4]. Los ejemplos de 70 kg son cálculos propios.</div>
       </section>
 
-      <!-- 25 · K / BIC / FOSFATO -->
+      <!-- CAD 08e ELECTROLITOS -->
       <section class="content-slide">
-        <div class="top-bar cad"><span class="left"><span class="dot"></span>Manejo · 05 / 10 · CAD</span><span>25</span></div>
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 08 / 12 · Manejo: electrolitos</span><span class="num"></span></div>
         <div class="slide-body">
           <span class="eyebrow cad">Pilar 3 · Electrolitos</span>
           <h2>Potasio, bicarbonato y <span class="hl">fosfato</span></h2>
           <hr class="divider cad">
           <div class="dose c3 cad">
             <div class="h">Situación</div><div class="h">Conducta y dosis</div><div class="h">Meta / hasta cuándo</div>
-
-            <div class="k">K &lt; 3,5 mEq/L</div>
-            <div class="warn"><strong>NO iniciar insulina.</strong> KCl IV a 10 mEq/h</div>
-            <div>Hasta K &gt; 3,5; recién entonces empezar la insulina</div>
-
-            <div class="k">K 3,5 – 5,0 mEq/L</div>
-            <div><strong>20 – 30 mEq de KCl por cada litro</strong> de fluido IV</div>
-            <div>Mantener K entre 4 y 5 mEq/L</div>
-
-            <div class="k">K &gt; 5,0 mEq/L</div>
-            <div>No reponer; controlar el K a las 2 h. (JBDS: K 3,5 – 5,5 → 40 mEq/L; K &gt; 5,5 → nada)</div>
-            <div>Iniciar la reposición cuando baje de 5,0</div>
-
-            <div class="k">Bicarbonato</div>
-            <div><strong>Solo si pH &lt; 7,0:</strong> 100 mEq de NaHCO₃ 8,4 % en 400 mL de agua estéril</div>
-            <div>Repetir cada 2 h hasta pH &gt; 7,0. Si pH ≥ 7,0, no está indicado</div>
-
-            <div class="k">Fosfato</div>
-            <div>No es de rutina. Si PO₄ &lt; 1,0 mmol/L con debilidad muscular, compromiso respiratorio o cardíaco: <strong>20 – 30 mmol de fosfato de K</strong> en los fluidos</div>
-            <div>Reponer rápido puede causar hipocalcemia</div>
+            <div class="k">K &lt; 3,5 mEq/L</div><div class="warn"><strong>NO iniciar insulina.</strong> KCl IV a 10 mEq/h</div><div>Hasta K &gt; 3,5; recién entonces empezar la insulina</div>
+            <div class="k">K 3,5 – 5,0 mEq/L</div><div><strong>20 – 30 mEq de KCl por cada litro</strong> de fluido (JBDS: 40 mEq/L si K 3,5 – 5,5)</div><div>Mantener K entre 4 y 5 mEq/L</div>
+            <div class="k">K &gt; 5,0 mEq/L</div><div>No reponer; controlar a las 2 h</div><div>Reponer cuando baje de 5,0</div>
+            <div class="k">Bicarbonato</div><div><strong>Solo si pH &lt; 7,0:</strong> 100 mEq de NaHCO₃ 8,4 % en 400 mL de agua estéril</div><div>Repetir cada 2 h hasta pH &gt; 7,0</div>
+            <div class="k">Fosfato</div><div>No es de rutina. Si PO₄ &lt; 1,0 mmol/L con debilidad muscular, compromiso respiratorio o cardíaco: <strong>20 – 30 mmol de fosfato de K</strong> en los fluidos</div><div>Reponer rápido puede causar hipocalcemia</div>
           </div>
-          <div class="note-bar"><strong>El K cae 1 – 2 mEq/L en las primeras 48 h</strong> por la insulina, la corrección de la acidosis y la expansión de volumen. Un K ≤ 2,5 se asocia a ~3 veces más mortalidad.</div>
+          <div class="note-bar"><strong>El K cae 1 – 2 mEq/L en las primeras 48 h.</strong> Un K ≤ 2,5 se asocia a ~3 veces más mortalidad.</div>
         </div>
         <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Potassium", "Bicarbonate", "Phosphate" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, Box 2, tabla de K [3].</div>
       </section>
 
-      <!-- 26 · RESOLUCIÓN Y TRANSICIÓN -->
+      <!-- CAD 08f LÍNEA DE TIEMPO -->
       <section class="content-slide">
-        <div class="top-bar cad"><span class="left"><span class="dot"></span>Manejo · 06 / 10 · CAD</span><span>26</span></div>
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 08 / 12 · Manejo: resumen</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow cad">Algoritmo resumen · CAD</span>
+          <h2>La CAD en una <span class="hl">línea de tiempo</span></h2>
+          <hr class="divider cad">
+          <div class="tl c4">
+            <div class="tl-step cad"><div class="t">0 – 60 min</div><ul><li>Diagnóstico D-K-A y severidad</li><li>Laboratorio + K basal + ECG</li><li>NaCl 0,9 % 1 L/h</li><li>Insulina a 0,1 U/kg/h si K ≥ 3,5</li><li>Buscar el gatillo</li></ul></div>
+            <div class="tl-step cad"><div class="t">1 – 6 h</div><ul><li>1 L en 2 h × 2, con KCl</li><li>Glicemia y β-OHB cada 1 h</li><li>Gases a los 60 min, a las 2 h y luego cada 2 h</li><li>Si no se cumplen las metas: +1 U/h</li></ul></div>
+            <div class="tl-step cad"><div class="t">6 – 12 h</div><ul><li>Glicemia &lt; 250 → dextrosa 5 – 10 %</li><li>Insulina a 0,05 U/kg/h; meta ~200</li><li>1 L en 4 h × 2</li><li>Bicarbonato solo si pH &lt; 7,0</li></ul></div>
+            <div class="tl-step cad"><div class="t">12 – 24 h · resolución</div><ul><li>β-OHB &lt; 0,6 y pH ≥ 7,3 o HCO₃ ≥ 18</li><li>Basal SC 1 – 2 h antes de suspender la IV</li><li>Basal-bolo de 0,5 – 0,6 U/kg/día</li><li>Educación y plan de alta</li></ul></div>
+          </div>
+          <div class="note-bar ok"><strong>Meta JBDS:</strong> que la CAD esté resuelta en ~24 h. Si no lo está, pedir evaluación por especialista.</div>
+        </div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Fig. 4 "Treatment pathways" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, Box 1–4 (0 – 60 min, 60 min – 6 h, 6 – 12 h, 12 – 24 h) [3].</div>
+      </section>
+
+      <!-- CAD 09 MONITORIZACIÓN Y ESTUDIO -->
+      <section class="content-slide">
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 09 / 12 · Monitorización</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow cad">Monitorización y estudio</span>
+          <h2>Qué medir y <span class="hl">cada cuánto</span></h2>
+          <hr class="divider cad">
+          <div class="grid cols-3">
+            <div class="card accent-cad tight"><div class="card-label">Estudio inicial</div><ul>
+              <li>Glicemia, ELP (Na, K, Cl), gases venosos, β-OHB o cetonuria, hemograma</li>
+              <li>Creatinina/BUN, fosfato, osmolaridad</li>
+              <li>ECG; RxTx, orina y hemocultivos; βhCG en mujeres en edad fértil; TAC de cerebro si la conciencia no se explica</li></ul></div>
+            <div class="card accent-cad tight"><div class="card-label">Frecuencia</div><ul>
+              <li><strong>Glicemia capilar cada 1 – 2 h</strong> (JBDS: β-OHB también cada 1 h)</li>
+              <li>Gases venosos a los 60 min, a las 2 h y luego cada 2 h</li>
+              <li>ELP, fosfato, Cr, β-OHB y pH <strong>cada 4 h</strong> hasta la resolución</li>
+              <li><strong>K a las 2 h</strong> de iniciada la insulina, luego cada 4 h</li>
+              <li>Diuresis ≥ 0,5 mL/kg/h; monitor cardíaco continuo si la CAD es severa</li></ul></div>
+            <div class="card accent-cad tight"><div class="card-label">Metas de descenso</div><ul>
+              <li>β-OHB ↓ ≥ <strong>0,5 mmol/L/h</strong></li>
+              <li>HCO₃ ↑ ≥ <strong>3 mEq/L/h</strong></li>
+              <li>Glicemia ↓ ≥ <strong>54 mg/dL/h</strong> (3 mmol/L/h)</li>
+              <li>Si no se cumplen: revisar la bomba y la vía, y subir la insulina 1 U/h</li></ul></div>
+          </div>
+        </div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Secciones 3–4 [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, Box 1 "Action 3: investigations" y Box 3 [3].</div>
+      </section>
+
+      <!-- CAD 10 RESOLUCIÓN -->
+      <section class="content-slide">
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 10 / 12 · Resolución</span><span class="num"></span></div>
         <div class="slide-body">
           <span class="eyebrow cad">Resolución & transición</span>
           <h2>¿Cuándo <span class="hl">parar</span> la insulina IV?</h2>
@@ -1462,176 +1124,433 @@
                 <li style="font-size:0.74em;"><strong>pH venoso ≥ 7,3</strong> o <strong>HCO₃ ≥ 18 mEq/L</strong></li>
                 <li style="font-size:0.74em;">Glicemia idealmente &lt; 200 mg/dL</li>
               </ol>
-              <p style="font-size:0.64em; margin:8px 0 0; color: var(--text-mute);">No usar el anion gap ni la cetonuria para definir la resolución: la acidosis hiperclorémica (AG normal) y la cetonuria persisten.</p>
+              <p style="font-size:0.64em; margin:8px 0 0; color: var(--text-mute);">No usar el anion gap ni la cetonuria: la acidosis hiperclorémica (AG normal) y la cetonuria persisten.</p>
             </div>
-            <div class="card accent-cad tight">
-              <div class="card-label">Transición a SC</div>
-              <ul>
-                <li><strong>Superposición de 1 – 2 h:</strong> administrar la insulina basal SC 1 – 2 h <strong>antes</strong> de suspender la infusión IV</li>
-                <li><strong>Usuario previo de insulina:</strong> retomar su dosis habitual (ajustar si la HbA1c está alta)</li>
-                <li><strong>Sin insulina previa:</strong> dosis diaria total de <strong>0,5 – 0,6 U/kg/día</strong>, en esquema basal-bolo (~50 % basal y ~50 % prandial)</li>
-                <li><strong>Riesgo de hipoglicemia</strong> (ERC, fragilidad): ~0,3 U/kg/día</li>
-                <li>Ejemplo de 70 kg sin insulina previa: 35 – 42 U/día, ~18 – 21 U basal</li>
-              </ul>
-            </div>
+            <div class="card accent-cad tight"><div class="card-label">Transición a SC</div><ul>
+              <li><strong>Superposición de 1 – 2 h:</strong> la basal SC va 1 – 2 h <strong>antes</strong> de suspender la IV</li>
+              <li><strong>Usuario previo:</strong> retomar su dosis (ajustar si la HbA1c está alta)</li>
+              <li><strong>Sin insulina previa:</strong> <strong>0,5 – 0,6 U/kg/día</strong> en esquema basal-bolo</li>
+              <li><strong>Riesgo de hipoglicemia</strong> (ERC, fragilidad): ~0,3 U/kg/día</li>
+              <li>Ejemplo de 70 kg: 35 – 42 U/día, ~50 % basal (cálculo de apoyo)</li></ul></div>
           </div>
-          <div class="note-bar ok"><strong>Al alta:</strong> corregir el esquema en el hospital (no diferirlo), enseñar reglas para días de enfermedad y medición de cetonas, y pesquisar salud mental (PHQ-2/9), que es el principal factor de recurrencia.</div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Resolution", "Transition to maintenance insulin", Fig. 5 y Sección 7 "Prevención" [1]. El reparto 50/50 basal-bolo y el ejemplo de 70 kg son cálculos de apoyo.</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Resolution" y "Transition to maintenance insulin", Fig. 5 [1]. El reparto 50/50 y el ejemplo de 70 kg son cálculos de apoyo.</div>
       </section>
 
-      <!-- 27 · SHH FLUIDOS + INSULINA -->
+      <!-- CAD 11 COMPLICACIONES -->
       <section class="content-slide">
-        <div class="top-bar shh"><span class="left"><span class="dot"></span>Manejo · 07 / 10 · SHH</span><span>27</span></div>
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 11 / 12 · Complicaciones</span><span class="num"></span></div>
         <div class="slide-body">
-          <span class="eyebrow shh">Manejo del SHH</span>
+          <span class="eyebrow cad">Complicaciones</span>
+          <h2>Lo que puede salir <span class="hl">mal</span></h2>
+          <hr class="divider cad">
+          <div class="dose c3 cad">
+            <div class="h">Complicación</div><div class="h">Frecuencia / riesgo</div><div class="h">Prevención y manejo</div>
+            <div class="k">Hipoglicemia</div><div>&lt; 70 mg/dL en 16 – 28 %; &lt; 40 en 2 % (OR de mortalidad ~4)</div><div>Glicemia cada 1 – 2 h; con glicemia &lt; 250, insulina a 0,05 U/kg/h + dextrosa</div>
+            <div class="k">Hipokalemia</div><div>K &lt; 3,5 en ~55 %; ≤ 2,5 en 16 %</div><div>K cada 4 h y reponer en los fluidos; sin K ≥ 3,5 no se inicia insulina</div>
+            <div class="k">Acidosis hiperclorémica</div><div>Frecuente en la recuperación; autolimitada</div><div>Menor con cristaloides balanceados; no confundirla con CAD persistente</div>
+            <div class="k">Edema cerebral</div><div>Raro en adultos (&lt; 0,1 %), con ~30 % de mortalidad</div><div>Vigilar la conciencia; umbral bajo para TAC; manitol y VM</div>
+            <div class="k">Lesión renal aguda</div><div>~50 % de los ingresos</div><div>Suele revertir con la hidratación; Cr diaria</div>
+            <div class="k">Raras</div><div>Edema pulmonar, cardiomiopatía, rabdomiólisis, HDA, alza de enzimas pancreáticas</div><div>Sospecharlas si la evolución es atípica</div>
+          </div>
+        </div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 5 y Tabla 3 "Complicaciones durante el tratamiento" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, "Other complications" [3].</div>
+      </section>
+
+      <!-- CAD 12 PREVENCIÓN -->
+      <section class="content-slide">
+        <div class="top-bar cad"><span class="left"><span class="dot"></span>CAD · 12 / 12 · Prevención</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow cad">Prevención</span>
+          <h2>Que no <span class="hl">vuelva</span></h2>
+          <hr class="divider cad">
+          <div class="grid cols-3">
+            <div class="card accent-cad tight"><div class="card-label">Antes del alta</div><ul>
+              <li>Educación estructurada con resolución de problemas</li>
+              <li><strong>Reglas para días de enfermedad</strong> por escrito</li>
+              <li>Técnica de inyección, revisar sitios y que la insulina no esté vencida</li>
+              <li>Medición de cetonas en casa</li>
+              <li>Insulina e insumos suficientes, más un teléfono de contacto</li></ul></div>
+            <div class="card accent-cad tight"><div class="card-label">Seguimiento</div><ul>
+              <li>Control a las <strong>2 – 4 semanas</strong> del alta</li>
+              <li>Monitor continuo de glucosa (MCG): en Francia, acceder a uno se asoció a −53 % de hospitalizaciones por CAD en DM1 y −47 % en DM2</li>
+              <li>Corregir el esquema en el hospital, sin diferirlo</li></ul></div>
+            <div class="card accent-cad tight"><div class="card-label">Factores de fondo</div><ul>
+              <li>Pesquisa de salud mental (depresión, trastornos alimentarios)</li>
+              <li>Determinantes sociales: derivar a servicio social si hay barreras de acceso a la insulina</li>
+              <li>CAD recurrente: abordaje multidisciplinario</li>
+              <li>iSGLT2: no usar en DM1</li></ul></div>
+          </div>
+          <div class="note-bar"><strong>Por qué importa:</strong> hasta un 22 % se reinterna en 30 días, y el 41 % de esos reingresos es una nueva CAD.</div>
+        </div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 7 "¿Cómo prevenir la CAD y el SHH?" y Tabla 4 [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, "Discharge planning" [3].</div>
+      </section>
+
+      <!-- ================= SHH ================= -->
+      <section>
+        <div class="section-divider shh">
+          <div class="big-num">02</div>
+          <h1>Estado<br><strong>Hiperglicémico<br>Hiperosmolar</strong></h1>
+          <p class="sub">Hiperglicemia extrema + hiperosmolaridad + deshidratación severa, sin cetoacidosis significativa. El paciente se deshidrata, no se acidifica.</p>
+          <div class="side-mark"><div class="code">SHH · HHS</div><div class="vbar"></div></div>
+        </div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Fig. 2B [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005 [2].</div>
+      </section>
+
+      <!-- SHH 01 EPIDEMIOLOGÍA -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 01 / 12 · Epidemiología</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Epidemiología</span>
+          <h2>Menos frecuente, <span class="hl">más letal</span></h2>
+          <hr class="divider shh">
+          <div class="grid cols-2" style="grid-template-columns: 1.05fr 1fr; gap: 14px;">
+            <div class="lab-grid" style="grid-template-columns: 1fr 1fr; margin-top:0;">
+              <div class="lab-item shh"><div class="lab-name">Egresos por coma diabético · 2024</div><div class="lab-value">334</div><div class="lab-note">E10–E14 "con coma"; 70 % E11</div></div>
+              <div class="lab-item shh"><div class="lab-name">Letalidad hospitalaria</div><div class="lab-value">5,1 %</div><div class="lab-note">~4 veces la de la CAD (1,2 %)</div></div>
+              <div class="lab-item shh"><div class="lab-name">Edad · 2024</div><div class="lab-value">71 % ≥ 60 años</div><div class="lab-note">43 % ≥ 70 años</div></div>
+              <div class="lab-item shh"><div class="lab-name">Muertes · 2023 (oficial)</div><div class="lab-value">51</div><div class="lab-note">Coma diabético como causa básica (97 en 2024, preliminar)</div></div>
+            </div>
+            <div class="card accent-shh tight">
+              <div class="card-label">Egresos por coma diabético, Chile 2021 – 2025</div>
+              <div class="bars"><div class="bar-row"><span class="yr">2021</span><div class="trk"><div class="fill shh" style="width:72.9%"></div></div><span class="val shh">298</span></div><div class="bar-row"><span class="yr">2022</span><div class="trk"><div class="fill shh" style="width:76.0%"></div></div><span class="val shh">311</span></div><div class="bar-row"><span class="yr">2023</span><div class="trk"><div class="fill shh" style="width:100.0%"></div></div><span class="val shh">409</span></div><div class="bar-row"><span class="yr">2024</span><div class="trk"><div class="fill shh" style="width:81.7%"></div></div><span class="val shh">334</span></div><div class="bar-row"><span class="yr">2025</span><div class="trk"><div class="fill shh" style="width:79.2%"></div></div><span class="val shh">324</span></div></div>
+              <p style="margin-top:8px;"><strong>Ojo:</strong> la CIE-10 no tiene un código propio para el SHH; el "coma" (E1x.0) también incluye el coma cetoacidótico y el hipoglicémico.</p>
+            </div>
+          </div>
+          <div class="note-bar ok"><strong>Internacional (a falta de datos chilenos):</strong> en EE.UU. el SHH es el 35 % de los ingresos por crisis hiperglicémica, y otro 27 % son cuadros mixtos. La mortalidad intrahospitalaria es ~5 % en EE.UU. y de 15 – 20 % en series británicas.</div>
+        </div>
+        <div class="src"><b>Fuente</b>DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos) [5] · DEIS-MINSAL, Defunciones por causa 2021–2023 (oficiales) y 2024–2026 (preliminares) [6]. Cálculos propios (DIAG1 E10–E14, cuarto dígito .0 "con coma"); egresos 2025 y defunciones 2024 en adelante son preliminares · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 1 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Sección 1 [2].</div>
+      </section>
+
+      <!-- SHH 02 DEFINICIÓN Y FISIOPATOLOGÍA -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 02 / 12 · Definición y fisiopatología</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Definición & fisiopatología</span>
+          <h2>Déficit <span class="hl">relativo</span> de insulina</h2>
+          <hr class="divider shh">
+          <div class="note-bar ok" style="margin-top:0;"><strong>Definición:</strong> hiperglicemia severa (≥ 600 mg/dL) con hiperosmolaridad y deshidratación marcada, sin cetonemia ni acidosis significativas. Se desarrolla en muchos días, por eso la deshidratación es más extrema que en la CAD.</div>
+          <div class="flow" style="margin-top:10px;">
+            <div class="flow-box root" style="border-color: var(--shh); background: linear-gradient(135deg, rgba(125, 211, 252, 0.12), rgba(125, 211, 252, 0.02));">
+              <span class="label-sm" style="color: var(--shh);">Origen</span>
+              Insulina residual: alcanza a frenar la lipólisis y la cetogénesis, no la hiperglicemia
+            </div>
+            <div class="flow-arrow shh"></div>
+            <div class="flow-row">
+              <div class="flow-box shh"><span class="label-sm">Efecto metabólico</span>Hiperglicemia extrema sostenida durante días</div>
+              <div class="flow-box shh"><span class="label-sm">Ausencia clave</span>Cetogénesis <em>mínima</em>, sin acidosis significativa</div>
+            </div>
+            <div class="flow-arrow shh"></div>
+            <div class="flow-row">
+              <div class="flow-box shh"><span class="label-sm">Consecuencia 1</span>Diuresis osmótica masiva → pérdida de agua de <em>100 – 220 mL/kg</em> → hiperosmolaridad</div>
+              <div class="flow-box shh"><span class="label-sm">Consecuencia 2</span>Deshidratación neuronal → compromiso de conciencia + estado protrombótico</div>
+            </div>
+          </div>
+        </div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Secciones 2–3 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Secciones 1 y 2, Tabla 1 [2].</div>
+      </section>
+
+      <!-- SHH 03 SEMIOLOGÍA -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 03 / 12 · Semiología</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Semiología & examen físico</span>
+          <h2>Predomina lo <span class="hl">neurológico</span></h2>
+          <hr class="divider shh">
+          <div class="grid cols-2">
+            <div class="card accent-shh tight"><div class="card-label">Síntomas</div><ul>
+              <li>Poliuria y polidipsia marcadas durante días o semanas</li>
+              <li>Pérdida de peso, astenia</li>
+              <li>Vómitos y dolor abdominal <strong>poco frecuentes</strong> (a diferencia de la CAD)</li></ul></div>
+            <div class="card accent-shh tight"><div class="card-label">Signos de deshidratación</div><ul>
+              <li>Ojos hundidos, surcos longitudinales en la lengua y debilidad de extremidades (se correlacionan con la urea alta)</li>
+              <li>FC &gt; 100 y/o PAS &lt; 100 = hipovolemia severa</li>
+              <li><strong>Trampa:</strong> puede no verse tan deshidratado como está, porque la hipertonicidad preserva el volumen intravascular</li></ul></div>
+            <div class="card accent-shh tight"><div class="card-label">Neurológico</div><ul>
+              <li>Letargia, estupor y coma</li>
+              <li>Más frecuente con osm &gt; 330 mOsm/kg</li>
+              <li>El compromiso cognitivo no es obligatorio ni específico; compararlo con el estado premórbido</li></ul></div>
+            <div class="card accent-shh tight"><div class="card-label">Lo que NO tiene</div><ul>
+              <li><strong>Sin</strong> respiración de Kussmaul</li>
+              <li><strong>Sin</strong> aliento cetónico</li>
+              <li>Examinar los pies: riesgo de úlceras por presión</li></ul></div>
+          </div>
+        </div>
+        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Sección 2.1 "Presentación clínica" y 4.11 [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 3 [1].</div>
+      </section>
+
+      <!-- SHH 04 ANTECEDENTES -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 04 / 12 · Antecedentes</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Antecedentes relevantes del paciente</span>
+          <h2>El paciente <span class="hl">típico</span></h2>
+          <hr class="divider shh">
+          <div class="grid cols-3">
+            <div class="card accent-shh tight"><div class="card-label">Perfil</div><ul>
+              <li>Típicamente &gt; 45 años: adulto mayor frágil con DM2 y comorbilidades</li>
+              <li>Cada vez más en niños y adultos jóvenes, a menudo como <strong>debut de una DM2</strong></li>
+              <li>Menor sensación de sed en el adulto mayor</li></ul></div>
+            <div class="card accent-shh tight"><div class="card-label">Fármacos</div><ul>
+              <li>Corticoides, tiazidas, simpaticomiméticos, antipsicóticos</li>
+              <li>Hipoglicemiantes suspendidos u omitidos</li>
+              <li>IBP: se asocian a hipomagnesemia</li></ul></div>
+            <div class="card accent-shh tight"><div class="card-label">Contexto</div><ul>
+              <li>Dependencia, institucionalización, deterioro cognitivo</li>
+              <li>ERC o diálisis (~4 % de los pacientes con ERC terminal hace una crisis)</li>
+              <li>Factores psicosociales en adultos vulnerables</li>
+              <li>Estado cognitivo y funcional basal (para comparar)</li></ul></div>
+          </div>
+        </div>
+        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Secciones 1, 2.1, 4.10 y 7 [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 2 y Tabla 4 "Adultos mayores frágiles" y "ERC terminal" [1].</div>
+      </section>
+
+      <!-- SHH 05 DIFERENCIALES -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 05 / 12 · Diferenciales</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Diagnóstico diferencial</span>
+          <h2>¿Es SHH o es <span class="hl">otra cosa</span>?</h2>
+          <hr class="divider shh">
+          <div class="dose c3 shh">
+            <div class="h">Diferencial</div><div class="h">Pistas</div><div class="h">Cómo distinguirlo</div>
+            <div class="k">Hiperglicemia severa transitoria</div><div>Glicemia muy alta, sin días de evolución</div><div>La diferencia con el SHH es la duración de la hiperglicemia y la deshidratación acompañante</div>
+            <div class="k">CAD o cuadro mixto CAD/SHH</div><div>Hiperosmolaridad con cetosis y acidosis</div><div>β-OHB ≥ 3 o cetonuria ≥ 2+, o pH &lt; 7,3 → mixto: tratar con insulina a 0,1 U/kg/h</div>
+            <div class="k">Acidosis por sepsis o LRA</div><div>pH &lt; 7,3 con HCO₃ &gt; 15</div><div>Medir lactato y cetonas en los gases venosos; un β-OHB &lt; 1 descarta cetonemia relevante</div>
+            <div class="k">ACV / IAM</div><div>Focalidad, dolor torácico</div><div>Pueden ser causa o complicación; más frecuentes en el SHH → ECG, troponina, imagen</div>
+            <div class="k">Otras causas de compromiso de conciencia</div><div>Conciencia que no mejora al corregir la osm</div><div>Hipoglicemia durante el tratamiento, edema cerebral, sepsis, trastornos electrolíticos</div>
+          </div>
+        </div>
+        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Secciones 1, 2.1, 3 "DKA/HHS mixto", 4.9 y 4.12 [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Fig. 2B [1].</div>
+      </section>
+
+      <!-- SHH 06 PRECIPITANTES -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 06 / 12 · Precipitantes</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Precipitantes o desencadenantes</span>
+          <h2>Cuando el <span class="hl">contexto</span> define el cuadro</h2>
+          <hr class="divider shh">
+          <ul class="slide-list tight">
+            <li><span class="bold">Infecciones</span> — La causa más frecuente, sobre todo ITU y neumonía.<span class="muted">En el adulto mayor puede cursar sin fiebre.</span></li>
+            <li><span class="bold">Suspensión u omisión del tratamiento antidiabético</span> — Hipoglicemiantes o insulina.</li>
+            <li><span class="bold">Eventos cardiovasculares</span> — IAM, ACV.</li>
+            <li><span class="bold">Pancreatitis</span></li>
+            <li><span class="bold">Fármacos</span> — Corticoides, tiazidas, simpaticomiméticos, antipsicóticos.</li>
+          </ul>
+        </div>
+        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Sección 2.1 "Factores precipitantes" [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 1 [1].</div>
+      </section>
+
+      <!-- SHH 07 CRITERIOS COMPARATIVOS -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 07 / 12 · Criterios diagnósticos</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Criterios diagnósticos comparativos</span>
+          <h2>Cuatro criterios: <span class="hl">2009 vs 2024</span></h2>
+          <hr class="divider shh">
+          <div class="dose c4 shh">
+            <div class="h">Criterio</div><div class="h">Consenso 2009</div><div class="h">Consenso 2024 (vigente)</div><div class="h">Lo que lo separa de la CAD</div>
+            <div class="k">Hiperglicemia</div><div>&gt; 600 mg/dL</div><div><strong>≥ 600 mg/dL</strong></div><div>CAD: ≥ 200 o DM conocida</div>
+            <div class="k">Hiperosmolaridad</div><div>Osm efectiva &gt; 320</div><div><strong>Osm efectiva &gt; 300</strong> o total &gt; 320 mOsm/kg</div><div>CAD: osm variable</div>
+            <div class="k">Sin cetosis significativa</div><div>Cetonas "escasas"</div><div><strong>β-OHB &lt; 3,0 mmol/L</strong> o cetonuria &lt; 2+</div><div>CAD: β-OHB ≥ 3,0</div>
+            <div class="k">Sin acidosis</div><div>pH &gt; 7,3 · HCO₃ &gt; 18</div><div><strong>pH ≥ 7,3 y HCO₃ ≥ 15</strong></div><div>CAD: pH &lt; 7,3 y/o HCO₃ &lt; 18</div>
+            <div class="k">Estado mental</div><div>Estupor o coma (era criterio)</div><div><strong>Se eliminó</strong> como criterio</div><div>—</div>
+          </div>
+          <div class="note-bar ok"><strong>JBDS 2023:</strong> osm (2 Na + glicemia + urea) ≥ 320, glicemia ≥ 30 mmol/L (≈ 540 mg/dL), β-OHB ≤ 3,0, pH &gt; 7,3 y HCO₃ ≥ 15, con hipovolemia marcada. Si cumple criterios de CAD y de SHH a la vez → cuadro mixto.</div>
+        </div>
+        <div class="src"><b>Fuente</b>Rodríguez Álvarez P et al. <i>Cleve Clin J Med</i> 2025;92(3):152-8, Tabla 3 "Cambios en criterios de SHH 2009 vs 2024" [4] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Fig. 2B [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Resumen y Sección 2.2 [2].</div>
+      </section>
+
+      <!-- SHH 08a MANEJO INICIAL -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 08 / 12 · Manejo inicial</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Manejo inicial · primera hora</span>
+          <h2>Evaluar, <span class="hl">hidratar</span> y escalar</h2>
+          <hr class="divider shh">
+          <div class="grid cols-2">
+            <div class="card accent-shh tight"><div class="card-label">0 – 60 min</div><ul>
+              <li>ABCDE y triage (NEWS)</li>
+              <li>NaCl 0,9 % a 500 – 1000 mL/h; <strong>insulina todavía NO</strong> (salvo cetonemia)</li>
+              <li>Glicemia, osm, Na, K, urea/Cr, gases venosos con lactato y cetonas</li>
+              <li>HBPM profiláctica, protección de talones, buscar el gatillo</li>
+              <li>Basal previa: continuarla</li></ul></div>
+            <div class="card accent-shh tight"><div class="card-label">Criterios para escalar a UCI o intermedio (JBDS)</div><ul>
+              <li>Osm &gt; 350 mOsm/kg · Na &gt; 160 mEq/L · pH &lt; 7,1</li>
+              <li>K &lt; 3,5 o ≥ 6,0 al ingreso</li>
+              <li>Glasgow &lt; 12 · SatO₂ &lt; 92 % · PAS &lt; 90</li>
+              <li>FC &gt; 100 o &lt; 60 · diuresis &lt; 0,5 mL/kg/h</li>
+              <li>Cr &gt; 2,3 mg/dL o LRA · hipotermia · IAM/ACV</li></ul></div>
+          </div>
+        </div>
+        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Secciones 2.1, 4 y 5 "Escalation of management" (Cr &gt; 200 μmol/L ≈ 2,3 mg/dL) [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 [1].</div>
+      </section>
+
+      <!-- SHH 08b FLUIDOS + INSULINA -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 08 / 12 · Manejo: fluidos e insulina</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Fluidos e insulina</span>
           <h2>Lento y con <span class="hl">fluidos primero</span></h2>
           <hr class="divider shh">
           <div class="dose c4 shh">
             <div class="h">Pilar</div><div class="h">Conducta y dosis</div><div class="h">Velocidad / meta</div><div class="h">Hasta que…</div>
-
-            <div class="k">Fluidos</div>
-            <div><strong>NaCl 0,9 %</strong> (o cristaloide balanceado) a 500 – 1000 mL/h durante 2 – 4 h</div>
-            <div>Balance positivo de <strong>3 – 6 L en las primeras 12 h</strong>; el resto del déficit en las 12 h siguientes</div>
-            <div class="stop">Reponer las pérdidas en ~24 h (normalización completa en ≤ 72 h)</div>
-
-            <div class="k">NaCl 0,45 %</div>
-            <div>Solo si la osm <strong>no baja</strong> pese a un balance positivo y a la insulina</div>
-            <div>El alza inicial del Na <strong>no</strong> es indicación por sí sola</div>
-            <div>Nunca usar fluidos más hipotónicos que 0,45 %</div>
-
-            <div class="k">Insulina sin cetonemia (β-OHB &lt; 3)</div>
-            <div>Infusión fija de <strong>0,05 U/kg/h</strong> IV</div>
-            <div>Iniciarla <strong>cuando la osm deja de caer</strong> solo con fluidos (JBDS)</div>
-            <div class="stop">Osm &lt; 300 y conciencia recuperada</div>
-
-            <div class="k">Con cetonemia ≥ 3 o mixto</div>
-            <div>Infusión fija de <strong>0,1 U/kg/h</strong> IV, desde el inicio junto a los fluidos</div>
-            <div>Seguir el protocolo de CAD</div>
-            <div class="stop">Criterios de resolución de CAD y de SHH</div>
-
-            <div class="k">Dextrosa</div>
-            <div>Agregar <strong>dextrosa 5 – 10 %</strong> cuando la glicemia sea &lt; 250 mg/dL</div>
-            <div>Meta de glicemia de <strong>180 – 270 mg/dL</strong> en las primeras 24 h</div>
-            <div>Evitar la hipoglicemia y la caída brusca de la osm</div>
+            <div class="k">Fluidos</div><div><strong>NaCl 0,9 %</strong> (o cristaloide balanceado) a 500 – 1000 mL/h durante 2 – 4 h</div><div>Balance positivo de <strong>3 – 6 L en las primeras 12 h</strong>; el resto en las 12 h siguientes</div><div class="stop">Reponer las pérdidas en ~24 h (normalización en ≤ 72 h)</div>
+            <div class="k">NaCl 0,45 %</div><div>Solo si la osm <strong>no baja</strong> pese a un balance positivo y a la insulina</div><div>El alza inicial del Na <strong>no</strong> es indicación por sí sola</div><div>Nunca usar fluidos más hipotónicos que 0,45 %</div>
+            <div class="k">Insulina sin cetonemia</div><div>Infusión fija de <strong>0,05 U/kg/h</strong> IV (70 kg: 3,5 U/h)</div><div>Iniciarla <strong>cuando la osm deja de caer</strong> solo con fluidos</div><div class="stop">Osm &lt; 300 y conciencia recuperada</div>
+            <div class="k">Con cetonemia ≥ 3 o mixto</div><div>Infusión fija de <strong>0,1 U/kg/h</strong> IV, desde el inicio</div><div>Seguir el protocolo de CAD</div><div class="stop">Resolución de ambos cuadros</div>
+            <div class="k">Dextrosa</div><div><strong>Dextrosa 5 – 10 %</strong> con glicemia &lt; 250 mg/dL</div><div>Meta de glicemia de <strong>180 – 270 mg/dL</strong> en las primeras 24 h</div><div>Evitar la hipoglicemia y la caída brusca de la osm</div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Mustafa OG et al. Management of HHS in adults (JBDS). <i>Diabet Med</i> 2023;40(3):e15005, Secciones 3–4 [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 [1]. JBDS: glicemia &lt; 14 mmol/L ≈ 250 mg/dL; meta 10 – 15 mmol/L ≈ 180 – 270 mg/dL.</div>
+        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Secciones 3–4 [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 [1]. JBDS: glicemia &lt; 14 mmol/L ≈ 250 mg/dL; meta 10 – 15 mmol/L ≈ 180 – 270 mg/dL. El ejemplo de 70 kg es un cálculo propio.</div>
       </section>
 
-      <!-- 28 · SHH LÍMITES DE SEGURIDAD -->
+      <!-- SHH 08c LÍMITES, K, HBPM -->
       <section class="content-slide">
-        <div class="top-bar shh"><span class="left"><span class="dot"></span>Manejo · 08 / 10 · SHH</span><span>28</span></div>
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 08 / 12 · Manejo: límites de seguridad</span><span class="num"></span></div>
         <div class="slide-body">
-          <span class="eyebrow shh">Límites de seguridad · SHH</span>
+          <span class="eyebrow shh">Límites de seguridad · potasio · profilaxis</span>
           <h2>Las velocidades que <span class="hl">no se pueden pasar</span></h2>
           <hr class="divider shh">
           <div class="lab-grid" style="grid-template-columns: repeat(4,1fr);">
             <div class="lab-item shh"><div class="lab-name">Osmolaridad</div><div class="lab-value">↓ 3 – 8 mOsm/kg/h</div><div class="lab-note">Por sobre esto aumenta el riesgo de edema cerebral y desmielinización</div></div>
-            <div class="lab-item shh"><div class="lab-name">Glicemia</div><div class="lab-value">↓ ≤ 90 – 120 mg/dL/h</div><div class="lab-note">La JBDS es más estricta: ≤ 5 mmol/L/h (~90 mg/dL/h)</div></div>
+            <div class="lab-item shh"><div class="lab-name">Glicemia</div><div class="lab-value">↓ ≤ 90 – 120 mg/dL/h</div><div class="lab-note">JBDS: ≤ 5 mmol/L/h (~90 mg/dL/h)</div></div>
             <div class="lab-item shh"><div class="lab-name">Sodio</div><div class="lab-value">↓ ≤ 10 mEq/L en 24 h</div><div class="lab-note">El Na sube ~1,6 – 2,4 por cada 100 mg/dL que cae la glicemia</div></div>
-            <div class="lab-item shh"><div class="lab-name">Tiempo esperado</div><div class="lab-value">8 – 10 h</div><div class="lab-note">Para corregir la hiperglicemia en el SHH</div></div>
+            <div class="lab-item shh"><div class="lab-name">Tiempo esperado</div><div class="lab-value">8 – 10 h</div><div class="lab-note">Para corregir la hiperglicemia</div></div>
           </div>
           <div class="dose c3 shh" style="margin-top:12px;">
             <div class="h">Medida</div><div class="h">Dosis / indicación</div><div class="h">Duración</div>
-
-            <div class="k">Potasio (JBDS)</div>
-            <div>K 3,5 – 5,5 → <strong>40 mEq/L</strong> de fluido · K 5,5 – 5,9 → no reponer · K &lt; 3,5 o ≥ 6,0 → evaluación por especialista o UCI</div>
-            <div>Controlar al menos cada 4 h; reponer según el nivel</div>
-
-            <div class="k">Tromboprofilaxis</div>
-            <div><strong>HBPM a dosis profiláctica</strong> en <strong>todo</strong> paciente con SHH, salvo contraindicación (p. ej., enoxaparina 40 mg SC/día)</div>
-            <div class="stop">Toda la hospitalización</div>
-
-            <div class="k">Protección de pies</div>
-            <div>Examen diario, taloneras y protectores, cambios de posición</div>
-            <div>Toda la hospitalización</div>
+            <div class="k">Potasio</div><div>K 3,5 – 5,5 → <strong>40 mEq/L</strong> de fluido · K 5,5 – 5,9 → no reponer · K &lt; 3,5 o ≥ 6,0 → evaluación por especialista o UCI</div><div>Controlar al menos cada 4 h</div>
+            <div class="k">Tromboprofilaxis</div><div><strong>HBPM profiláctica</strong> en todo SHH salvo contraindicación (p. ej., enoxaparina 40 mg SC/día)</div><div class="stop">Toda la hospitalización</div>
+            <div class="k">Pies</div><div>Examen diario, taloneras, cambios de posición</div><div>Toda la hospitalización</div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 y Tabla 3 [1] · Mustafa OG et al. <i>Diabet Med</i> 2023;40(3):e15005, Tabla 2 "Reposición de K" y secciones de VTE y pie [2]. La dosis de enoxaparina es un ejemplo estándar de profilaxis.</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 y Tabla 3 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Tabla 2 "Reposición de K", 4.9 y 4.11 [2]. La dosis de enoxaparina es un ejemplo estándar de profilaxis.</div>
       </section>
 
-      <!-- 29 · TIMELINE -->
+      <!-- SHH 08d LÍNEA DE TIEMPO -->
       <section class="content-slide">
-        <div class="top-bar"><span class="left"><span class="dot"></span>Manejo · 09 / 10</span><span>29</span></div>
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 08 / 12 · Manejo: resumen</span><span class="num"></span></div>
         <div class="slide-body">
-          <span class="eyebrow">Algoritmo resumen</span>
-          <h2>La crisis en una <span class="hl">línea de tiempo</span></h2>
-          <hr class="divider">
-          <div class="tl c4">
-            <div class="tl-step cad"><div class="t">CAD · 0 – 1 h</div><ul><li>Diagnóstico D-K-A y severidad</li><li>Laboratorio + K basal</li><li>Cristaloide a 500 – 1000 mL/h</li><li>Buscar el gatillo</li></ul></div>
-            <div class="tl-step cad"><div class="t">CAD · 1 – 4 h</div><ul><li>Si K ≥ 3,5: insulina a 0,1 U/kg/h</li><li>KCl 20 – 30 mEq/L si K &lt; 5</li><li>Glicemia cada 1 h; K a las 2 h</li><li>Bicarbonato solo si pH &lt; 7,0</li></ul></div>
-            <div class="tl-step cad"><div class="t">CAD · 4 – 8 h</div><ul><li>Glicemia &lt; 250 → dextrosa 5 – 10 %</li><li>Insulina a 0,05 U/kg/h; meta ~200</li><li>Fluidos a 250 – 500 mL/h</li><li>Laboratorio cada 4 h</li></ul></div>
-            <div class="tl-step cad"><div class="t">CAD · resolución</div><ul><li>β-OHB &lt; 0,6 + pH ≥ 7,3 o HCO₃ ≥ 18</li><li>Basal SC 1 – 2 h antes de suspender la IV</li><li>Esquema basal-bolo de 0,5 – 0,6 U/kg/día</li><li>Educación al alta</li></ul></div>
-            <div class="tl-step shh"><div class="t">SHH · 0 – 1 h</div><ul><li>Criterios de SHH; descartar cuadro mixto</li><li>NaCl 0,9 % a 500 – 1000 mL/h</li><li>Osm, Na, K, β-OHB</li><li>HBPM profiláctica</li></ul></div>
-            <div class="tl-step shh"><div class="t">SHH · 1 – 6 h</div><ul><li>Fluidos solos; osm cada 1 h</li><li>Insulina a 0,05 U/kg/h cuando la osm se estanque</li><li>KCl 40 mEq/L si K 3,5 – 5,5</li></ul></div>
-            <div class="tl-step shh"><div class="t">SHH · 6 – 24 h</div><ul><li>Balance de +3 – 6 L a las 12 h</li><li>Glicemia &lt; 250 → dextrosa</li><li>Meta de 180 – 270 mg/dL</li><li>Osm ↓ 3 – 8/h · Na ↓ ≤ 10/24 h</li></ul></div>
-            <div class="tl-step shh"><div class="t">SHH · 24 – 72 h</div><ul><li>Osm &lt; 300 · diuresis ≥ 0,5 mL/kg/h</li><li>Conciencia basal · glicemia &lt; 250</li><li>Normalización completa en ≤ 72 h</li></ul></div>
+          <span class="eyebrow shh">Algoritmo resumen · SHH</span>
+          <h2>El SHH en una <span class="hl">línea de tiempo</span></h2>
+          <hr class="divider shh">
+          <div class="tl c5">
+            <div class="tl-step shh"><div class="t">0 – 60 min</div><ul><li>Criterios de SHH; descartar cuadro mixto</li><li>NaCl 0,9 %</li><li>Osm, Na, K, lactato, β-OHB</li><li>HBPM profiláctica</li></ul></div>
+            <div class="tl-step shh"><div class="t">1 – 6 h</div><ul><li>Fluidos solos; osm cada 1 h</li><li>Insulina a 0,05 U/kg/h cuando la osm se estanque</li><li>KCl 40 mEq/L si K 3,5 – 5,5</li></ul></div>
+            <div class="tl-step shh"><div class="t">6 – 12 h</div><ul><li>Balance de +3 – 6 L a las 12 h</li><li>Glicemia &lt; 250 → dextrosa</li><li>Osm ↓ 3 – 8 por hora</li></ul></div>
+            <div class="tl-step shh"><div class="t">12 – 24 h</div><ul><li>Reponer el resto del déficit</li><li>Meta de 180 – 270 mg/dL</li><li>Na ↓ ≤ 10 en 24 h</li></ul></div>
+            <div class="tl-step shh"><div class="t">24 – 72 h</div><ul><li>Osm &lt; 300 · diuresis ≥ 0,5 mL/kg/h</li><li>Conciencia basal</li><li>Normalización completa</li></ul></div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Fig. 4 "Treatment pathways" [1] · Mustafa OG et al. <i>Diabet Med</i> 2023;40(3):e15005, cinco fases (0 – 60 min, 1 – 6, 6 – 12, 12 – 24, 24 – 72 h) [2].</div>
+        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, cinco fases (0 – 60 min, 1 – 6, 6 – 12, 12 – 24, 24 – 72 h) [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Fig. 4 [1].</div>
       </section>
 
-      <!-- 30 · COMPLICACIONES -->
+      <!-- SHH 09 MONITORIZACIÓN -->
       <section class="content-slide">
-        <div class="top-bar"><span class="left"><span class="dot"></span>Manejo · 10 / 10</span><span>30</span></div>
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 09 / 12 · Monitorización</span><span class="num"></span></div>
         <div class="slide-body">
-          <span class="eyebrow">Complicaciones del tratamiento</span>
-          <h2>Lo que el tratamiento puede <span class="hl">causar</span></h2>
-          <hr class="divider">
-          <div class="dose c3">
+          <span class="eyebrow shh">Monitorización y estudio</span>
+          <h2>La <span class="hl">osmolaridad</span> manda</h2>
+          <hr class="divider shh">
+          <div class="grid cols-3">
+            <div class="card accent-shh tight"><div class="card-label">Estudio inicial</div><ul>
+              <li>Glicemia, Na, K, Cl, urea/BUN, Cr, osm (medida o calculada)</li>
+              <li>Gases venosos con lactato y β-OHB</li>
+              <li>Hemograma, Mg, fosfato</li>
+              <li>Estudio del gatillo: ECG, troponina, RxTx, orina y hemocultivos; imagen cerebral si hay focalidad</li></ul></div>
+            <div class="card accent-shh tight"><div class="card-label">Frecuencia</div><ul>
+              <li><strong>Osm cada 1 h al inicio</strong> (JBDS); luego cada 4 h (ADA)</li>
+              <li>Glicemia capilar cada 1 – 2 h</li>
+              <li>Na, K, Cr y glucosa cada 4 h o más seguido si hay alteraciones</li>
+              <li>Balance hídrico y diuresis horaria</li></ul></div>
+            <div class="card accent-shh tight"><div class="card-label">Clínica diaria</div><ul>
+              <li>Estado cognitivo vs estado premórbido</li>
+              <li>Examen de pies (úlceras por presión)</li>
+              <li>Signos de sobrecarga de volumen y de trombosis</li>
+              <li>Ajustar los fluidos para que la osm baje gradualmente</li></ul></div>
+          </div>
+        </div>
+        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Secciones 2.1–2.2, 4.3–4.4, 4.10 y 4.11 [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 [1].</div>
+      </section>
+
+      <!-- SHH 10 RESOLUCIÓN -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 10 / 12 · Resolución</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Resolución & recuperación</span>
+          <h2>Una evaluación <span class="hl">integral</span>, no un solo número</h2>
+          <hr class="divider shh">
+          <div class="grid cols-2">
+            <div class="criteria-box shh" style="margin-top:0; padding: 12px 16px;">
+              <div class="label">SHH resuelto</div>
+              <ol>
+                <li style="font-size:0.74em;"><strong>Osmolaridad &lt; 300 mOsm/kg</strong></li>
+                <li style="font-size:0.74em;"><strong>Hipovolemia corregida:</strong> diuresis ≥ 0,5 mL/kg/h</li>
+                <li style="font-size:0.74em;"><strong>Estado cognitivo</strong> de vuelta al basal</li>
+                <li style="font-size:0.74em;"><strong>Glicemia &lt; 250 mg/dL</strong> (ADA) · &lt; 15 mmol/L ≈ 270 (JBDS)</li>
+              </ol>
+              <p style="font-size:0.64em; margin:8px 0 0; color: var(--text-mute);">Una glicemia o un Na normales por sí solos <strong>no</strong> indican que el episodio se resolvió.</p>
+            </div>
+            <div class="card accent-shh tight"><div class="card-label">Fase de recuperación</div><ul>
+              <li>La corrección completa de los electrolitos y la osm puede tardar <strong>hasta 72 h</strong></li>
+              <li>Pasar a insulina SC cuando coma y esté estable; el esquema depende del contexto</li>
+              <li>DM no diagnosticada o bien controlada con orales: considerar volver a los orales tras semanas o meses de estabilidad</li>
+              <li>Continuar la HBPM hasta el alta</li></ul></div>
+          </div>
+        </div>
+        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Sección 6 "Resolución", Tabla 3 y Sección 7 "Fase de recuperación" [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Resolution" [1].</div>
+      </section>
+
+      <!-- SHH 11 COMPLICACIONES -->
+      <section class="content-slide">
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 11 / 12 · Complicaciones</span><span class="num"></span></div>
+        <div class="slide-body">
+          <span class="eyebrow shh">Complicaciones</span>
+          <h2>Lo que puede salir <span class="hl">mal</span></h2>
+          <hr class="divider shh">
+          <div class="dose c3 shh">
             <div class="h">Complicación</div><div class="h">Frecuencia / riesgo</div><div class="h">Prevención y manejo</div>
-
-            <div class="k">Hipoglicemia</div>
-            <div>&lt; 70 mg/dL en 16 – 28 %; &lt; 40 mg/dL en 2 % (OR de mortalidad ~4)</div>
-            <div>Glicemia cada 1 – 2 h; con glicemia &lt; 250, insulina a 0,05 U/kg/h + dextrosa 5 – 10 %</div>
-
-            <div class="k">Hipokalemia</div>
-            <div>K &lt; 3,5 en ~55 % (CAD) y 51 % (SHH); ≤ 2,5 en 16 % y 9 %</div>
-            <div>K cada 4 h y reponer en los fluidos; no iniciar insulina con K &lt; 3,5</div>
-
-            <div class="k">Acidosis hiperclorémica</div>
-            <div>Frecuente en la recuperación; autolimitada</div>
-            <div>Menor con cristaloides balanceados; no confundirla con CAD persistente</div>
-
-            <div class="k">Trombosis</div>
-            <div>Sobre todo en el SHH (estado protrombótico)</div>
-            <div>HBPM profiláctica salvo sospecha de trombosis</div>
-
-            <div class="k">Edema cerebral</div>
-            <div>&lt; 0,1 % en adultos, con ~30 % de mortalidad</div>
-            <div>Corregir la osm lentamente; si aparece: <strong>manitol</strong> y ventilación mecánica; umbral bajo para TAC</div>
-
-            <div class="k">Desmielinización osmótica</div>
-            <div>Por corrección rápida del Na</div>
-            <div>Osm ↓ 3 – 8 mOsm/kg/h, usando NaCl 0,9 %</div>
-
-            <div class="k">Lesión renal aguda</div>
-            <div>~50 % de los ingresos (RIFLE)</div>
-            <div>Suele revertir con la hidratación; Cr diaria</div>
+            <div class="k">Trombosis</div><div>IAM, ACV y trombosis arterial periférica más frecuentes en el SHH</div><div>HBPM profiláctica toda la hospitalización; anticoagulación terapéutica solo si hay trombosis</div>
+            <div class="k">Edema cerebral</div><div>&lt; 0,1 % en adultos, con ~30 % de mortalidad</div><div>Corrección lenta de la osm; manitol y VM</div>
+            <div class="k">Desmielinización osmótica</div><div>Por corrección rápida del Na</div><div>Osm ↓ 3 – 8 por hora, con NaCl 0,9 %</div>
+            <div class="k">Hipokalemia</div><div>K &lt; 3,5 en 51 %; ≤ 2,5 en 9 %</div><div>K cada 4 h; 40 mEq/L con K 3,5 – 5,5</div>
+            <div class="k">Hipoglicemia</div><div>Mayor riesgo con insulina precoz o en exceso</div><div>Insulina a 0,05 U/kg/h recién cuando la osm se estanque; dextrosa con glicemia &lt; 250</div>
+            <div class="k">LRA · úlceras · sobrecarga</div><div>LRA en ~50 %; úlceras de talón; edema pulmonar en el adulto mayor</div><div>Cr diaria, taloneras, reponer con cautela</div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 5 y Tabla 3 "Complicaciones durante el tratamiento" [1].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Tabla 3 "Complicaciones durante el tratamiento" [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Secciones 4.9 "Anticoagulación" y 4.11 "Protección de pies" [2].</div>
       </section>
 
-      <!-- 31 · TAKEAWAYS -->
+      <!-- SHH 12 PREVENCIÓN -->
       <section class="content-slide">
-        <div class="top-bar"><span class="left"><span class="dot"></span>Puntos clave</span><span>31</span></div>
+        <div class="top-bar shh"><span class="left"><span class="dot"></span>SHH · 12 / 12 · Prevención</span><span class="num"></span></div>
         <div class="slide-body">
-          <span class="eyebrow">Take-home</span>
-          <h2>Lo que <span class="hl">no puede fallar</span></h2>
-          <hr class="divider">
-          <div class="takeaway"><div class="num">01</div><div class="ct"><div class="title-t">Criterios 2024: CAD desde glicemia ≥ 200 (o DM conocida); SHH con osm efectiva &gt; 300</div><p>Medir el β-OHB. En Chile los egresos por CAD subieron 38 % entre 2021 y 2025.</p></div></div>
-          <div class="takeaway"><div class="num">02</div><div class="ct"><div class="title-t">Fluidos primero: 500 – 1000 mL/h durante 2 – 4 h</div><p>Con glicemia &lt; 250 se agrega dextrosa 5 – 10 % y no se suspende la insulina.</p></div></div>
-          <div class="takeaway"><div class="num">03</div><div class="ct"><div class="title-t">Sin K ≥ 3,5 no hay insulina</div><p>La infusión de la CAD es de 0,1 U/kg/h, y baja a 0,05 con glicemia &lt; 250. En el SHH es de 0,05 U/kg/h y parte cuando la osm deja de caer.</p></div></div>
-          <div class="takeaway"><div class="num">04</div><div class="ct"><div class="title-t">Se resuelve con β-OHB &lt; 0,6 y pH ≥ 7,3 o HCO₃ ≥ 18; la basal SC va 1 – 2 h antes</div><p>En el SHH: osm ↓ 3 – 8 por hora, Na ↓ ≤ 10 en 24 h, HBPM y buscar siempre el gatillo.</p></div></div>
+          <span class="eyebrow shh">Prevención</span>
+          <h2>Vigilar al <span class="hl">adulto mayor</span></h2>
+          <hr class="divider shh">
+          <div class="grid cols-3">
+            <div class="card accent-shh tight"><div class="card-label">Detección precoz</div><ul>
+              <li>Observación estrecha, detección temprana de síntomas y atención oportuna en adultos mayores</li>
+              <li>Cuidadores y establecimientos de larga estadía atentos a la poliuria, la sed y la somnolencia</li></ul></div>
+            <div class="card accent-shh tight"><div class="card-label">Al alta</div><ul>
+              <li>Evaluación por diabetología con oferta de educación</li>
+              <li>Revisar los fármacos precipitantes (corticoides, tiazidas, antipsicóticos)</li>
+              <li>Optimizar el riesgo cardiovascular</li>
+              <li>Insumos de monitoreo y un teléfono de contacto</li></ul></div>
+            <div class="card accent-shh tight"><div class="card-label">Factores de fondo</div><ul>
+              <li>Factores psicosociales en adultos vulnerables</li>
+              <li>Determinantes sociales: inseguridad alimentaria, acceso a la salud</li>
+              <li>Educación estructurada: reduce el riesgo de CAD y de SHH</li></ul></div>
+          </div>
         </div>
-        <div class="src"><b>Fuente</b>Síntesis de Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1] y Mustafa OG et al. <i>Diabet Med</i> 2023;40(3):e15005 [2].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 7 "¿Cómo prevenir la CAD y el SHH?" [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Sección 7 "Fase de recuperación" [2].</div>
       </section>
 
-      <!-- 32 · BIBLIOGRAFÍA -->
+      <!-- BIBLIOGRAFÍA -->
       <section class="content-slide">
-        <div class="top-bar"><span class="left"><span class="dot"></span>Referencias</span><span>32</span></div>
+        <div class="top-bar"><span class="left"><span class="dot"></span>Referencias</span><span class="num"></span></div>
         <div class="slide-body">
           <span class="eyebrow">Bibliografía</span>
           <h2>Fuentes <span class="hl">citadas</span></h2>
@@ -1646,10 +1565,10 @@
             <li>International Diabetes Federation. <i>IDF Diabetes Atlas</i>, 11ª ed. Bruselas: IDF; 2025. Ficha país Chile.</li>
           </ol>
         </div>
-        <div class="src"><b>Nota</b>Todas las fuentes son de 2022 a 2026. Datos chilenos: cálculos propios sobre las bases abiertas del DEIS. Las dosis corresponden a adultos no embarazadas. Antes de indicarlas, ajustarlas al protocolo local de cada centro.</div>
+        <div class="src"><b>Nota</b>Todas las fuentes son de 2022 a 2026. Datos chilenos: cálculos propios sobre las bases abiertas del DEIS. Las dosis corresponden a adultos no embarazadas; ajustarlas al protocolo local.</div>
       </section>
 
-      <!-- 33 · CLOSE -->
+      <!-- CLOSE -->
       <section>
         <div class="close-slide">
           <span class="eyebrow">Fin de la presentación</span>
@@ -1666,26 +1585,18 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
   <script>
-    document.querySelectorAll('.reveal .slides > section').forEach(function (s) {
+    document.querySelectorAll('.reveal .slides > section').forEach(function (s, i) {
       var b = document.createElement('div');
       b.className = 'unab-badge';
       b.innerHTML = '<img src="logo-unab.png" alt="Universidad Andrés Bello">';
       s.appendChild(b);
+      var n = s.querySelector('.top-bar .num');
+      if (n) n.textContent = String(i + 1).padStart(2, '0');
     });
     Reveal.initialize({
-      hash: true,
-      transition: 'fade',
-      transitionSpeed: 'default',
-      backgroundTransition: 'fade',
-      controls: true,
-      progress: true,
-      slideNumber: false,
-      center: false,
-      width: 1280,
-      height: 720,
-      margin: 0.03,
-      minScale: 0.2,
-      maxScale: 2.0
+      hash: true, transition: 'fade', transitionSpeed: 'default', backgroundTransition: 'fade',
+      controls: true, progress: true, slideNumber: false, center: false,
+      width: 1280, height: 720, margin: 0.03, minScale: 0.2, maxScale: 2.0
     });
   </script>
 </body>
