@@ -688,6 +688,12 @@
     .compare.compact .label { font-size: 0.64em; }
     .section-divider.shh .big-num { font-size: 7.5em; }
     .section-divider.shh h1 { font-size: 2.9em; }
+    .bars { margin-top: 10px; display: grid; gap: 5px; }
+    .bar-row { display: grid; grid-template-columns: 44px 1fr 56px; align-items: center; gap: 10px; font-size: 0.62em; }
+    .bar-row .yr { font-family: 'JetBrains Mono', monospace; color: var(--text-mute); }
+    .bar-row .trk { height: 14px; background: var(--bg-card); border-radius: 4px; overflow: hidden; }
+    .bar-row .fill { height: 100%; background: linear-gradient(90deg, var(--cad), #fbd7b8); border-radius: 4px; }
+    .bar-row .val { font-family: 'JetBrains Mono', monospace; color: #fbd7b8; text-align: right; font-weight: 600; }
     .formula-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
     .formula-row .formula-box { margin-top: 0; }
     .formula-row .fl-eq { font-size: 0.72em; }
@@ -709,7 +715,7 @@
             <span class="right">→ Flechas para navegar</span>
           </div>
         </div>
-        <div class="src"><b>Fuentes</b>Basado en Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1] · Mustafa OG et al. (JBDS) <i>Diabet Med</i> 2023;40(3):e15005 [2] · Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43 [3]. Bibliografía completa en la diapositiva final.</div>
+        <div class="src"><b>Fuentes</b>Datos chilenos: DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos) [5] y defunciones [6]. Manejo: Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005 [2] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023 [3]. Bibliografía completa en la diapositiva final.</div>
       </section>
 
       <!-- 2 · AGENDA -->
@@ -730,33 +736,31 @@
         <div class="src"><b>Fuente</b>Estructura según secciones del consenso ADA/EASD/JBDS/AACE/DTS: Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1].</div>
       </section>
 
-      <!-- 3 · CONTEXT -->
+      <!-- 3 · CONTEXT · CHILE -->
       <section class="content-slide">
-        <div class="top-bar"><span class="left"><span class="dot"></span>Contexto clínico</span><span>03</span></div>
+        <div class="top-bar"><span class="left"><span class="dot"></span>Contexto clínico · Chile</span><span>03</span></div>
         <div class="slide-body">
-          <span class="eyebrow">¿Por qué importa?</span>
-          <h2>Urgencias <span class="hl">vitales</span> en aumento</h2>
+          <span class="eyebrow">Chile en números</span>
+          <h2>Una urgencia <span class="hl">en aumento</span> en Chile</h2>
           <hr class="divider">
-          <div class="grid cols-3">
-            <div class="card accent-green">
-              <div class="card-label">Frecuencia</div>
-              <h4>~1 % de las hospitalizaciones en diabéticos</h4>
-              <p>Ingresos en EE.UU.: <strong>38 % CAD</strong>, <strong>35 % SHH</strong> y <strong>27 % mixtos</strong> CAD/SHH. Las hospitalizaciones por CAD subieron ~55 %, sobre todo en &lt; 45 años.</p>
+          <div class="grid cols-2" style="grid-template-columns: 1.05fr 1fr; gap: 14px;">
+            <div>
+              <div class="lab-grid" style="grid-template-columns: 1fr 1fr; margin-top:0;">
+                <div class="lab-item cad"><div class="lab-name">Egresos por CAD · 2024</div><div class="lab-value">4.746</div><div class="lab-note">E10–E14 con cetoacidosis. 88 % son FONASA</div></div>
+                <div class="lab-item cad"><div class="lab-name">Letalidad hospitalaria CAD</div><div class="lab-value">1,2 %</div><div class="lab-note">E10 (insulinodependiente) 0,4 % vs E11 1,9 %</div></div>
+                <div class="lab-item shh"><div class="lab-name">Coma diabético · 2024</div><div class="lab-value">334 · 5,1 %</div><div class="lab-note">Egresos y letalidad. 71 % tiene ≥ 60 años</div></div>
+                <div class="lab-item"><div class="lab-name">Muertes · 2023 (oficial)</div><div class="lab-value">167</div><div class="lab-note">Por CAD o coma diabético: 4,4 % de las muertes con DM como causa básica</div></div>
+              </div>
             </div>
-            <div class="card accent-green">
-              <div class="card-label">Mortalidad intrahospitalaria</div>
-              <h4>CAD 0,2 – 1 % · SHH ~5 % · Mixto ~8 %</h4>
-              <p>CAD: 0,20 % en DM1 y 1,04 % en DM2. La mortalidad es mayor en el SHH y en los cuadros mixtos.</p>
-            </div>
-            <div class="card accent-green">
-              <div class="card-label">Después del alta</div>
-              <h4>Marcador de mal pronóstico</h4>
-              <p>Mortalidad al año: <strong>0,9 % en DM1</strong> y <strong>9,5 % en DM2</strong>. Tras una CAD, la mortalidad al año es ~13 veces la de la población general.</p>
+            <div class="card accent-cad tight">
+              <div class="card-label">Egresos por CAD en Chile, 2021 – 2025</div>
+              <div class="bars"><div class="bar-row"><span class="yr">2021</span><div class="trk"><div class="fill" style="width:72.3%"></div></div><span class="val">3.757</span></div><div class="bar-row"><span class="yr">2022</span><div class="trk"><div class="fill" style="width:78.1%"></div></div><span class="val">4.061</span></div><div class="bar-row"><span class="yr">2023</span><div class="trk"><div class="fill" style="width:79.9%"></div></div><span class="val">4.155</span></div><div class="bar-row"><span class="yr">2024</span><div class="trk"><div class="fill" style="width:91.3%"></div></div><span class="val">4.746</span></div><div class="bar-row"><span class="yr">2025</span><div class="trk"><div class="fill" style="width:100.0%"></div></div><span class="val">5.199</span></div></div>
+              <p style="margin-top:8px;"><strong>+38 %</strong> en 5 años. El 47 % de los egresos de 2024 fue en menores de 40 años.</p>
             </div>
           </div>
-          <div class="note-bar ok"><strong>Los cuadros mixtos no son raros:</strong> uno de cada cuatro ingresos tiene hiperosmolaridad y cetoacidosis a la vez. CAD y SHH son un espectro, no categorías excluyentes.</div>
+          <div class="note-bar ok"><strong>Contexto:</strong> ~1,9 millones de adultos chilenos (20 – 79 años) viven con diabetes, con 2,4 millones proyectados a 2050 <sup class="r">7</sup>. <strong>Ojo con el código:</strong> la CIE-10 no tiene un código propio para el SHH; el "coma" (E1x.0) también incluye el coma cetoacidótico y el hipoglicémico. Los egresos incluyen pacientes pediátricos.</div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 1 "Epidemiología" [1].</div>
+        <div class="src"><b>Fuente</b>DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos) [5] · DEIS-MINSAL, Defunciones por causa 2021–2023 (oficiales) y 2024–2026 (preliminares) [6] · IDF Diabetes Atlas, 11ª ed., 2025 [7]. Cálculos propios sobre las bases DEIS (DIAG1 E10–E14, cuarto dígito .0 "con coma" y .1 "con cetoacidosis"). Datos 2025 y defunciones 2024+ en revisión por DEIS.</div>
       </section>
 
       <!-- 4 · CAD DIVIDER -->
@@ -794,11 +798,11 @@
             <div class="card accent-cad">
               <div class="card-label">Edad</div>
               <h4>Jóvenes y adultos</h4>
-              <p>El alza reciente de hospitalizaciones por CAD se concentra en adultos &lt; 45 años, aunque puede ocurrir a cualquier edad.</p>
+              <p>En Chile (2024), el <strong>47 %</strong> de los egresos por CAD fue en &lt; 40 años y el 20 % en &lt; 20 años. Sin embargo, el 34 % corresponde a DM "no insulinodependiente" (E11).</p>
             </div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Secciones 1–2 [1] · Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43 [3].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Secciones 1–2 [1] · DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos), año 2024 (cálculo propio) [5].</div>
       </section>
 
       <!-- 6 · CAD PATHOPHYSIOLOGY -->
@@ -837,7 +841,7 @@
             </div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 2 "Fisiopatología" [1] · Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43 [3].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 2 "Fisiopatología" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023 [3].</div>
       </section>
 
       <!-- 7 · CAD TRIGGERS -->
@@ -852,7 +856,7 @@
             <li><span class="bold">Omisión o subdosificación de insulina</span> — Hasta 40 % en algunas series. Asociada a barreras de acceso, determinantes sociales y salud mental.</li>
             <li><span class="bold">Debut de DM tipo 1</span> — Entre el 6 % y el 21 % de los adultos debuta con CAD.</li>
             <li><span class="bold">Fármacos</span> — <em>iSGLT2</em> (CAD euglicémica), corticoides, antipsicóticos atípicos e inhibidores de checkpoint inmunológico (diabetes autoinmune de novo).</li>
-            <li><span class="bold">Otros</span> — Pancreatitis, IAM, TEP, trauma, alcohol y drogas (cocaína).</li>
+            <li><span class="bold">Otros</span> — Pancreatitis, IAM, TEP, trauma, consumo de sustancias.</li>
           </ul>
         </div>
         <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 1 y Tabla 1 "Causas precipitantes por región" [1].</div>
@@ -892,13 +896,13 @@
             <div class="card accent-cad tight">
               <div class="card-label">Instalación</div>
               <ul>
-                <li>Rápida: <strong>en menos de 24 horas</strong></li>
-                <li>Contrasta con la instalación insidiosa del SHH, que tarda días</li>
+                <li>Rápida: <strong>horas</strong></li>
+                <li>Contrasta con el SHH, que "suele desarrollarse en muchos días" y por eso se deshidrata más</li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 3 "Presentación clínica" y Tabla 2 [1] · Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43 [3].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 3 "Presentación clínica" y Tabla 2 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Sección 1 [2].</div>
       </section>
 
       <!-- 9 · CAD DIAGNOSIS -->
@@ -949,7 +953,7 @@
             <div class="lab-item"><div class="lab-name">Sodio</div><div class="lab-value">Normal / ↓</div><div class="lab-note">Hiponatremia dilucional (translocacional): corregirla</div></div>
             <div class="lab-item"><div class="lab-name">Potasio</div><div class="lab-value">Normal / ↑</div><div class="lab-note">Con déficit corporal de 3 – 6 mEq/kg</div></div>
             <div class="lab-item"><div class="lab-name">Fosfato</div><div class="lab-value">Normal / ↑</div><div class="lab-note">Con déficit de hasta 1 mmol/kg</div></div>
-            <div class="lab-item"><div class="lab-name">Otros</div><div class="lab-value">BUN/Cr ↑ · GB ↑</div><div class="lab-note">Amilasa/lipasa ↑ sin pancreatitis</div></div>
+            <div class="lab-item"><div class="lab-name">Otros</div><div class="lab-value">BUN/Cr ↑ · GB ↑</div><div class="lab-note">Lesión renal aguda en ~50 % de los ingresos</div></div>
           </div>
           <div class="formula-row">
             <div class="formula-box"><div class="fl-label">Anion gap</div><div class="fl-eq">Na − (Cl + HCO₃)</div></div>
@@ -957,7 +961,7 @@
             <div class="formula-box"><div class="fl-label">Osm efectiva</div><div class="fl-eq">2 × Na + glc/18</div><div class="fl-note">Osm total: + BUN/2,8</div></div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Secciones 3–4 [1] · Mustafa OG et al. <i>Diabet Med</i> 2023;40(3):e15005, factor 2,4 [2] · Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43 [3].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Secciones 3–5 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, factor 2,4 y osmolaridad total [2].</div>
       </section>
 
       <!-- 11 · EUGLYCEMIC DKA -->
@@ -1027,7 +1031,7 @@
             <div class="card accent-shh">
               <div class="card-label">Edad</div>
               <h4>Adultos mayores</h4>
-              <p>Es más frecuente en personas con deterioro cognitivo, inmovilidad o dependencia.</p>
+              <p>En Chile (2024), el <strong>71 %</strong> de los egresos por coma diabético tenía ≥ 60 años y el 70 % era DM "no insulinodependiente" (E11).</p>
             </div>
             <div class="card accent-shh">
               <div class="card-label">Instalación</div>
@@ -1036,7 +1040,7 @@
             </div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1] · Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43 [3] · Mustafa OG et al. <i>Diabet Med</i> 2023;40(3):e15005 [2].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Tabla 4 "Adultos mayores frágiles" [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005 [2] · DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos), año 2024 (cálculo propio) [5].</div>
       </section>
 
       <!-- 14 · SHH PATHOPHYSIOLOGY -->
@@ -1075,7 +1079,7 @@
             </div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 2 [1] · Mustafa OG et al. <i>Diabet Med</i> 2023;40(3):e15005, pérdidas de 100 – 220 mL/kg [2].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 2 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Tabla 1: pérdidas de 100 – 220 mL/kg [2].</div>
       </section>
 
       <!-- 15 · SHH TRIGGERS -->
@@ -1088,12 +1092,12 @@
           <ul class="slide-list tight">
             <li><span class="bold">Infecciones</span> — La causa más frecuente: neumonía e ITU, seguidas de sepsis y úlceras infectadas.<span class="muted">En el adulto mayor la infección puede cursar sin fiebre.</span></li>
             <li><span class="bold">Falta de acceso al agua</span> — Institucionalización, demencia, inmovilidad o incapacidad de expresar la sed.</li>
-            <li><span class="bold">Enfermedad aguda grave</span> — IAM, ACV, pancreatitis, trauma.</li>
-            <li><span class="bold">Fármacos</span> — Tiazidas, corticoides, betabloqueadores, fenitoína, antipsicóticos atípicos.</li>
+            <li><span class="bold">Eventos cardiovasculares y pancreatitis</span> — IAM, ACV.</li>
+            <li><span class="bold">Fármacos</span> — Corticoides, tiazidas, simpaticomiméticos, antipsicóticos.</li>
             <li><span class="bold">Omisión del tratamiento</span> — Hipoglicemiantes o insulina.</li>
           </ul>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 1 [1] · Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43, "Precipitating factors" [3].</div>
+        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Sección 2 "Factores precipitantes" [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 1 [1].</div>
       </section>
 
       <!-- 16 · SHH SIGNS -->
@@ -1115,7 +1119,7 @@
             <div class="card accent-shh tight">
               <div class="card-label">Signos al examen</div>
               <ul>
-                <li>Deshidratación <em>severa</em>: hipovolemia marcada, mucosas muy secas</li>
+                <li>Deshidratación <em>severa</em>: ojos hundidos, surcos longitudinales en la lengua, debilidad de extremidades</li>
                 <li>Taquicardia, hipotensión, shock</li>
                 <li><strong>Sin</strong> Kussmaul y <strong>sin</strong> aliento cetónico</li>
               </ul>
@@ -1124,8 +1128,8 @@
               <div class="card-label">Compromiso neurológico</div>
               <ul>
                 <li>Letargia, estupor y coma (<em>hallazgo dominante</em>)</li>
-                <li>Convulsiones focales o generalizadas</li>
-                <li>Hemiparesia o hemianopsia reversibles que simulan un ACV</li>
+                <li>El compromiso cognitivo es habitual en el SHH y en la CAD severa</li>
+                <li>Todo diabético con compromiso de conciencia: medir glicemia y osmolaridad</li>
               </ul>
             </div>
             <div class="card accent-shh tight">
@@ -1138,7 +1142,7 @@
             </div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43 [3] · Mustafa OG et al. <i>Diabet Med</i> 2023;40(3):e15005 [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Tabla 3 [1].</div>
+        <div class="src"><b>Fuente</b>Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Sección 2 "Evaluación clínica" [2] · Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 3 y Tabla 3 [1].</div>
       </section>
 
       <!-- 17 · SHH DIAGNOSIS -->
@@ -1157,7 +1161,7 @@
               <li><strong>Sin acidosis</strong>: pH ≥ 7,3 y bicarbonato ≥ 15 mEq/L (en 2009 el umbral era 18)</li>
             </ol>
           </div>
-          <div class="note-bar ok"><strong>Si cumple criterios de CAD y de SHH a la vez → cuadro mixto CAD/SHH</strong> (27 % de los ingresos). Se trata con insulina a 0,1 U/kg/h, igual que una CAD, cuidando la velocidad de descenso de la osmolaridad.</div>
+          <div class="note-bar ok"><strong>Si cumple criterios de CAD y de SHH a la vez → cuadro mixto CAD/SHH</strong> (27 % de los ingresos en EE.UU.; en Chile no hay un código CIE-10 que lo distinga). Se trata con insulina a 0,1 U/kg/h, igual que una CAD, cuidando la velocidad de descenso de la osmolaridad.</div>
         </div>
         <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Fig. 2B y Sección 4 [1] · Rodríguez Álvarez P et al. <i>Cleve Clin J Med</i> 2025;92(3):152-8, tabla comparativa 2009 vs 2024 [4].</div>
       </section>
@@ -1181,7 +1185,7 @@
             <div class="lab-item"><div class="lab-name">Estudio del gatillo</div><div class="lab-value">ECG · RxTx · cultivos</div><div class="lab-note">Troponina, orina, imagen según la clínica</div></div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1] · Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43, Tabla "Déficits típicos" [3] · Mustafa OG et al. <i>Diabet Med</i> 2023;40(3):e15005 [2].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Tabla 1 "Pérdidas típicas" (K 4 – 6 mmol/kg) [2].</div>
       </section>
 
       <!-- 19 · COMPARISON -->
@@ -1217,8 +1221,8 @@
             <div class="cell-shh">Efectiva &gt; 300 · total &gt; 320</div>
 
             <div class="label">Déficit de agua</div>
-            <div class="cell-cad">~6 L (100 mL/kg)</div>
-            <div class="cell-shh">~9 L (100 – 200 mL/kg)</div>
+            <div class="cell-cad">100 mL/kg (~7 L en 70 kg)</div>
+            <div class="cell-shh">100 – 220 mL/kg (7 – 15 L en 70 kg)</div>
 
             <div class="label">Déficit de K / Na</div>
             <div class="cell-cad">K 3 – 5 · Na 7 – 10 mEq/kg</div>
@@ -1228,12 +1232,12 @@
             <div class="cell-cad">0,1 U/kg/h, desde el inicio (con K ≥ 3,5)</div>
             <div class="cell-shh">0,05 U/kg/h, cuando la osm deja de caer con fluidos</div>
 
-            <div class="label">Mortalidad hosp.</div>
-            <div class="cell-cad">0,2 – 1 %</div>
-            <div class="cell-shh">~5 % (mixto ~8 %)</div>
+            <div class="label">Letalidad · Chile 2024</div>
+            <div class="cell-cad">1,2 % (egresos E1x.1)</div>
+            <div class="cell-shh">5,1 % (coma diabético E1x.0)</div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1] · Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43, Tabla 2 "Déficits de agua y electrolitos" [3] · Mustafa OG et al. <i>Diabet Med</i> 2023;40(3):e15005 [2].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75 [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, déficits en CAD [3] · Mustafa OG et al. (JBDS-SHH) <i>Diabet Med</i> 2023;40(3):e15005, Tabla 1, déficits en SHH [2] · DEIS-MINSAL, Egresos hospitalarios 2021–2025 (datos abiertos), letalidad 2024 (cálculo propio) [5].</div>
       </section>
 
       <!-- 20 · MANEJO DIVIDER -->
@@ -1300,15 +1304,20 @@
           <div class="dose c4 cad">
             <div class="h">Fase</div><div class="h">Solución</div><div class="h">Velocidad · tiempo</div><div class="h">Hasta que…</div>
 
+            <div class="k">PAS &lt; 90 mmHg</div>
+            <div>NaCl 0,9 %, <strong>500 mL en 10 – 15 min</strong>; repetir si persiste</div>
+            <div>La mayoría requiere 500 – 1000 mL rápidos</div>
+            <div class="stop">PAS &gt; 90; considerar UCI</div>
+
             <div class="k">Reanimación inicial</div>
             <div>NaCl 0,9 % <strong>o</strong> cristaloide balanceado (Ringer lactato, Plasma-Lyte 148)</div>
-            <div><strong>500 – 1000 mL/h durante las primeras 2 – 4 h</strong> (sin falla cardíaca ni renal)</div>
+            <div><strong>500 – 1000 mL/h durante las primeras 2 – 4 h</strong> (consenso 2024)</div>
             <div class="stop">Se restaure el volumen intravascular (PA, FC, diuresis)</div>
 
-            <div class="k">Mantención</div>
-            <div>Na corregido normal o alto → <strong>NaCl 0,45 %</strong><br>Na corregido bajo → <strong>NaCl 0,9 %</strong></div>
-            <div><strong>250 – 500 mL/h</strong>, según hemodinamia, balance y Na</div>
-            <div class="stop">Corregir el déficit estimado en 24 – 48 h</div>
+            <div class="k">Esquema JBDS (litro a litro)</div>
+            <div>1 L en la 1ª h → 1 L en 2 h → 1 L en 2 h → 1 L en 4 h → 1 L en 4 h → 1 L en 6 h (con KCl desde el 2º L)</div>
+            <div>~6 L en las primeras ~19 h</div>
+            <div class="stop">Corregir el déficit (~100 mL/kg) en 24 – 48 h</div>
 
             <div class="k">Glicemia &lt; 250 mg/dL</div>
             <div>Agregar <strong>dextrosa 5 – 10 %</strong> al NaCl 0,9 %</div>
@@ -1317,12 +1326,12 @@
 
             <div class="k">Adulto mayor · IC · ERC en diálisis</div>
             <div>Mismo cristaloide</div>
-            <div><strong>Bolos de 250 mL</strong> con reevaluación hemodinámica frecuente</div>
+            <div><strong>Bolos de 250 mL</strong> con reevaluación hemodinámica frecuente (la JBDS pide reposición cautelosa también en jóvenes de 18 – 25 años y embarazadas)</div>
             <div class="warn">Riesgo de sobrecarga de volumen y de VM</div>
           </div>
           <div class="note-bar ok"><strong>Dato:</strong> los fluidos por sí solos bajan la glicemia 50 – 70 mg/dL/h. Los cristaloides balanceados logran una resolución más rápida y menos acidosis hiperclorémica que el NaCl 0,9 %.</div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Fluid therapy" [1] · Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43, Fig. 1, elección 0,45 % vs 0,9 % según Na corregido [3].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Fluid therapy" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, Box 2–3, esquema de fluidos y bolo con PAS &lt; 90 [3].</div>
       </section>
 
       <!-- 23 · CAD INSULINA IV -->
@@ -1351,9 +1360,9 @@
             <div class="stop">Glicemia &lt; 250 mg/dL</div>
 
             <div class="k">Si no responde</div>
-            <div>Si la glicemia no cae ≥ 10 % en la 1ª hora: <strong>bolo de 0,14 U/kg IV</strong> y seguir con la infusión</div>
-            <div>~10 U en bolo</div>
-            <div>Revisar antes la hidratación y la vía</div>
+            <div>Si el β-OHB no baja ≥ 0,5 mmol/L/h, el HCO₃ no sube ≥ 3 mEq/L/h o la glicemia no baja ≥ 54 mg/dL/h: <strong>subir 1 U/h cada hora</strong></div>
+            <div>7 → 8 → 9 U/h…</div>
+            <div>Hasta lograr las metas de descenso; revisar antes la vía y la bomba</div>
 
             <div class="k">Glicemia &lt; 250</div>
             <div>Bajar a <strong>0,05 U/kg/h</strong> + dextrosa 5 – 10 %</div>
@@ -1366,7 +1375,7 @@
             <div>Acorta la CAD y evita el rebote, sin más hipoglicemia</div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Insulin" y "Potassium" [1] · Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43, Fig. 1, bolo de 0,14 U/kg si la glicemia no cae 10 % en 1 h [3]. Los ejemplos de 70 kg son cálculos propios.</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Insulin" y "Potassium" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, Box 3, metas de descenso y ajuste de +1 U/h [3]. Los ejemplos de 70 kg son cálculos propios.</div>
       </section>
 
       <!-- 24 · CAD INSULINA SC -->
@@ -1377,17 +1386,17 @@
           <h2>CAD leve o moderada <span class="hl">no complicada</span></h2>
           <hr class="divider cad">
           <div class="dose c4 cad">
-            <div class="h">Esquema</div><div class="h">Dosis inicial</div><div class="h">Luego</div><div class="h">Con glicemia &lt; 250 mg/dL</div>
+            <div class="h">Esquema</div><div class="h">Dosis</div><div class="h">Ejemplo 70 kg</div><div class="h">Hasta que…</div>
 
             <div class="k">Análogo rápido SC cada 1 h</div>
-            <div><strong>0,3 U/kg SC</strong> (aspart o lispro)</div>
-            <div><strong>0,1 U/kg SC cada 1 h</strong></div>
-            <div>0,05 U/kg SC cada 1 h + dextrosa, hasta la resolución</div>
+            <div><strong>0,1 U/kg SC cada 1 h</strong> (aspart o lispro)</div>
+            <div>7 U SC cada hora</div>
+            <div>Con glicemia &lt; 250: agregar dextrosa 5 – 10 % y seguir hasta la resolución</div>
 
             <div class="k">Análogo rápido SC cada 2 h</div>
-            <div><strong>0,3 U/kg SC</strong></div>
             <div><strong>0,2 U/kg SC cada 2 h</strong></div>
-            <div>0,1 U/kg SC cada 2 h + dextrosa, hasta la resolución</div>
+            <div>14 U SC cada 2 h</div>
+            <div>Igual: dextrosa con glicemia &lt; 250, hasta la resolución</div>
           </div>
           <div class="grid cols-2" style="margin-top:12px;">
             <div class="card accent-cad tight">
@@ -1400,7 +1409,7 @@
             </div>
           </div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4, insulina SC cada 1 – 2 h [1] · Umpierrez GE et al. Treatment of DKA with subcutaneous insulin aspart. <i>Diabetes Care</i> 2004;27(8):1873-8, dosis del esquema [5].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4, insulina SC cada 1 – 2 h [1] · Rodríguez Álvarez P et al. <i>Cleve Clin J Med</i> 2025;92(3):152-8, Tabla "Tratamiento 2009 vs 2024", dosis SC [4]. Los ejemplos de 70 kg son cálculos propios.</div>
       </section>
 
       <!-- 25 · K / BIC / FOSFATO -->
@@ -1422,11 +1431,11 @@
             <div>Mantener K entre 4 y 5 mEq/L</div>
 
             <div class="k">K &gt; 5,0 mEq/L</div>
-            <div>No reponer; controlar el K a las 2 h</div>
+            <div>No reponer; controlar el K a las 2 h. (JBDS: K 3,5 – 5,5 → 40 mEq/L; K &gt; 5,5 → nada)</div>
             <div>Iniciar la reposición cuando baje de 5,0</div>
 
             <div class="k">Bicarbonato</div>
-            <div><strong>Solo si pH &lt; 7,0:</strong> 100 mEq de NaHCO₃ 8,4 % en 400 mL de agua estéril (+20 mEq KCl) a 200 mL/h</div>
+            <div><strong>Solo si pH &lt; 7,0:</strong> 100 mEq de NaHCO₃ 8,4 % en 400 mL de agua estéril</div>
             <div>Repetir cada 2 h hasta pH &gt; 7,0. Si pH ≥ 7,0, no está indicado</div>
 
             <div class="k">Fosfato</div>
@@ -1435,7 +1444,7 @@
           </div>
           <div class="note-bar"><strong>El K cae 1 – 2 mEq/L en las primeras 48 h</strong> por la insulina, la corrección de la acidosis y la expansión de volumen. Un K ≤ 2,5 se asocia a ~3 veces más mortalidad.</div>
         </div>
-        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Potassium", "Bicarbonate", "Phosphate" [1] · Kitabchi AE et al. <i>Diabetes Care</i> 2009;32(7):1335-43, Fig. 1, +20 mEq KCl a 200 mL/h [3].</div>
+        <div class="src"><b>Fuente</b>Umpierrez GE et al. <i>Diabetes Care</i> 2024;47(8):1257-75, Sección 4 "Potassium", "Bicarbonate", "Phosphate" [1] · Dhatariya KK et al. (JBDS-CAD) <i>Diabet Med</i> 2022;39(6):e14788, rev. mar-2023, Box 2, tabla de K [3].</div>
       </section>
 
       <!-- 26 · RESOLUCIÓN Y TRANSICIÓN -->
@@ -1612,7 +1621,7 @@
           <span class="eyebrow">Take-home</span>
           <h2>Lo que <span class="hl">no puede fallar</span></h2>
           <hr class="divider">
-          <div class="takeaway"><div class="num">01</div><div class="ct"><div class="title-t">Criterios 2024: CAD desde glicemia ≥ 200 (o DM conocida); SHH con osm efectiva &gt; 300</div><p>Medir el β-OHB. Un cuarto de los ingresos son mixtos.</p></div></div>
+          <div class="takeaway"><div class="num">01</div><div class="ct"><div class="title-t">Criterios 2024: CAD desde glicemia ≥ 200 (o DM conocida); SHH con osm efectiva &gt; 300</div><p>Medir el β-OHB. En Chile los egresos por CAD subieron 38 % entre 2021 y 2025.</p></div></div>
           <div class="takeaway"><div class="num">02</div><div class="ct"><div class="title-t">Fluidos primero: 500 – 1000 mL/h durante 2 – 4 h</div><p>Con glicemia &lt; 250 se agrega dextrosa 5 – 10 % y no se suspende la insulina.</p></div></div>
           <div class="takeaway"><div class="num">03</div><div class="ct"><div class="title-t">Sin K ≥ 3,5 no hay insulina</div><p>La infusión de la CAD es de 0,1 U/kg/h, y baja a 0,05 con glicemia &lt; 250. En el SHH es de 0,05 U/kg/h y parte cuando la osm deja de caer.</p></div></div>
           <div class="takeaway"><div class="num">04</div><div class="ct"><div class="title-t">Se resuelve con β-OHB &lt; 0,6 y pH ≥ 7,3 o HCO₃ ≥ 18; la basal SC va 1 – 2 h antes</div><p>En el SHH: osm ↓ 3 – 8 por hora, Na ↓ ≤ 10 en 24 h, HBPM y buscar siempre el gatillo.</p></div></div>
@@ -1628,14 +1637,16 @@
           <h2>Fuentes <span class="hl">citadas</span></h2>
           <hr class="divider">
           <ol class="bib">
-            <li>Umpierrez GE, Davis GM, ElSayed NA, Fadini GP, Galindo RJ, Hirsch IB, et al. <i>Hyperglycemic crises in adults with diabetes: a consensus report.</i> Diabetes Care. 2024;47(8):1257-1275. <span class="doi">doi:10.2337/dci24-0032</span> (publicado también en Diabetologia 2024, doi:10.1007/s00125-024-06183-8)</li>
-            <li>Mustafa OG, Haq M, Dashora U, Castro E, Dhatariya KK; Joint British Diabetes Societies (JBDS) for Inpatient Care Group. <i>Management of Hyperosmolar Hyperglycaemic State (HHS) in Adults: an updated guideline from the JBDS.</i> Diabet Med. 2023;40(3):e15005. <span class="doi">doi:10.1111/dme.15005</span></li>
-            <li>Kitabchi AE, Umpierrez GE, Miles JM, Fisher JN. <i>Hyperglycemic crises in adult patients with diabetes.</i> Diabetes Care. 2009;32(7):1335-1343. <span class="doi">doi:10.2337/dc09-9032</span></li>
+            <li>Umpierrez GE, Davis GM, ElSayed NA, et al. <i>Hyperglycemic crises in adults with diabetes: a consensus report.</i> Diabetes Care. 2024;47(8):1257-1275. <span class="doi">doi:10.2337/dci24-0032</span></li>
+            <li>Mustafa OG, Haq M, Dashora U, Castro E, Dhatariya KK; JBDS for Inpatient Care Group. <i>Management of Hyperosmolar Hyperglycaemic State (HHS) in Adults: an updated guideline from the JBDS.</i> Diabet Med. 2023;40(3):e15005. <span class="doi">doi:10.1111/dme.15005</span></li>
+            <li>Dhatariya KK; Joint British Diabetes Societies for Inpatient Care. <i>The management of diabetic ketoacidosis in adults: an updated guideline from the JBDS.</i> Diabet Med. 2022;39(6):e14788 (versión revisada, marzo 2023). <span class="doi">doi:10.1111/dme.14788</span></li>
             <li>Rodríguez Álvarez P, San Martín VT, Morey-Vargas OL. <i>Hyperglycemic crises in adults: a look at the 2024 consensus report.</i> Cleve Clin J Med. 2025;92(3):152-158. <span class="doi">doi:10.3949/ccjm.92a.24089</span></li>
-            <li>Umpierrez GE, Cuervo R, Karabell A, Latif K, Freire AX, Kitabchi AE. <i>Treatment of diabetic ketoacidosis with subcutaneous insulin aspart.</i> Diabetes Care. 2004;27(8):1873-1878. <span class="doi">doi:10.2337/diacare.27.8.1873</span></li>
+            <li>Departamento de Estadísticas e Información de Salud (DEIS), MINSAL. <i>Egresos hospitalarios por comuna de residencia, años 2021–2025.</i> Datos abiertos, deis.minsal.cl (consultado nov-2026).</li>
+            <li>DEIS, MINSAL. <i>Defunciones por causa 1990–2023 (cifras oficiales) y 2024–2026 (cifras preliminares).</i> Datos abiertos, deis.minsal.cl (consultado nov-2026).</li>
+            <li>International Diabetes Federation. <i>IDF Diabetes Atlas</i>, 11ª ed. Bruselas: IDF; 2025. Ficha país Chile.</li>
           </ol>
         </div>
-        <div class="src"><b>Nota</b>Las dosis corresponden a adultos no embarazadas. Antes de indicarlas, ajustarlas al protocolo local de cada centro.</div>
+        <div class="src"><b>Nota</b>Todas las fuentes son de 2022 a 2026. Datos chilenos: cálculos propios sobre las bases abiertas del DEIS. Las dosis corresponden a adultos no embarazadas. Antes de indicarlas, ajustarlas al protocolo local de cada centro.</div>
       </section>
 
       <!-- 33 · CLOSE -->
@@ -1647,7 +1658,7 @@
           <p class="author">Matías Stehberg · Héctor Rojas</p>
           <p class="author mono">Medicina orientada al problema · Universidad Andrés Bello · 2026</p>
         </div>
-        <div class="src"><b>Fuentes</b>[1] Umpierrez GE et al. <i>Diabetes Care</i> 2024 · [2] Mustafa OG et al. <i>Diabet Med</i> 2023 · [3] Kitabchi AE et al. <i>Diabetes Care</i> 2009 · [4] Rodríguez Álvarez P et al. <i>Cleve Clin J Med</i> 2025 · [5] Umpierrez GE et al. <i>Diabetes Care</i> 2004.</div>
+        <div class="src"><b>Fuentes</b>[1] Umpierrez GE et al. <i>Diabetes Care</i> 2024 · [2] Mustafa OG et al. <i>Diabet Med</i> 2023 · [3] Dhatariya KK et al. <i>Diabet Med</i> 2022/2023 · [4] Rodríguez Álvarez P et al. <i>Cleve Clin J Med</i> 2025 · [5][6] DEIS-MINSAL 2021–2026 · [7] IDF Atlas 2025.</div>
       </section>
 
     </div>
